@@ -7,7 +7,7 @@
     </div>
     <!-- nav -->
     <div class="navbar-area">
-       <div>
+       <div style="width:100%">
              <!-- dashboard nav -->
              <div class="dash-container">
                 <a [hidden]="false" [routerLink]="['/']">
@@ -31,13 +31,59 @@
                             <div class="icon ">
                                <i class="{{routeInfo.icon}}"></i>
                             </div>
-                            <div class="navlink ">
-                               <span style="margin-top: 4px;">      
-                                  <p>{{routeInfo.title}}</p>
-                               </span>
+                            <div class="navlink  bg-primary ">
+                               <div class="title" style="margin-top: 4px; ">                               
+                                       <p>{{routeInfo.title}}</p>
+                               </div>
+                               <div class="d-flex">
+                                 <div  [class.car-down]="carret_down">
+                                          <button class="carret-icon" (click)="toggleCarretDown()"                                       >
+                                             <i class="fa-solid fa-caret-down"></i>
+                                          </button>                     
+                                 </div> 
+                                 <div  [class.car-up]="carret_up">
+                                          <button class="carret-icon" (click)="toggleCarretUp()"                                       >
+                                             <i class="fa-solid fa-caret-up"></i>
+                                          </button>                     
+                                 </div> 
+                              </div>
                             </div>  
-                      </div>
+                      </div>  
                    </a>
+
+                   <div class="dropdown">
+                        <div class="d-container">
+                           <div class="icon ">
+                              <i class="fa fa-user-plus" aria-hidden="true"></i>
+                           </div>
+                           <div class="navlink ">
+                              <div class="title" style="margin-top: 4px; ">                               
+                                      <p>Add Admin</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="d-container">
+                           <div class="icon ">
+                              <i class="fa-solid fa-eye"></i>
+                           </div>
+                           <div class="navlink ">
+                              <div class="title" style="margin-top: 4px; ">                               
+                                      <p>View Admin</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="d-container">
+                           <div class="icon ">
+                              <i class="fa-solid fa-eye"></i>
+                           </div>
+                           <div class="navlink ">
+                              <div class="title" style="margin-top: 4px; ">                               
+                                      <p>View Access trail</p>
+                              </div>
+                           </div>
+                        </div>
+                     
+                   </div>
                 </div>
              </div>
              <!-- <div *ngFor="let housingLocation of housingLocationList"
