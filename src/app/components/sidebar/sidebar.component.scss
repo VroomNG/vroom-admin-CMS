@@ -113,8 +113,15 @@ a {
 }
 .d-container {
     width: 85%;
-    display: flex;
+}
 
+.child-title {
+    margin: 5px 20px;
+}
+.children {
+    padding: 15px 5px;
+    font-size: 14px;
+    font-weight: 450;
 }
 
 

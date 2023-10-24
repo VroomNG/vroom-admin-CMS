@@ -24,20 +24,20 @@
                 </a>
              </div>
              <!--  -->
-             <div *ngFor="let routeInfo of ROUTES">
+             <div *ngFor="let routeInfo of ROUTES; let i = index">
                 <div class="dash-container">
                    <a [hidden]="false" [routerLink]="routeInfo.path">
                       <div class="container">  
                             <div class="icon ">
                                <i class="{{routeInfo.icon}}"></i>
                             </div>
-                            <div class="navlink  bg-primary ">
+                            <div class="navlink">
                                <div class="title" style="margin-top: 4px; ">                               
                                        <p>{{routeInfo.title}}</p>
                                </div>
                                <div class="d-flex">
                                  <div  [class.car-down]="carret_down">
-                                          <button class="carret-icon" (click)="toggleCarretDown()"                                       >
+                                          <button class="carret-icon" (click)="toggleCarretDown(i)"                                       >
                                              <i class="fa-solid fa-caret-down"></i>
                                           </button>                     
                                  </div> 
@@ -50,46 +50,22 @@
                             </div>  
                       </div>  
                    </a>
-
-                   <div class="dropdown">
-                        <div class="d-container">
-                           <div class="icon ">
-                              <i class="fa fa-user-plus" aria-hidden="true"></i>
-                           </div>
-                           <div class="navlink ">
-                              <div class="title" style="margin-top: 4px; ">                               
-                                      <p>Add Admin</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="d-container">
-                           <div class="icon ">
-                              <i class="fa-solid fa-eye"></i>
-                           </div>
-                           <div class="navlink ">
-                              <div class="title" style="margin-top: 4px; ">                               
-                                      <p>View Admin</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="d-container">
-                           <div class="icon ">
-                              <i class="fa-solid fa-eye"></i>
-                           </div>
-                           <div class="navlink ">
-                              <div class="title" style="margin-top: 4px; ">                               
-                                      <p>View Access trail</p>
-                              </div>
-                           </div>
-                        </div>
-                     
-                   </div>
-                </div>
+                   <div class="dropdown" *ngIf="i === openDropdown">
+                     <div *ngIf="routeInfo.children">
+                        <div class="d-container" *ngFor="let child of routeInfo.children">
+                          <div class=" d-flex" style="width: 200px; padding: auto; display: inline;">
+                             <div class="d-flex">
+                                <a [routerLink]="child.path">
+                                    <div class="children">
+                                        <i class="{{child.icon}}"></i> <span class="child-title"> {{child.title}} </span>
+                                    </div>
+                                </a>
+                             </div>
+                          </div>
+                        </div> 
+                     </div>
+             </div>              
              </div>
-             <!-- <div *ngFor="let housingLocation of housingLocationList"
-             >
-             {{housingLocation.name}}
-             </div> -->
  
        </div>
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ROUTES } from '@angular/router';
 // import { adminService } from '../../service/admin.service';
 // import { driverInfo } from '../../model/driverInfo';
 // import { LoginService } from '../../service/login.service';
@@ -15,6 +15,14 @@ declare interface RouteInfo {
   class: string;
   children: any;
 }
+declare interface childRoutes {
+  // id:number;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
+  // children: any;
+}
 
 @Component({
   // standalone: true,
@@ -27,15 +35,13 @@ export class SidebarComponent implements OnInit {
 
   ROUTES: RouteInfo[] = [
     // { path: '/dashboard', title: 'Dashboard', icon: 'ni ni-shop', class: '', children: '' },
-
-    
-  
     {
       id:0,
       path: '/admin', title: 'Admin', icon: 'fa-solid fa-user-tie', class: '', 
       children: [
         { path: '/admin/add-admin', title: 'Add Admin', icon: 'fa fa-user-plus', class: '' },
-        { path: '/admin/view-admin', title: 'View Admin', icon: 'fa fa-eye', class: '' }
+        { path: '/admin/view-admin', title: 'View Admin', icon: 'fa fa-eye', class: '' },
+        { path: '/admin/view-access-trail', title: 'View Access trail', icon: 'fa fa-eye', class: '' }
       ]
     },
     {
@@ -48,7 +54,8 @@ export class SidebarComponent implements OnInit {
     {
       id:2,
       path: '/partners', title: 'partners', icon: ' fa-solid fa-handshake text-primary', class: '', children: [
-        { path: '/partners/add-partners', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', children: '' },
+        { path: '/partners/add-partners', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', 
+         children: '' },
         { path: '/partners/view-partner/1', title: 'View Drivers', icon: 'fa fa-eye text-primary', class: '', children: '' },
         { path: '/partners/view-partner/2', title: 'View Pending Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
         { path: '/partners/view-partner/3', title: 'View Inactive Drivers', icon: 'fas fa-power-off text-primary', class: '', children: '' },
@@ -160,15 +167,37 @@ export class SidebarComponent implements OnInit {
 
   carret_down =  false;
   carret_up = true;
+  openDropdown: number | null = null;
 
-  toggleCarretDown() {
+  toggleCarretDown(index: number) {
     this.carret_down = true;
     this.carret_up = false;
+    if (this.openDropdown === index) {
+      // Clicked the currently open dropdown, so close it
+      this.openDropdown = null;
+    } else {
+      // Clicked a different dropdown, so open it
+      this.openDropdown = index;
+    }
   }
+  
   toggleCarretUp() {
     this.carret_down = false;
     this.carret_up = true;
   }
+
+
+
+// toggleDropdown(index: number) {
+//   if (this.openDropdown === index) {
+//     // Clicked the currently open dropdown, so close it
+//     this.openDropdown = null;
+//   } else {
+//     // Clicked a different dropdown, so open it
+//     this.openDropdown = index;
+//   }
+// }
+
 
 
   // user_type:any;
