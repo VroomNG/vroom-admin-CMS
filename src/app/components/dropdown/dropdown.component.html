@@ -1,6 +1,13 @@
 <div *ngFor="let item of dropdownItems; let i = index">
-    <button (click)="toggleDropdown(i)">
-    {{item.content}}
+    <button (click)="toggleDropdownIcon(i)">
+        
+     <span *ngIf="i === openDropdown ">
+        <i class="fa-solid fa-caret-up"></i>
+     </span>
+     <span *ngIf="i !== openDropdown ">
+        <i class="fa-solid fa-caret-down"></i>
+     </span>
+      {{ item.content }}
     </button>
     <div *ngIf="i === openDropdown">
       <ul *ngIf="item.children">
@@ -9,4 +16,4 @@
         </li>
       </ul>
     </div>
-</div>
+  </div>

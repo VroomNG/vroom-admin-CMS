@@ -15,15 +15,6 @@ declare interface RouteInfo {
   class: string;
   children: any;
 }
-declare interface childRoutes {
-  // id:number;
-  path: string;
-  title: string;
-  icon: string;
-  class: string;
-  // children: any;
-}
-
 @Component({
   // standalone: true,
   selector: 'app-sidebar',
@@ -170,36 +161,16 @@ export class SidebarComponent implements OnInit {
   openDropdown: number | null = null;
 
   toggleCarretDown(index: number) {
-    this.carret_down = true;
-    this.carret_up = false;
     if (this.openDropdown === index) {
       // Clicked the currently open dropdown, so close it
       this.openDropdown = null;
     } else {
       // Clicked a different dropdown, so open it
       this.openDropdown = index;
+      this.carret_down = true;
+      this.carret_up = false
     }
   }
-  
-  toggleCarretUp() {
-    this.carret_down = false;
-    this.carret_up = true;
-  }
-
-
-
-// toggleDropdown(index: number) {
-//   if (this.openDropdown === index) {
-//     // Clicked the currently open dropdown, so close it
-//     this.openDropdown = null;
-//   } else {
-//     // Clicked a different dropdown, so open it
-//     this.openDropdown = index;
-//   }
-// }
-
-
-
   // user_type:any;
   // user_id:any;
   // public focus: any;

@@ -7,37 +7,32 @@ import { Component } from '@angular/core';
 })
 export class DropdownComponent {
   dropdownItems = [
-    { content: 'admin',
+    {
+      content: 'admin',
       children: [
         {
           path: 'Add admin',
-          
         },
         {
           path: 'view admin',
-          
         }
       ]
-  },
-    { content: 'partner' ,
-    children: [
-      {
-        path: 'Add partner',
-        
-      },
-      {
-        path: 'view partner',
-        
-      }
-    ]
-  
-  },
-    { content: 'sponsors' },
-  ];
+    },
+    {
+      content: 'partner',
+      children: [
+        {
+          path: 'Add partner',
+        },
+        {
+          path: 'view partner',
+        }
+  ] 
+}]
 
   openDropdown: number | null = null;
 
-  toggleDropdown(index: number) {
+  toggleDropdownIcon(index: number) {
     if (this.openDropdown === index) {
       // Clicked the currently open dropdown, so close it
       this.openDropdown = null;
@@ -46,6 +41,5 @@ export class DropdownComponent {
       this.openDropdown = index;
     }
   }
-
-
 }
+
