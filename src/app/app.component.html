@@ -22,7 +22,7 @@
           <div class="user-profile d-flex  justify-content-end align-items-center " style="width: 30%;  height: 100%;">
               <div class="d-flex align-items-center justify-content-between">
                 <div class=" rounded-circle bg-secondary" style="width: 34px; height: 34px;" >
-                  <!-- <img class="userImg" src="/src/assets/img/user.jpg" /> -->
+                  <img [src]="imagePath" alt="My Image" class="user-img rounded-circle">
                 </div>
                 <div class="username pt-3 mx-2 " style="height: 100%;">
                   <p>Tolulope Ajao</p>
@@ -35,7 +35,9 @@
     <div class="main-content" style="height:92%">
         <!-- <router-outlet></router-outlet> -->
         <app-dashboard></app-dashboard>
+        <app-footer></app-footer>
     </div> 
+    
   </div>
 </div>
 
