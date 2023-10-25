@@ -234,3 +234,5 @@ export class SidebarComponent implements OnInit {
 
 
 }
+export { ROUTES };
+
