@@ -1,0 +1,27 @@
+<div>
+    <div class="dashboard  ">
+        <div class="container">
+            <div class="card"  *ngFor="let dashboard of dashboard">
+                <div class="container">
+                    <span class="title">{{dashboard.title}}</span>
+                    <span class="subtitle">{{dashboard.Number}}</span>
+                    <span class="text">
+                        <span *ngIf="dashboard.isThismonth == true">
+                            this month
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chart  ">
+
+    </div>
+    <!-- {{dashboard.riders}}
+    {{dashboard.drivers}}
+    {{dashboard.vehicles}}
+    {{dashboard.completedTrip}}
+    {{dashboard.totalTripPayment}}
+    {{dashboard.totalTripCommision}}
+    {{dashboard.TotalDriverEarned}} -->
+</div>
