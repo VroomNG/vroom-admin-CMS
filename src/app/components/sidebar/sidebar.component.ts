@@ -28,9 +28,9 @@ export class SidebarComponent implements OnInit {
     // { path: '/dashboard', title: 'Dashboard', icon: 'ni ni-shop', class: '', children: '' },
     {
       id:0,
-      path: '/admin', title: 'Admin', icon: 'fa-solid fa-user-tie', class: '', 
+      path: '/', title: 'Admin', icon: 'fa-solid fa-user-tie', class: '', 
       children: [
-        { path: '/admin/add-admin', title: 'Add Admin', icon: 'fa fa-user-plus', class: '' },
+        { path: 'add-admin', title: 'Add Admin', icon: 'fa fa-user-plus', class: '' },
         { path: '/admin/view-admin', title: 'View Admin', icon: 'fa fa-eye', class: '' },
         { path: '/admin/view-access-trail', title: 'View Access trail', icon: 'fa fa-eye', class: '' }
       ]
