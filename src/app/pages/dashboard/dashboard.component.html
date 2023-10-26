@@ -1,5 +1,5 @@
 <div>
-    <div class="dashboard  ">
+    <div class="header ">
         <header>
             <div class="container">
                 <div class="card"  *ngFor="let dashboard of dashboard">
@@ -16,10 +16,10 @@
             </div>
         </header>
     </div>
-    <div class="chart  ">
+    <div class="footer  ">
         <div class="container">
             <div class="card">      
-                <!-- <p-chart type="bar" [data]="data" [options]="options"></p-chart>  -->
+                <p-chart type="bar" [data]="data" [options]="options"></p-chart> 
             </div>
           </div>
     </div>
