@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 // import { TabComponent } from './tab/tab.component';
 import { InputComponent } from './input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
 // import { NgxMaskModule } from 'ngx-mask';
 // import { AlertComponent } from './alert/alert.component';
 
@@ -14,12 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     // TabsContainerComponent,
     // TabComponent,
     InputComponent,
+
     // NgxMaskModule.forRoot()
     // AlertComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    DropdownModule
     // NgxMaskModule.forRoot() 
   ],
   exports: [

@@ -9,10 +9,8 @@ import { dashboardInfo } from 'src/app/model/dashboardInfo';
 })
 export class DashboardComponent implements OnInit {
   data: any;
-
   options: any;
 
-  
   constructor(private mockDataService: MockdataService) { }
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);

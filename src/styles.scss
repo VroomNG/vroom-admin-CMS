@@ -3,6 +3,14 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
+.p-dropdown .p-dropdown-label {
+    width: 200px!important;
+    height: 40px!important;
+    padding: 10px!important;
+    margin: 0px 0px;
+    // margin-bottom: 10px;
+}
+
 *{
     margin: 0;
     padding: 0;

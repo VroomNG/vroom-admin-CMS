@@ -11,38 +11,18 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="name">First Name*</label>
                             </div>
-                            <input pInputText pKeyFilter="int" placeholder="first name"  />
+                            <input pInputText pKeyFilter="int" placeholder="First Name"  />
                             <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
                         </div>
                     </div>
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="lastname">Last Name*</label>
                             </div>
-                            <input pInputText pKeyFilter="int" placeholder="first name"  />
-                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="username">Username</label>
-                            </div>
-                            <input pInputText pKeyFilter="int" placeholder="first name"  />
-                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
-                        </div>
-                    </div>
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="username">Username</label>
-                            </div>
-                            <input pInputText pKeyFilter="int" placeholder="first name"  />
+                            <input pInputText pKeyFilter="int" placeholder="Last Name"  />
                             <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
                         </div>
                     </div>
@@ -51,18 +31,38 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="email">Email Address*</label>
                             </div>
-                            <input pInputText pKeyFilter="int" placeholder="first name"  />
+                            <input pInputText pKeyFilter="int" placeholder="Email"  />
                             <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
                         </div>
                     </div>
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="phone">Phone Number*</label>
                             </div>
-                            <input pInputText pKeyFilter="int" placeholder="first name"  />
+                            <input pInputText pKeyFilter="int" placeholder="Phone"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="password">Password*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Password"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="city">Service Available City*</label>
+                            </div>
+                            <p-dropdown formControlName="city" [options]="cities" optionLabel="name" class="dropdown"></p-dropdown>
                             <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
                         </div>
                     </div>

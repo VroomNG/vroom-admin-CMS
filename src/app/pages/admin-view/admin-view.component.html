@@ -1,0 +1,65 @@
+<div class="main-container">
+    <div class="header">
+        <div class="view-admin-grid">
+            <div class="container">
+                <div class="card">
+                    <div class="grid-header">
+                        <div class="title">
+                            <h6>View Admin Details</h6>
+                        </div>
+                        <div class="search">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input type="text" pInputText placeholder="Search">         
+                            </span>
+                        </div>
+                        <div class="export">
+                            <button type="submit" label="submit">
+                                export
+                             </button>
+                        </div>
+                    </div> 
+                    <div>
+                    <p-table
+                        [value]="admins"
+                        [paginator]="true"
+                        [rows]="6"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[10, 25, 50]"
+                    >
+                        <ng-template pTemplate="header">
+                            <tr style="height: 3rem; border-color: rgb(8, 101, 155); border-top-width: 1px; border-bottom-width:1px ;">
+                                <th style="width:15%">Name</th>
+                                <th style="width:15%">LastName</th>
+                                <th style="width:25%">Email</th>
+                                <th style="width:15%">Phone </th>
+                                <th style="width:15%">Admin Type </th>
+                                <th style="width:15%">Action </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-admins>
+                            <tr style="height: 3rem;">
+                                <td>{{ admins.name }}</td>
+                                <td>{{ admins.lastName }}</td>
+                                <td>{{ admins.email }}</td>
+                                <td>{{ admins.phone }}</td>
+                                <td>{{ admins.adminType }}</td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="paginatorleft">
+                            <!-- <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button> -->
+                        </ng-template>
+                        <ng-template pTemplate="paginatorright">
+                            <!-- <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button> -->
+                        </ng-template>
+                        </p-table>  
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+       
+    <div class="footer"></div>
+</div>
