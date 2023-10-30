@@ -37,39 +37,34 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:1,
-      path: 'vehicle/view-vehicle', title: 'Vehicle Type', icon: 'fa-solid fa-truck-monster text-primary', class: '', children: [
-        { path: '/vehicle/add-vehicle', title: 'Add Vehicle type', icon: 'fa fa-car-side text-primary', class: '', children: '' },
-        { path: '/vehicle/view-vehicle', title: 'View Vehicle Type', icon: 'fa fa-eye text-primary', class: '', children: '' },
+      path: '/', title: 'Vehicle Type', icon: 'fa-solid fa-truck-monster text-primary', class: '', children: [
+        { path: 'add-vehicle', title: 'Add Vehicle type', icon: 'fa fa-car-side text-primary', class: '', children: '' },
+        { path: 'view-vehicle', title: 'View Vehicle Type', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
     },
     {
       id:2,
       path: '/partners', title: 'partners', icon: ' fa-solid fa-handshake text-primary', class: '', children: [
-        { path: '/partners/add-partners', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', 
-         children: '' },
-        { path: '/partners/view-partner/1', title: 'View Drivers', icon: 'fa fa-eye text-primary', class: '', children: '' },
-        { path: '/partners/view-partner/2', title: 'View Pending Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
-        { path: '/partners/view-partner/3', title: 'View Inactive Drivers', icon: 'fas fa-power-off text-primary', class: '', children: '' },
-        { path: '/partners/view-partner/4', title: 'View No credit Drivers',  icon: 'far fa-credit-card text-primary', class: '',children:''},
-        { path: '/partners/partners-current-status', title: 'Driver Current Status',  icon: 'fa fa-check-circle text-primary', class: '',children:''}
+        { path: 'add-partners', title: 'Add Partners', icon: 'fa fa-plus text-primary', class: '', children: '' },
+        { path: '/view-partners', title: 'View Partners', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
     },
     {
       id:3,
       path: '/driver', title: 'Driver', icon: 'fa-solid fa-car text-primary', class: '', children: [
-        { path: '/driver/add-driver', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', children: '' },
-        { path: '/driver/view-driver/1', title: 'View Drivers', icon: 'fa fa-eye text-primary', class: '', children: '' },
-        { path: '/driver/view-driver/2', title: 'View Pending Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
-        { path: '/driver/view-driver/3', title: 'View Inactive Drivers', icon: 'fas fa-power-off text-primary', class: '', children: '' },
-        { path: '/driver/view-driver/4', title: 'View No credit Drivers',  icon: 'far fa-credit-card text-primary', class: '',children:''},
-        { path: '/driver/driver-current-status', title: 'Driver Current Status',  icon: 'fa fa-check-circle text-primary', class: '',children:''}
+        { path: 'add-drivers', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', children: '' },
+        { path: 'approved-drivers', title: 'Approved Drivers', icon: 'fa fa-eye text-primary', class: '', children: '' },
+        { path: 'unapproved-drivers', title: 'Pending Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
+        { path: 'rejected-drivers', title: 'Rejected Drivers', icon: 'fas fa-power-off text-primary', class: '', children: '' },
+        // { path: '/driver/view-driver/4', title: 'View No credit Drivers',  icon: 'far fa-credit-card text-primary', class: '',children:''},
+        // { path: '/driver/driver-current-status', title: 'Driver Current Status',  icon: 'fa fa-check-circle text-primary', class: '',children:''}
       ]
     },
     {
       id:4,
       path: '/rider', title: 'Rider', icon: 'fa fa-motorcycle text-primary', class: '', children: [
-        { path: '/rider/add-edit-riders', title: 'Add Rider', icon: 'fa fa-plus-square text-primary', class: '', children: '' },
-        { path: '/rider/view-riders', title: 'View Riders', icon: 'fa fa-eye text-primary', class: '', children: '' },
+        { path: 'add-riders', title: 'Add Rider', icon: 'fa fa-plus-square text-primary', class: '', children: '' },
+        { path: 'view-riders', title: 'View Riders', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
     },
     {

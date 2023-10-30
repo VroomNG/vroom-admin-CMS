@@ -1,0 +1,214 @@
+<div class="main-container">
+    <div class="header">
+        <div class="add-admin-form">
+           <div class="card">
+            <div class="card-title">
+                <h5>Add Vehicle and Fare Details</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Vehicle Type*</label>
+                            </div>
+                            <p-dropdown formControlName="city" [options]="vehicle_type" optionLabel="name" placeholder="select vehicle type" class="dropdown"></p-dropdown>
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Minimum Fare*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Minimum fare"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Vehicle Make*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Enter Vehicle make"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Vehicle Model*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Enter Vehicle Model"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Trip Type*</label>
+                            </div>
+                            <p-dropdown formControlName="city" [options]="cities" placeholder="Select a trip type" optionLabel="name" class="dropdown"></p-dropdown>
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Commission(%)*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Minimum fare"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Per KM Rate *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Per KM Rate "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Is Vehicle Available*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Please Enter yes or no"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Rate Per Minute  *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Per Time Fare  "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Base Fare*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Base Fare"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Lagos Road Development Fund Levy*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Lagos Road Development Fund Levy  "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Toll Fees *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Toll Fees "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Available Seats/Person capacity*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Total of Available Seats "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Description *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Description"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">Vehicle Year*</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Enter a Vehicle Year"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">(share) Per KM Rate *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="(share) Per KM Rate"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">(share) Per Minute Rate *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="(share) Per Minute Rate "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">(share) Minimum Fare *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="(share) Minimum Fare"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div class="form-label">
+                                <label htmlFor="city">(share) Base Fare *</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="(share) Base Fare "  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                </div>
+                    <button type="submit" label="submit">
+                       Add 
+                    </button>
+                    <button type="submit" label="submit" class="button">
+                       Cancel
+                    </button>
+              </form>
+            </div>
+           </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+
+</div>

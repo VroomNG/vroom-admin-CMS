@@ -29,9 +29,9 @@
                    <!-- <a href=""> -->
                       <div class="container">  
                             <div class="icon ">
-                              <!-- <a [hidden]="false" [routerLink]="routeInfo.path"> -->
+                              <a [hidden]="false" [routerLink]="routeInfo.path">
                                <i class="{{routeInfo.icon}} text-primary"></i>
-                              <!-- </a> -->
+                              </a>
                             </div>
                             <div class="navlink">
                                <div class="title" style="margin-top: 4px; ">                               
@@ -61,7 +61,7 @@
                         <div class="d-container" *ngFor="let child of routeInfo.children">
                           <div class=" d-flex" style="width: 200px; padding: auto; display: inline;">
                              <div class="d-flex">
-                              <a [hidden]="false" [routerLink]="child.path">
+                              <a [routerLink]="child.path" >
                                     <div class="children">
                                         <i class="{{child.icon}}"></i> 
                                         <span class="child-title"> {{child.title}} </span>

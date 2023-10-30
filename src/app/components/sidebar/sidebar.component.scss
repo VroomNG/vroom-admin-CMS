@@ -7,11 +7,20 @@ a {
 }
 .carret i {
     color: #adb5bd;
+    font-size: 12px;
 }
 .carret-icon i {
     color: #adb5bd;
+    font-size: 12px;
+    margin-bottom: 20px;
+    
 }
-
+.carret-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding: 10px;
+}
 .circle_img{
     border-radius: 50%;
     width: 100%;
@@ -126,14 +135,6 @@ a {
     font-size: 14px;
     font-weight: 450;
 }
-
-
-
-
-
-
-
-
 
 @media (min-width: 768px){
     .navbar-expand-md .navbar-nav.sidemenustart .dropdown-menu {

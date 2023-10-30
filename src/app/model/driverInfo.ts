@@ -36,3 +36,17 @@ export class driverInfo {
 
     block_reason:any;
 }
+
+export interface IApproved {
+    id:number,
+    code:string,
+    name:string,
+    city: string
+    vehicle_type:string,
+    email:string,
+    phone:string,
+    registered_on:Date,
+    wallet:number,
+    isEditable: boolean,
+    isNotify: boolean
+}

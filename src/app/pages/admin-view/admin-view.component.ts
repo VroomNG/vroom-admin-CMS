@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAdmins } from 'src/app/model/admins';
 import { AdminsService } from 'src/app/data/admins.service';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-view',
@@ -9,10 +9,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./admin-view.component.scss']
 })
 export class AdminViewComponent implements OnInit {
-  // IDashboard = dashboardInfo;
-  // dashboard: dashboardInfo [] = []
-  // Admins!: IAdmins[] = [];
-
   // IAdmins = Adminsdata;
    admins: IAdmins[] = [
     

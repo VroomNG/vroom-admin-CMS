@@ -2,14 +2,53 @@
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+// @import "primeicons/primeicons.css";
+
+input[_ngcontent-ng-c2520345542] {
+    width: 95%;
+    height: 30% !important;
+    padding: 10px;
+    padding-top: 40px;
+}
+
+.p-dropdown {
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+}
 
 .p-dropdown .p-dropdown-label {
-    width: 200px!important;
+    width: 40px!important;
     height: 40px!important;
     padding: 10px!important;
     margin: 0px 0px;
     // margin-bottom: 10px;
 }
+
+.p-paginator {
+    background: transparentt;
+    color: #6c757d;
+    border: solid #e9ecef;
+    border-width: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0px;
+    height: 80px;
+    display: flex;
+    justify-content: end;
+
+}
+
+.p-paginator  button:not(:disabled) {
+    // cursor: pointer;
+    border-radius: 100px;
+    background-color: #160729;
+    color: white;
+    cursor: pointer;
+}
+
 
 *{
     margin: 0;

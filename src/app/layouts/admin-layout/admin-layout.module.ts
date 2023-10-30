@@ -22,7 +22,25 @@ import {ToolbarModule} from 'primeng/toolbar';
 import { AdminAddComponent } from 'src/app/pages/admin-add/admin-add.component';
 import { AdminViewComponent } from '../../pages/admin-view/admin-view.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
+
+import { VehicleTypeComponent } from '../../pages/vehicle-type/vehicle-type.component';
+import { VehicleAddComponent } from '../../pages/vehicle-add/vehicle-add.component';
+
 import {FileUploadModule} from 'primeng/fileupload';
+import { InputNumberModule } from 'primeng/inputnumber';
+
+import { PartnersComponent } from '../../pages/partners/partners.component';
+import { PartnersAddComponent } from '../../pages/partners-add/partners-add.component';
+import { DriversAddComponent } from '../../pages/drivers-add/drivers-add.component';
+import { DriversApprovedComponent } from '../../pages/drivers-approved/drivers-approved.component';
+import { DriversPendingComponent } from '../../pages/drivers-pending/drivers-pending.component';
+import { DriversRejectedComponent } from '../../pages/drivers-rejected/drivers-rejected.component';
+import { RidersComponent } from '../../pages/riders/riders.component';
+import { RidersAddComponent } from '../../pages/riders-add/riders-add.component';
+import { TripsComponent } from '../../pages/trips/trips.component';
+import { TripsUpcomingComponent } from '../../pages/trips-upcoming/trips-upcoming.component';
+import { TripsPastComponent } from '../../pages/trips-past/trips-past.component';
+import { TripsSettingsComponent } from '../../pages/trips-settings/trips-settings.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -42,7 +60,8 @@ import {FileUploadModule} from 'primeng/fileupload';
     DropdownModule,
     TableModule,
     ToolbarModule,
-    FileUploadModule
+    FileUploadModule,
+    InputNumberModule
   ],
   declarations: [
     DashboardComponent,
@@ -52,7 +71,22 @@ import {FileUploadModule} from 'primeng/fileupload';
     MapsComponent,
     AdminAddComponent,
     AdminViewComponent,
-    AdminViewAccessComponent
+    AdminViewAccessComponent,
+    VehicleTypeComponent,
+    VehicleAddComponent,
+    PartnersComponent,
+    PartnersAddComponent,
+    DriversAddComponent,
+    DriversApprovedComponent,
+    DriversPendingComponent,
+    DriversRejectedComponent,
+    RidersComponent,
+    RidersAddComponent,
+    TripsComponent,
+    TripsUpcomingComponent,
+    TripsPastComponent,
+    TripsSettingsComponent
+    
   ]
 })
 

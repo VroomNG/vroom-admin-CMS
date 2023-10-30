@@ -18,3 +18,12 @@ export interface IAdmins {
       adminType: string,
       isEditable: boolean, 
 }
+
+export interface IAdminsTrail {
+      id:number,
+      name: string,
+      email: string,
+      action: string,
+      time:   Date,
+      isEditable: boolean, 
+}
