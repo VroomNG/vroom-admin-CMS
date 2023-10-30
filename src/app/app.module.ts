@@ -17,8 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

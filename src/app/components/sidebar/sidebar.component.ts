@@ -62,7 +62,7 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:4,
-      path: '/rider', title: 'Rider', icon: 'fa fa-motorcycle text-primary', class: '', children: [
+      path: '/rider', title: 'Rider', icon: 'fa-solid fa-motorcycle fa-shake text-primary', class: '', children: [
         { path: 'add-riders', title: 'Add Rider', icon: 'fa fa-plus-square text-primary', class: '', children: '' },
         { path: 'view-riders', title: 'View Riders', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
@@ -96,10 +96,10 @@ export class SidebarComponent implements OnInit {
     {
       id:8,
       path: '/#', title: 'Settlements', icon: 'fa-solid fa-money-bill-transfer', class: '', children: [
-        { path: '/settlements/driver-settlement', title: 'Driver Settlement', icon: 'fa fa-code', class: '', children: '' },
-        { path: '/settlements/rider-settlement', title: 'Rider Settlement', icon: 'fa fa-eye ', class: '', children: '' },
-        { path: '/settlements/driver-settlement/driver-bank-transaction', title: 'Driver Bank Transaction', icon: 'fa fa-code', class: '', children: '' },
-        { path: '/settlements/driver-settlement/settlement-list', title: 'Driver Settlement List', icon: 'fa fa-code', class: '', children: '' },
+        { path: 'cash-settlements', title: 'Cash Settlement', icon: 'fa-solid fa-money-bill', class: '', children: '' },
+        { path: 'partner-settlements', title: 'Partner withdraw Request', icon: ' fa-solid fa-arrow-right-arrow-left fa-flip ', class: '', children: '' },
+        { path: 'withdrawal-details', title: 'Withdraw Request', icon: 'fa-solid fa-arrow-right-arrow-left fa-flip ', class: '', children: '' },
+        { path: 'withdrawal-requests', title: 'Withdraw Details', icon: 'fa-solid fa-arrow-right-arrow-left fa-flip ', class: '', children: '' },
       ]
     },
     //  {
@@ -113,7 +113,7 @@ export class SidebarComponent implements OnInit {
       path: '/user-profile', title: 'User profile', icon: 'fa-solid fa-user text-primary', class: '', children: '' },
       {
         id:11,
-        path: '/#', title: 'Notification Centre', icon: 'fa-solid fa-bell', class: '', children: [
+        path: '/#', title: 'Notification Centre', icon: 'fa-solid fa-bell fa-shake', class: '', children: [
           { path: '/promocode/addpromocode', title: 'Add Promocode', icon: 'fa fa-code text-primary', class: '', children: '' },
           { path: '/promocode', title: 'View Promocode', icon: 'fa fa-eye ', class: '', children: '' },
         ]

@@ -25,7 +25,10 @@ import { TripsUpcomingComponent } from '../../pages/trips-upcoming/trips-upcomin
 import { TripsPastComponent } from '../../pages/trips-past/trips-past.component';
 import { TripsSettingsComponent } from '../../pages/trips-settings/trips-settings.component';
 
-
+import { SettlementsComponent } from 'src/app/pages/settlements/settlements.component';
+import { SettlementsPartnerWithdrawRequestsComponent } from 'src/app/pages/settlements-partner-withdraw-requests/settlements-partner-withdraw-requests.component';
+import { SettlementsWithdrawDetailsComponent } from 'src/app/pages/settlements-withdraw-details/settlements-withdraw-details.component';
+import { SettlementsWithdrawRequestComponent } from 'src/app/pages/settlements-withdraw-request/settlements-withdraw-request.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -50,4 +53,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upcoming-trips', component: TripsUpcomingComponent},
     { path: 'past-trips', component: TripsPastComponent},
     { path: 'trips-settings', component: TripsSettingsComponent},
+    { path: 'cash-settlements', component: SettlementsComponent},
+    { path: 'partner-settlements', component: SettlementsPartnerWithdrawRequestsComponent},
+    { path: 'withdrawal-details', component: SettlementsWithdrawDetailsComponent},
+    { path: 'withdrawal-request', component: SettlementsWithdrawRequestComponent},
 ];

@@ -42,6 +42,12 @@ import { TripsUpcomingComponent } from '../../pages/trips-upcoming/trips-upcomin
 import { TripsPastComponent } from '../../pages/trips-past/trips-past.component';
 import { TripsSettingsComponent } from '../../pages/trips-settings/trips-settings.component';
 
+import { SettlementsComponent } from '../../pages/settlements/settlements.component';
+import { SettlementsWithdrawRequestComponent } from '../../pages/settlements-withdraw-request/settlements-withdraw-request.component';
+import { SettlementsWithdrawDetailsComponent } from '../../pages/settlements-withdraw-details/settlements-withdraw-details.component';
+import { SettlementsPartnerWithdrawRequestsComponent } from '../../pages/settlements-partner-withdraw-requests/settlements-partner-withdraw-requests.component';
+
+
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -85,7 +91,11 @@ import { TripsSettingsComponent } from '../../pages/trips-settings/trips-setting
     TripsComponent,
     TripsUpcomingComponent,
     TripsPastComponent,
-    TripsSettingsComponent
+    TripsSettingsComponent,
+    SettlementsComponent,
+    SettlementsWithdrawRequestComponent,
+    SettlementsWithdrawDetailsComponent,
+    SettlementsPartnerWithdrawRequestsComponent,
     
   ]
 })
