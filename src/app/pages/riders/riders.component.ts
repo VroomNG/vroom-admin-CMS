@@ -19,6 +19,19 @@ export class RidersComponent {
     isEditable: true,
     isNotify: false,
     isBlock: false
+  },
+  {
+    id: 2,
+    name: 'Tee',
+    lastname: 'Justice',
+    email: 'tpumpingt@gmail.com',
+    phone:'+2348038642122',
+    registered_on: new Date(),
+    lastTrip: new Date(),
+    wallet:0,
+    isEditable: true,
+    isNotify: false,
+    isBlock: false
   }
  ]
 

@@ -46,7 +46,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'rejected-drivers', component: DriversRejectedComponent},
     { path: 'add-riders', component: RidersAddComponent},
     { path: 'view-riders', component: RidersComponent},
-    { path: 'view-trips', component: TripsComponent},
+    { path: 'trips', component: TripsComponent},
     { path: 'upcoming-trips', component: TripsUpcomingComponent},
     { path: 'past-trips', component: TripsPastComponent},
     { path: 'trips-settings', component: TripsSettingsComponent},

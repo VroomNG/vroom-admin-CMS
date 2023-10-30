@@ -70,11 +70,11 @@ export class SidebarComponent implements OnInit {
     {
       id:5,
       path: '/#', title: 'Trips', icon: 'fa-solid fa-bus', class: '', children: [
-        { path: '/trips/1', title: 'Trips', icon: 'fas fa-suitcase-rolling', class: '', children: '' },
-        { path: '/trips', title: 'Ongoing Trips',  icon: 'fas fa-luggage-cart', class: '',children:''},
-        { path: '/trips/2', title: 'Upcoming Trips', icon: 'ni ni-map-big ', class: '', children: '' },
-        { path: '/trips', title: 'No Response Trips',  icon: 'fas fa-ban', class: '',children:''},
-        { path: '/trips/3', title: 'Past Trips', icon: 'fas fa-taxi', class: '', children: '' },
+        { path: 'trips', title: 'Trips', icon: 'fas fa-suitcase-rolling', class: '', children: '' },
+        { path: 'upcoming-trips', title: 'Upcoming Trips',  icon: 'fas fa-luggage-cart', class: '',children:''},
+        { path: 'past-trips', title: 'Past Trip', icon: 'fa fa-map ', class: '', children: '' },
+        { path: 'trips-settings', title: 'Trip Settings',  icon: 'fas fa-ban', class: '',children:''},
+        // { path: '/trips/3', title: 'Past Trips', icon: 'fas fa-taxi', class: '', children: '' },
       ]
     },
     { 
