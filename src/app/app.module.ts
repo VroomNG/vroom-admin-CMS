@@ -10,12 +10,11 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-
 import { ComponentsModule } from './components/components.module';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
+
 
 @NgModule({
   declarations: [

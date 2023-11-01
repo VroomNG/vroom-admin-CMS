@@ -30,6 +30,24 @@ import { SettlementsPartnerWithdrawRequestsComponent } from 'src/app/pages/settl
 import { SettlementsWithdrawDetailsComponent } from 'src/app/pages/settlements-withdraw-details/settlements-withdraw-details.component';
 import { SettlementsWithdrawRequestComponent } from 'src/app/pages/settlements-withdraw-request/settlements-withdraw-request.component';
 
+import { RatingsDriverComponent } from '../../pages/ratings-driver/ratings-driver.component';
+import { RatingsRiderComponent } from '../../pages/ratings-rider/ratings-rider.component';
+import { NotifyAddComponent } from '../../pages/notify-add/notify-add.component';
+import { NotificationsComponent } from '../../pages/notifications/notifications.component';
+import { MessageAddComponent } from '../../pages/message-add/message-add.component';
+import { MessagesComponent } from '../../pages/messages/messages.component';
+import { ReportsComponent } from '../../pages/reports/reports.component';
+import { ReportsRefComponent } from '../../pages/reports-ref/reports-ref.component';
+import { SurgeChargeComponent } from '../../pages/surge-charge/surge-charge.component';
+import { SurgeAddComponent } from '../../pages/surge-add/surge-add.component';
+import { DiscountComponent } from '../../pages/discount/discount.component';
+import { DiscountAddComponent } from '../../pages/discount-add/discount-add.component';
+import { DiscountCodeUseComponent } from '../../pages/discount-code-use/discount-code-use.component';
+import { AppActionUninstallComponent } from '../../pages/app-action-uninstall/app-action-uninstall.component';
+import { AppActionDriverVisibilityComponent } from '../../pages/app-action-driver-visibility/app-action-driver-visibility.component';
+import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
+
+
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
@@ -57,4 +75,21 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'partner-settlements', component: SettlementsPartnerWithdrawRequestsComponent},
     { path: 'withdrawal-details', component: SettlementsWithdrawDetailsComponent},
     { path: 'withdrawal-request', component: SettlementsWithdrawRequestComponent},
+    { path: 'driver-ratings', component: RatingsDriverComponent},
+    { path: 'rider-ratings', component: RatingsRiderComponent},
+    { path: 'add-notification', component: NotifyAddComponent},
+    { path: 'notifications', component: NotificationsComponent},
+    { path: 'new-message', component: MessageAddComponent},
+    { path: 'messages', component: MessagesComponent},
+    { path: 'reports', component: ReportsComponent},
+    { path: 'reports-ref', component: ReportsRefComponent},
+    { path: 'add-charge', component: SurgeAddComponent},
+    { path: 'view-edit-charge', component: SurgeChargeComponent},
+    { path: 'add-discount', component: DiscountAddComponent},
+    { path: 'view-discount', component: DiscountComponent},
+    { path: 'view-code-use', component: DiscountCodeUseComponent},
+    { path: 'uninstalls', component: AppActionUninstallComponent},
+    { path: 'driver-visibility-history', component: AppActionDriverVisibilityComponent},
+    { path: 'manage-settings', component: AppActionDriverSettingsComponent},
+    
 ];

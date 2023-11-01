@@ -47,6 +47,22 @@ import { SettlementsWithdrawRequestComponent } from '../../pages/settlements-wit
 import { SettlementsWithdrawDetailsComponent } from '../../pages/settlements-withdraw-details/settlements-withdraw-details.component';
 import { SettlementsPartnerWithdrawRequestsComponent } from '../../pages/settlements-partner-withdraw-requests/settlements-partner-withdraw-requests.component';
 
+import { RatingsDriverComponent } from '../../pages/ratings-driver/ratings-driver.component';
+import { RatingsRiderComponent } from '../../pages/ratings-rider/ratings-rider.component';
+import { NotifyAddComponent } from '../../pages/notify-add/notify-add.component';
+import { NotificationsComponent } from '../../pages/notifications/notifications.component';
+import { MessageAddComponent } from '../../pages/message-add/message-add.component';
+import { MessagesComponent } from '../../pages/messages/messages.component';
+import { ReportsComponent } from '../../pages/reports/reports.component';
+import { ReportsRefComponent } from '../../pages/reports-ref/reports-ref.component';
+import { SurgeChargeComponent } from '../../pages/surge-charge/surge-charge.component';
+import { SurgeAddComponent } from '../../pages/surge-add/surge-add.component';
+import { DiscountComponent } from '../../pages/discount/discount.component';
+import { DiscountAddComponent } from '../../pages/discount-add/discount-add.component';
+import { DiscountCodeUseComponent } from '../../pages/discount-code-use/discount-code-use.component';
+import { AppActionUninstallComponent } from '../../pages/app-action-uninstall/app-action-uninstall.component';
+import { AppActionDriverVisibilityComponent } from '../../pages/app-action-driver-visibility/app-action-driver-visibility.component';
+import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -96,7 +112,22 @@ import { SettlementsPartnerWithdrawRequestsComponent } from '../../pages/settlem
     SettlementsWithdrawRequestComponent,
     SettlementsWithdrawDetailsComponent,
     SettlementsPartnerWithdrawRequestsComponent,
-    
+    RatingsDriverComponent,
+    RatingsRiderComponent,
+    NotifyAddComponent,
+    NotificationsComponent,
+    MessageAddComponent,
+    MessagesComponent,
+    ReportsComponent,
+    ReportsRefComponent,
+    SurgeChargeComponent,
+    SurgeAddComponent,
+    DiscountComponent,
+    DiscountAddComponent,
+    DiscountCodeUseComponent,
+    AppActionUninstallComponent,
+    AppActionDriverVisibilityComponent,
+    AppActionDriverSettingsComponent,
   ]
 })
 
