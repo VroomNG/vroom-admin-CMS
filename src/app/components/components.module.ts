@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { VInputComponent } from './v-input/v-input.component';
+// import { VInputComponent } from './v-input/v-input.component';
 
 
 @NgModule({
@@ -24,13 +23,13 @@ import { VInputComponent } from './v-input/v-input.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    VInputComponent
+    // VInputComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    VInputComponent,
+    // VInputComponent,
     ReactiveFormsModule
   ]
 })
