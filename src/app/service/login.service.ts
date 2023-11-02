@@ -15,8 +15,8 @@ export class LoginService {
     })
   };
 
-  // private currentUserSubject: BehaviorSubject<loginInfo>;
-  // public currentUser: Observable<loginInfo>;
+  // / private currentUserSubject: BehaviorSubject<loginInfo>;
+  // // public currentUser: Observable<loginInfo>;/
 
   constructor(private http: HttpClient, public config: Configuration) {
     // this.currentUserSubject = new BehaviorSubject<loginInfo>

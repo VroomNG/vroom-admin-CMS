@@ -1,10 +1,13 @@
-<div class="header bg-gradient-danger py-7 py-lg-8">
+<app-alert *ngIf="showAlert" [color]="alertColor">
+  {{ alertMsg }}
+</app-alert>
+<div class="header bg-gradient-primary py-7 py-lg-8">
   <div class="container">
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+          <p class="text-lead text-light">Login in as an admin to view the entire admin panel </p>
         </div>
       </div>
     </div>
@@ -19,8 +22,8 @@
 <div class="container mt--8 pb-5">
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
-      <div class="card bg-secondary shadow border-0">
-        <div class="card-header bg-transparent pb-5">
+      <div class="card bg-white shadow border-0">
+        <!-- <div class="card-header bg-transparent pb-5">
           <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
           <div class="btn-wrapper text-center">
             <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
@@ -32,27 +35,38 @@
               <span class="btn-inner--text">Google</span>
             </a>
           </div>
-        </div>
+        </div> -->
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>Or sign in with credentials</small>
+            <small>Sign in</small>
           </div>
-          <form role="form">
+          <form role="form" #loginForm="ngForm" (ngSubmit)="login()">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  <span class="input-group-text"><i class="fa-solid fa-envelope text-primary"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email">
+                <input class="form-control" #email="ngModel"
+                  type="email" name="email" [(ngModel)]="credentials.email"
+                    placeholder="Enter Email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" />
               </div>
+              <p *ngIf="email.errors && email.touched && email.dirty" class="form-error">
+                Email is invalid
+              </p>
             </div>
             <div class="form-group">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  <span class="input-group-text"><i class="fa-solid fa-lock text-primary"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password">
+                <!-- <input class="form-control" placeholder="Password" type="password"> -->
+                <input class="form-control" #password="ngModel" 
+                  type="password" name="password" [(ngModel)]="credentials.password"
+                  placeholder="Password" required pattern="^[a-zA - Z0-9]*$"
+                    />
               </div>
+              <p *ngIf="password.errors && password.touched && password.dirty" class="form-error">
+                Password must have atleast a letter and a number
             </div>
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
@@ -61,7 +75,12 @@
               </label>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4">Sign in</button>
+              <button type="submit" class="btn btn-primary my-4"
+              [disabled]="loginForm.invalid || inSubmission"
+      
+              >
+              Sign in
+            </button>
             </div>
           </form>
         </div>

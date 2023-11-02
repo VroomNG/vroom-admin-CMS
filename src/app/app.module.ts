@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -13,8 +14,9 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { ComponentsModule } from './components/components.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
+// import { SharedModule } from '../app/shared/shared.module';
 
+import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CustomDatePipe,
+   
   ],
   imports: [
     BrowserModule,
@@ -29,11 +32,17 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     ComponentsModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
+    // SharedModule
     // ButtonModule
+  ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [CustomDatePipe ],
   bootstrap: [AppComponent]

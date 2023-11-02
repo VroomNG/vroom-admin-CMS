@@ -64,6 +64,7 @@ import { AppActionUninstallComponent } from '../../pages/app-action-uninstall/ap
 import { AppActionDriverVisibilityComponent } from '../../pages/app-action-driver-visibility/app-action-driver-visibility.component';
 import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
 
+import { InputComponent } from '../../layouts/shared/input/input.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -128,6 +129,7 @@ import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-
     AppActionUninstallComponent,
     AppActionDriverVisibilityComponent,
     AppActionDriverSettingsComponent,
+    // InputComponent
   ]
 })
 
