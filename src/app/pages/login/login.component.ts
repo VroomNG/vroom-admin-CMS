@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       this.showAlert = true
       this.alertMsg = 'Loading... If sync persists check network'
       this.alertColor = 'info'
-      // this.inSubmission = true
     try {
       
       this.auth.login(this.credentials).subscribe(
@@ -49,6 +48,10 @@ export class LoginComponent implements OnInit {
           else if(res.code == "200"){
             this.alertMsg = "Login Successful"
             this.alertColor = "success"
+            const {token} = res.data;
+            
+            console.log(token);
+            localStorage.setItem('token', token)
               this.router.navigate(['/dashboard']);
           }
 
@@ -57,14 +60,8 @@ export class LoginComponent implements OnInit {
 
     }
     catch(e){
-        console.log(e)
-        this.alertMsg = "Bad Network Reload"
-        this.alertColor = 'danger'
-        this.inSubmission = false
-       
     }
       }, 1600)
-     
     }
     
 
