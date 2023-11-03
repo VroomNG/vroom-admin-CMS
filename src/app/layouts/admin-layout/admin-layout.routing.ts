@@ -46,7 +46,6 @@ import { DiscountCodeUseComponent } from '../../pages/discount-code-use/discount
 import { AppActionUninstallComponent } from '../../pages/app-action-uninstall/app-action-uninstall.component';
 import { AppActionDriverVisibilityComponent } from '../../pages/app-action-driver-visibility/app-action-driver-visibility.component';
 import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
-import { authGuard } from 'src/app/helpers/auth.guard';
 import { AuthClassGuard } from 'src/app/helpers/auth-class.guard';
 
 

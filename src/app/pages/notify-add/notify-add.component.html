@@ -1,1 +1,70 @@
-<p>notify-add works!</p>
+<div class="main-container">
+    <div class="header">
+        <div class="add-admin-form">
+           <div class="card">
+            <div class="card-title">
+                <div class="grid-header">
+                    <div class="title">
+                        <h6>Notification Label</h6>
+                    </div>
+                    <div class="search">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input type="text" pInputText placeholder="label">         
+                        </span>
+                    </div>
+                    <div class="date">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input type="text" pInputText placeholder="date">         
+                        </span>
+                    </div>
+                    <div class="export">
+                        <button class="button" type="submit" label="submit">
+                            Add Schedule
+                         </button>
+                    </div>
+                </div> 
+            </div>
+            <div class="card-body">
+                <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="card-titles">*Title</label>
+                            </div>
+                            <input pInputText pKeyFilter="int" placeholder="Title"  />
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="email">Description*</label>
+                            </div>
+                            <textarea pInputText pKeyFilter="int" placeholder="Description"  ></textarea>
+                            <!-- <input type="text" id="name" formControlName="name" placeholder="First name"> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        
+                    </div>
+                </div>
+                <div class="container">
+                    
+                </div>
+                
+              </form>
+            </div>
+           </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+
+</div>

@@ -50,3 +50,24 @@ export interface IApproved {
     isEditable: boolean,
     isNotify: boolean
 }
+
+export interface IRatings_Drivers {
+    id:number,
+    trip_no: string,
+    driver: string,
+    rating: number,
+    comments: string,
+    phone: string,
+    review_date: string,
+    canDelete?: boolean,
+}
+export interface IRatings_Riders {
+    id:number,
+    trip_no: string,
+    rider: string,
+    rating: number,
+    comments: string,
+    phone: string,
+    review_date: string,
+    canDelete?: boolean,
+}

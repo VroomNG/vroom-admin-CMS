@@ -1,1 +1,74 @@
-<p>ratings-rider works!</p>
+<div class="main-container">
+    <div class="header">
+        <div class="view-admin-grid">
+            <div class="container">
+                <div class="card">
+                    <div class="grid-header">
+                        <div class="title">
+                            <h6>Trip Reviews From Riders</h6>
+                        </div>
+                        <div class="search">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input type="text" pInputText placeholder="Search">         
+                            </span>
+                        </div>
+                        <div class="export">
+                            <button class="button" type="submit" label="submit">
+                                Export
+                             </button>
+                        </div>
+                    </div> 
+                    <div>
+                    <p-table
+                        [value]="riders"
+                        [paginator]="true"
+                        [rows]="6"
+                        [showCurrentPageReport]="false"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate=""
+                        [rowsPerPageOptions]="[10, 25, 50]"
+                    >
+                        <ng-template pTemplate="header">
+                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
+                                <th style="width:5%">TRIP NO</th>
+                                <th style="width:5%">DRIVER</th>
+                                <th style="width:5%">RATING</th>
+                                <th style="width:5%">COMMENTS</th>
+                                <th style="width:5%">PHONE</th>
+                                <th style="width:5%">REVIEW DATE</th>
+                                <th style="width:5%">ACTION</th>
+                            </tr>
+                            <!-- TRIP NO	RIDER	DRIVER	RATING	COMMENTS	PHONE	REVIEW DATE	ACTION -->
+                        </ng-template>
+                        <ng-template pTemplate="body" let-riders>
+                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
+                                <td>{{ riders.trip_no }}</td>
+                                <td>{{ riders.rier }}</td>
+                                <td>{{ riders.rating }}</td>
+                                <td>{{ riders.comments }}</td>
+                                <td>{{ riders.phone }}</td>
+                                <td>{{ riders.review_date }}</td>
+                                <td>
+                                    <div *ngIf="riders.canDelete">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </div>  
+                                </td>
+                            </tr>
+                        </ng-template>
+                        
+                            <ng-template pTemplate="paginatorleft">
+                                <!-- <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button> -->
+                            </ng-template>
+                            <ng-template pTemplate="paginatorright">
+                                <!-- <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button> -->
+                            </ng-template>
+                        </p-table>  
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+       
+    <div class="footer"></div>
+</div>

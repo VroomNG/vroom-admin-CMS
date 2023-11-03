@@ -101,8 +101,8 @@ export class SidebarComponent implements OnInit {
       {
         id:11,
         path: '/', title: 'Notification Centre', icon: 'fa-solid fa-bell fa-shake', class: '', children: [
-          { path: '/add-notification', title: 'Add Promocode', icon: 'fa fa-user-plus text-primary', class: '', children: '' },
-          { path: '/notifications', title: 'View Promocode', icon: 'fa fa-eye ', class: '', children: '' },
+          { path: '/add-notification', title: 'Add Schedule', icon: 'fa fa-user-plus text-primary', class: '', children: '' },
+          { path: '/notifications', title: 'View Schedule', icon: 'fa fa-eye ', class: '', children: '' },
         ]
       },
       { id:12,
