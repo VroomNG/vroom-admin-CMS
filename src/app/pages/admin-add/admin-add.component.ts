@@ -24,12 +24,15 @@ interface Users {
 export class AdminAddComponent implements OnInit {
 
   inSubmission = false; 
+
+  
+  
   cities!: City[] |  undefined;
   userType!: Users[] |  undefined;
   
   showAlert = false;
   alertMsg = 'please wait your account is being created';
-  alertColor = 'orange';
+  alertColor = 'primary';
 
   constructor(
     // private admin: adminService,
@@ -91,12 +94,26 @@ export class AdminAddComponent implements OnInit {
   submit(){
      console.log(this.adminForm.value)
     //  window.alert('in process') 
-    this.auth.addAdmin(this.adminForm.value).subscribe(
-      (res:any) => {
-       console.log(res)
-      },
-      
-    )
+    this.showAlert = true
+    setTimeout(() => {
+      this.showAlert = true
+      this.alertMsg = 'Loading... If sync persists check network'
+      this.alertColor = 'info'
+      this.auth.addAdmin(this.adminForm.value).subscribe(
+        (res:any) => {
+         console.log(res)
+         if(res.code == 200){
+          this.alertMsg = 'Email sent for verification, please verify your email';
+          this.alertColor = "success"
+         } else {
+          this.alertMsg = 'something went wrong check connectivity and try again';
+          this.alertColor = 'danger'
+         }
+         }
+        
+      )
+      }, 1600)
+   
   }
 
   reset(){

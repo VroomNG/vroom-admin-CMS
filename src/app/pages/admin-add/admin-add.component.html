@@ -1,13 +1,6 @@
-<!-- {
-    "firstname": "wisom",
-    "lastname": "ikoi",
-    "email": "wisdomjohnikoi@gmail.com",
-    "phone_no": "+2349068140123",
-    "password": "Admin1234",
-    "user_type": "3",
-    "city": "Port Harcourt"
-} -->
-
+<app-vr-alert *ngIf="showAlert" [color]="alertColor">
+    {{ alertMsg }}
+  </app-vr-alert>
 <div class="main-container">
     <div class="header">
         <div class="add-admin-form">

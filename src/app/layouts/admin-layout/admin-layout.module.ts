@@ -65,6 +65,7 @@ import { AppActionDriverVisibilityComponent } from '../../pages/app-action-drive
 import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
 
 import { VRInputComponent } from '../../layouts/shared/vr-input/vr-input.component';
+import { VrAlertComponent } from '../../layouts/shared/vr-alert/vr-alert.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -129,7 +130,8 @@ import { VRInputComponent } from '../../layouts/shared/vr-input/vr-input.compone
     AppActionUninstallComponent,
     AppActionDriverVisibilityComponent,
     AppActionDriverSettingsComponent,
-    VRInputComponent
+    VRInputComponent,
+    VrAlertComponent
   ]
 })
 
