@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VInputComponent } from './v-input.component';
+import { VRInputComponent } from './vr-input.component';
 
-describe('VInputComponent', () => {
-  let component: VInputComponent;
-  let fixture: ComponentFixture<VInputComponent>;
+describe('VRInputComponent', () => {
+  let component: VRInputComponent;
+  let fixture: ComponentFixture<VRInputComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VInputComponent]
+      declarations: [VRInputComponent]
     });
-    fixture = TestBed.createComponent(VInputComponent);
+    fixture = TestBed.createComponent(VRInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

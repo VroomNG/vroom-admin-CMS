@@ -24,7 +24,7 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CustomDatePipe,
-   
+
   ],
   imports: [
     BrowserModule,
