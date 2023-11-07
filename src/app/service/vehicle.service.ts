@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
-import { IVehicleInfo } from '../model/vehicleInfo';
+import { IVehicleType } from '../model/vehicleInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class VehicleService {
 
 
   constructor(public http: HttpClient) { }
-  getVehicles(): Observable<IVehicleInfo[]>{
-    return this.http.get<IVehicleInfo[]>(`${this.baseUrl}/api/v1/vehicle`);
+  getVehicles(): Observable<IVehicleType[]>{
+    return this.http.get<IVehicleType[]>(`${this.baseUrl}/api/v1/vehicle`);
   }
 }
 
