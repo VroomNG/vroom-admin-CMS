@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Configuration } from '../../configuration';
-import { DefaultUrlSerializer } from '@angular/router';
+import { DefaultUrlSerializer, Params } from '@angular/router';
+
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable()
 export class adminService {
@@ -12,14 +14,16 @@ export class adminService {
   };
   constructor(private http: HttpClient, private config: Configuration) { }
 
-//   newEntryUser(userInput,inputParameter) {
-//     // debugger;
-//     const serializer = new DefaultUrlSerializer();
-//     const paramSerializer = serializer.parse('');
-//     paramSerializer.queryParams = inputParameter;
-//     const params = serializer.serialize(paramSerializer);
-//     return this.http.post(this.config.newEntryUser + params, JSON.stringify(userInput), this.httpOptions);
-//   }
+  private baseUrl = environment.serverUrl
+
+  newEntryUser(userInput: any,inputParameter: Params) {
+    // debugger;
+    const serializer = new DefaultUrlSerializer();
+    const paramSerializer = serializer.parse('');
+    paramSerializer.queryParams = inputParameter;
+    const params = serializer.serialize(paramSerializer);
+    return this.http.post(this.config.newEntryUser + params, JSON.stringify(userInput), this.httpOptions);
+  }
 getAdminList(inputParameter: { [x: string]: any; token?: any; }) {
     // debugger;
     const serializer = new DefaultUrlSerializer();
@@ -39,5 +43,8 @@ getAdminList(inputParameter: { [x: string]: any; token?: any; }) {
     return this.http.put(this.config.updateUserProfile + '/' + id , JSON.stringify(inputParameter), this.httpOptions);
    
   }
-  
+  addAdmin(adminForm:any){
+    return this.http.post(`${this.baseUrl}/addAdmin`, adminForm)
+  }
+
 }

@@ -144,5 +144,6 @@ export class Configuration {
     public notificationInactive = this.APIUrl + "/notificationInactive";
 
     public updateAdminVerify = this.APIUrl + "/adminVerified";
+    newEntryUser!: string;
 
 }

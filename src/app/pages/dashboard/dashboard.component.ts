@@ -1,5 +1,5 @@
 import { Component , OnInit} from '@angular/core';
-import { MockdataService } from 'src/app/data/mockdata.service';
+// import { MockdataService } from 'src/app/data/mockdata.service';
 import { dashboardInfo } from 'src/app/model/dashboardInfo';
 
 @Component({
@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
   data: any;
   options: any;
 
-  constructor(private mockDataService: MockdataService) { }
+  constructor() { }
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');

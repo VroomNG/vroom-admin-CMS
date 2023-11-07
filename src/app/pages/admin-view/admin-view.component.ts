@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAdmins } from 'src/app/model/admins';
-import { AdminsService } from 'src/app/data/admins.service';
+// import { AdminsService } from 'src/app/data/admins.service';
 // import { Observable } from 'rxjs';
 
 @Component({
@@ -33,7 +33,7 @@ export class AdminViewComponent implements OnInit {
     
     ]
 
-  constructor(private AdminsService : AdminsService){}
+  constructor(){}
 
 
   ngOnInit(): void {

@@ -10,8 +10,14 @@ export class AuthService {
 
   private baseUrl = environment.serverUrl
 
+
+
   constructor(public http: HttpClient) { }
   login(credentials: { email: string; password: string }) {
     return this.http.post(`${this.baseUrl}/loginadmin`, credentials);
+  }
+
+  addAdmin(adminForm:any){
+    return this.http.post(`${this.baseUrl}/addAdmin`, adminForm)
   }
 }

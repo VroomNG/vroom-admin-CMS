@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.alertColor = 'info'
     try {
       
-      this.auth.login(this.credentials).subscribe(
+      this.auth.login(this.credentials).subscribe( 
         (res:any) => {
           console.log(res)
           // let {message} = res;

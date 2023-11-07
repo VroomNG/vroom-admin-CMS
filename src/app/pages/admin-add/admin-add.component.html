@@ -70,7 +70,8 @@
                             <div>
                                 <label htmlFor="city">Service Available City*</label>
                             </div>
-                            <p-dropdown formControlName="city" [options]="cities" optionLabel="name" class="dropdown"></p-dropdown>
+                            <app-vr-input pInputText [control]="city" type="text" placeholder="Enter city" ></app-vr-input> 
+                            <!-- <p-dropdown formControlName="city" [options]="cities" optionLabel="name" class="dropdown"></p-dropdown> -->
                         </div>
                     </div>
                 </div>
@@ -78,22 +79,20 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="password">Confirm Password*</label>
+                                <label htmlFor="city">Admin Type*</label>
                             </div>
-                            <app-vr-input pInputText pKeyFilter="int" [control]="confirm_password" placeholder="Confirm Password"
-                            />   
-                        </div>
-                    </div>
-                    <div class="card-input">
-                        <div class="form-group">
+                            <app-vr-input pInputText [control]="user_type" type="text" placeholder="Admin Type" ></app-vr-input> 
+                            <!-- <p-dropdown formControlName="user_type" [options]="userType" optionLabel="type" class="dropdown"></p-dropdown> -->
                         </div>
                     </div>
                 </div>
+
                 <!-- <div class="btn"> -->
-                    <button type="submit" label="submit">
+                    <button type="submit" label="submit"  class="button btn-primary my-4"
+                    (click)="submit()">
                        Add 
                     </button>
-                    <button type="submit" label="submit" class="button">
+                    <button type="submit" label="submit" class="button" (click)="reset()">
                        Cancel
                     </button>
                 <!-- </div> -->
