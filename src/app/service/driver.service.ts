@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
-import { IVehicleType } from '../model/vehicleInfo';
+import { IApproved_Drivers } from '../model/driverInfo';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VehicleService {
+export class DriversService {
 
   private baseUrl = environment.serverUrl
 
   constructor(public http: HttpClient) { }
-  getVehicles(): Observable<IVehicleType[]>{
-    return this.http.get<IVehicleType[]>(`${this.baseUrl}/api/v1/vehicle`);
+  getDrivers(): Observable<IApproved_Drivers[]>{
+    return this.http.get<IApproved_Drivers[]>(`${this.baseUrl}/api/v1/driverView`);
   }
 }
 
