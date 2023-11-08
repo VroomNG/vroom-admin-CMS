@@ -66,6 +66,7 @@ import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-
 
 import { VRInputComponent } from '../../layouts/shared/vr-input/vr-input.component';
 import { VrAlertComponent } from '../../layouts/shared/vr-alert/vr-alert.component';
+import { LoaderComponent } from '../../layouts/shared/loader/loader.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -85,7 +86,8 @@ import { VrAlertComponent } from '../../layouts/shared/vr-alert/vr-alert.compone
     TableModule,
     ToolbarModule,
     FileUploadModule,
-    InputNumberModule
+    InputNumberModule,
+    
   ],
   declarations: [
     DashboardComponent,
@@ -131,7 +133,8 @@ import { VrAlertComponent } from '../../layouts/shared/vr-alert/vr-alert.compone
     AppActionDriverVisibilityComponent,
     AppActionDriverSettingsComponent,
     VRInputComponent,
-    VrAlertComponent
+    VrAlertComponent,
+    LoaderComponent
   ]
 })
 

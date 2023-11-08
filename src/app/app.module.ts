@@ -15,9 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import { SharedModule } from '../app/shared/shared.module';
-
 import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
-
 
 @NgModule({
   declarations: [
@@ -25,7 +23,6 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CustomDatePipe,
-
   ],
   imports: [
     BrowserModule,

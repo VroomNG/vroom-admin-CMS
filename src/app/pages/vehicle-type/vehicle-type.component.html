@@ -26,7 +26,10 @@
                         </div>
                     </div> 
                     <div>
-                    <p-table
+
+                        <app-loader *ngIf="showLoader" [color]="loaderColor">
+                        </app-loader>
+                    <p-table *ngIf="!showLoader"
                         [value]="vehicleType"
                         [paginator]="true"
                         [rows]="18"
@@ -90,6 +93,7 @@
                                 <!-- <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button> -->
                             </ng-template>
                         </p-table>  
+                        
                     </div>
                 </div>
             </div>    

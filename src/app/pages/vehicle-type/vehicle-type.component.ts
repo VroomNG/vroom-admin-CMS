@@ -11,17 +11,21 @@ export class VehicleTypeComponent implements OnInit {
   
   vehicleType: IVehicleType [] = [];
 
+  loaderColor!: 'primary';
+  showLoader = true;
+
+
   constructor(
     private Vehicles : VehicleService
   ){
 
   }
-
   ngOnInit(): void {
     this.Vehicles.getVehicles().subscribe(
       (res:any) => {
         console.log(res.data)
         this.vehicleType = res.data;
+        this.showLoader = false;
       }
     )
   }

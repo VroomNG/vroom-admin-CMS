@@ -74,7 +74,6 @@ export interface IRatings_Riders {
 
 
 export interface IdriverInfo {
-  
         id: number
         firstname: string
         lastname: string
@@ -91,6 +90,5 @@ export interface IdriverInfo {
         is_active: number
         is_online: string
         created_at: string
-        last_tripDate: string
-      
+        last_tripDate: string    
 }
