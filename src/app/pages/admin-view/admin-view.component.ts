@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IAdmins } from 'src/app/model/admins';
-// import { AdminsService } from 'src/app/data/admins.service';
+import { IAdmin } from 'src/app/model/admins';
+import { AdminService } from 'src/app/service/admin.service';
 // import { Observable } from 'rxjs';
 
 @Component({
@@ -10,34 +10,24 @@ import { IAdmins } from 'src/app/model/admins';
 })
 export class AdminViewComponent implements OnInit {
   // IAdmins = Adminsdata;
-   admins: IAdmins[] = [
-    
-      {
-        id:1,
-        name: 'wisdom',
-        lastName:'ikoi', 
-        email: 'wisdomjohn@vroomng.com',
-        phone: +2349068140123,
-        adminType: 'admin',
-        isEditable: true, 
-     },
-      {
-        id:2,
-        name: 'tolulope',
-        lastName:'ajao', 
-        email: 'tolulopeajao@vroomng.com',
-        phone: +2349068140123,
-        adminType: 'Super Admin',
-        isEditable: true, 
-     },
-    
-    ]
+   admins: IAdmin[] = [];
+  //  loaderColor!: 'primary';
+   showLoader = true;
 
-  constructor(){}
 
+  //  admins: IAdmin[] = this.allUsers.slice().sort((a:any) => a.user_type == '4' );
+  constructor(
+    private Admins: AdminService
+  ){}
 
   ngOnInit(): void {
-    // this.admins = this.AdminsService
+    this.Admins.getAdmins().subscribe(
+    (res:any)=> {
+      console.log(res)
+      this.admins = res.data
+      this.showLoader = false;
+    }
+    )
   }
 
 }

@@ -1,9 +1,10 @@
 export interface IPartners {
-   id:number,
-   org_name: string,
-   contact_person: string,
-   email: string,
-   phone: string,
-   referal_code: string,
-   isEditable: boolean
-}
+   id: number
+   email: string
+   firstname: string
+   lastname: any
+   phone_no: any
+   user_type: string
+   ref_code: string
+ }
+ 

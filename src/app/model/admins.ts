@@ -1,29 +1,17 @@
-
-// export interface Country {
-//     name?: string;
-//     code?: string;
-// }
-
-// export interface Representative {
-//     name?: string;
-//     image?: string;
-// }
-
-export interface IAdmins {
-      id:number,
-      name: string,
-      lastName: string, 
-      email: string,
-      phone: number,
-      adminType: string,
-      isEditable: boolean, 
-}
-
-export interface IAdminsTrail {
-      id:number,
-      name: string,
-      email: string,
-      action: string,
-      time:   Date,
-      isEditable: boolean, 
-}
+export interface IAdmin {
+      id: number
+      email: string
+      firstname: string
+      lastname: any,
+      phone_no: any,
+      user_type: any,
+      ref_code: string
+    }
+    
+    export interface IAccessTrail {
+      ID: number
+      login: string
+      action: string
+      access_time: string
+    }
+    

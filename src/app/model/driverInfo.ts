@@ -1,18 +1,4 @@
 
-export interface IApproved {
-    id:number,
-    code:string,
-    name:string,
-    city: string
-    vehicle_type:string,
-    email:string,
-    phone:string,
-    registered_on:Date,
-    wallet:number,
-    isEditable: boolean,
-    isNotify: boolean
-}
-
 export interface IRatings_Drivers {
     id:number,
     trip_no: string,
@@ -54,3 +40,24 @@ export interface IApproved_Drivers {
         created_at: string
         last_tripDate: string    
 }
+
+export interface IPending {
+    id: number
+    firstname: string
+    lastname: string
+    profile_url: string
+    phone_no: string
+    city: string
+    balance: number
+    email: string
+    make: string
+    model: string
+    vehicle_type: string
+    current_status: string
+    driver_status: number
+    is_active: number
+    is_online: string
+    created_at: string
+    bearing: any
+  }
+  

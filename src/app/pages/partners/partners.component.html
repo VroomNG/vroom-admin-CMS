@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="grid-header">
                         <div class="title">
-                            <h6>Rejected Drivers</h6>
+                            <h6>Partners</h6>
                         </div>
                         <div class="search">
                             <span class="p-input-icon-left">
@@ -20,7 +20,8 @@
                         </div>
                     </div> 
                     <div>
-                    <p-table
+                    <app-loader *ngIf="showLoader"></app-loader>
+                    <p-table *ngIf="!showLoader"
                         [value]="partners"
                         [paginator]="true"
                         [rows]="6"
@@ -41,15 +42,15 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-partners>
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
-                                <td>{{partners.org_name}}</td>
-                                <td>{{partners.contact_person}}</td>
+                                <td>{{partners.firstname}}</td>
+                                <td>{{partners.lastname}}</td>
                                 <td>{{partners.email}}</td>
-                                <td>{{partners.phone}}</td>
-                                <td>{{partners.referal_code}}</td>
+                                <td>{{partners.phone_no}}</td>
+                                <td>{{partners.ref_code}}</td>
                                 <td>
-                                    <div *ngIf="partners.isEditable">
+                                    <!-- <div *ngIf="partners.isEditable"> -->
                                         <i class="fa-solid fa-pencil"></i>
-                                    </div>  
+                                    <!-- </div>   -->
                                 </td>
                             </tr>
                         </ng-template>

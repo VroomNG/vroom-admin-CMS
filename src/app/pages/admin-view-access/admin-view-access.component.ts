@@ -1,254 +1,30 @@
-import { Component } from '@angular/core';
-import { IAdminsTrail } from 'src/app/model/admins';
+import { Component, OnInit } from '@angular/core';
+import { IAccessTrail } from 'src/app/model/admins';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-admin-view-access',
   templateUrl: './admin-view-access.component.html',
   styleUrls: ['./admin-view-access.component.scss']
 })
-export class AdminViewAccessComponent {
-  admin_access_trail: IAdminsTrail[] = [
-    {
-      id:1,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'login',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:2,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:3,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:4,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Vehicle info',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:5,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Driver Settlement',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:6,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Rider reviews',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:7,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:8,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:9,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:10,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:  new Date(),
-      isEditable: false, 
-   },
-    {
-      id:11,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'login',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:12,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:13,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:14,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Vehicle info',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:15,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Driver Settlement',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:16,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Rider reviews',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:17,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:18,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:19,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:20,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:  new Date(),
-      isEditable: false, 
-   },
-    {
-      id:21,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'login',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:22,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:23,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:24,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Vehicle info',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:25,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Driver Settlement',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:26,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Rider reviews',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:27,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:28,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Riders',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:29,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:   new Date(),
-      isEditable: false, 
-   },
-    {
-      id:30,
-      name:  'wisdom',
-      email: 'wisdomjohn@vroomng.com',
-      action: 'Viewed Partners',
-      time:  new Date(),
-      isEditable: false, 
-   },
-  
-  ]
+export class AdminViewAccessComponent implements OnInit {
+  admin_access_trail: IAccessTrail[] = [];
+
+  // loaderColor!: 'primary';
+   showLoader = true;
+
+  constructor(private Admin: AdminService ) {
+
+  }
+
+  ngOnInit(): void {
+    this.Admin.getAccessTrail().subscribe(
+      (res:any)=>{
+        console.log(res.data)
+        this.admin_access_trail = res.data;
+        this.showLoader = false
+      }
+    )
+  }
 
 }

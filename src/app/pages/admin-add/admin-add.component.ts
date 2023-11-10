@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterValidators } from '../../helpers/validators/register-validators'
 // import { EmailTaken } from '../../helpers/validators/email-taken';
-import { adminService } from 'src/app/service/admin.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { AdminService } from 'src/app/service/admin.service';
+// import { AuthService } from 'src/app/service/auth.service';
 
 interface City {
   name: string;
@@ -25,6 +25,7 @@ export class AdminAddComponent implements OnInit {
 
   inSubmission = false; 
 
+
   
   
   cities!: City[] |  undefined;
@@ -36,7 +37,7 @@ export class AdminAddComponent implements OnInit {
 
   constructor(
     // private admin: adminService,
-     private auth: AuthService
+     private Admin: AdminService
     ){ }
 
   onSubmit(){
@@ -99,7 +100,7 @@ export class AdminAddComponent implements OnInit {
       this.showAlert = true
       this.alertMsg = 'Loading... If sync persists check network'
       this.alertColor = 'info'
-      this.auth.addAdmin(this.adminForm.value).subscribe(
+      this.Admin.addAdmin(this.adminForm.value).subscribe(
         (res:any) => {
          console.log(res)
          if(res.code == 200){
