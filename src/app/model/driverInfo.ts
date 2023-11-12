@@ -1,25 +1,15 @@
 
-export interface IRatings_Drivers {
-    id:number,
-    trip_no: string,
-    driver: string,
-    rating: number,
-    comments: string,
-    phone: string,
-    review_date: string,
-    canDelete?: boolean,
-}
-export interface IRatings_Riders {
-    id:number,
-    trip_no: string,
-    rider: string,
-    rating: number,
-    comments: string,
-    phone: string,
-    review_date: string,
-    canDelete?: boolean,
-}
-
+export interface IRatings_D {
+    id: number
+    driverName: string
+    riderName: string
+    rating: number
+    comments: string
+    updated_at: string
+    trip_id: number
+    phone_no: string
+  }
+  
 
 export interface IApproved_Drivers {
         id: number

@@ -20,7 +20,8 @@
                         </div>
                     </div> 
                     <div>
-                    <p-table
+                    <app-loader *ngIf="showLoader"></app-loader>
+                    <p-table *ngIf="!showLoader"
                         [value]="riders"
                         [paginator]="true"
                         [rows]="6"
@@ -30,7 +31,8 @@
                         [rowsPerPageOptions]="[10, 25, 50]"
                     >
                         <ng-template pTemplate="header">
-                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
+                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;"
+                            >
                                 <th style="width:10%">FIRST NAME</th>
                                 <th style="width:10%">LAST NAME</th>
                                 <th style="width:10%">EMAIL</th>
@@ -44,14 +46,23 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-riders>
-                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
-                                <td>{{ riders.name }}</td>
+                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px "
+                            *ngIf="riders.user_type === '1' || riders.user_type === '1'  "
+                            >
+                                <td>{{ riders.firstname }}</td>
                                 <td>{{ riders.lastname }}</td>
                                 <td>{{ riders.email }}</td>
-                                <td>{{ riders.phone }}</td>
+                                <td>
+                                <div *ngIf="riders.phone_no == null || riders.phone_no == '' ">
+                                    no number
+                                </div>
+                                <div *ngIf="riders.phone_no">
+                                    {{ riders.phone_no }}
+                                </div>
+                               </td>
                                 <td>{{ riders.registered_on }}</td>
                                 <td>{{ riders.wallet }}</td>
-                                <td>{{ riders.lastTrip }}</td>       
+                                <td>{{ riders.last_tripDate }}</td>       
                                 <td><i class="fa-solid fa-pencil"></i></td>
                             </tr>
                         </ng-template>

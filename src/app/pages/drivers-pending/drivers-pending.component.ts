@@ -15,7 +15,7 @@ export class DriversPendingComponent implements OnInit {
 
   constructor(private Drivers: DriversService){}
   ngOnInit(): void {
-    this.Drivers.getPennding().subscribe(
+    this.Drivers.getPending().subscribe(
       (res:any)=>{
         console.log(res)
         this.pending = res.data;

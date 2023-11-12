@@ -20,7 +20,8 @@
                         </div>
                     </div> 
                     <div>
-                    <p-table
+                    <app-loader *ngIf="showLoader"></app-loader>
+                    <p-table *ngIf="!showLoader"
                         [value]="view_schedule"
                         [paginator]="true"
                         [rows]="6"
@@ -43,8 +44,20 @@
                                 <td>{{ view_schedule.id }}</td>
                                 <td>{{ view_schedule.title }}</td>
                                 <td>{{ view_schedule.description }}</td>
-                                <td>{{ view_schedule.schedule_date }}</td>
-                                <td>{{ view_schedule.target }}</td>
+                                <td>{{ view_schedule.sendDate}}</td>
+                                <td>
+                                    <div *ngIf="view_schedule.drivers">
+                                         Approved Drivers
+                                    </div>
+                                    <div *ngIf="view_schedule.riders">
+                                         Riders
+                                    </div>
+                                    <div *ngIf="view_schedule.udrivers">
+                                         Unaprroved Drivers
+                                    </div>
+
+
+                                </td>
                             </tr>
                         </ng-template>
                         

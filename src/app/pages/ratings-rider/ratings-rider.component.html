@@ -20,7 +20,8 @@
                         </div>
                     </div> 
                     <div>
-                    <p-table
+                    <app-loader *ngIf="showLoader"></app-loader>
+                    <p-table *ngIf="!showLoader"
                         [value]="riders"
                         [paginator]="true"
                         [rows]="6"
@@ -32,7 +33,7 @@
                         <ng-template pTemplate="header">
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
                                 <th style="width:5%">TRIP NO</th>
-                                <th style="width:5%">DRIVER</th>
+                                <th style="width:5%">RIDER</th>
                                 <th style="width:5%">RATING</th>
                                 <th style="width:5%">COMMENTS</th>
                                 <th style="width:5%">PHONE</th>
@@ -44,15 +45,15 @@
                         <ng-template pTemplate="body" let-riders>
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
                                 <td>{{ riders.trip_no }}</td>
-                                <td>{{ riders.rier }}</td>
+                                <td>{{ riders.firstname }} {{riders.lastname}}</td>
                                 <td>{{ riders.rating }}</td>
                                 <td>{{ riders.comments }}</td>
-                                <td>{{ riders.phone }}</td>
-                                <td>{{ riders.review_date }}</td>
+                                <td>{{ riders.phone_no }}</td>
+                                <td>{{ riders.update_at }}</td>
                                 <td>
-                                    <div *ngIf="riders.canDelete">
+                                    
                                         <button type="button" class="btn btn-danger">Delete</button>
-                                    </div>  
+                                  
                                 </td>
                             </tr>
                         </ng-template>

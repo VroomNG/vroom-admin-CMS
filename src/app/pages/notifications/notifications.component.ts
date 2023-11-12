@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-import { INotifications } from 'src/app/model/notifications';
+import { Component , OnInit} from '@angular/core';
+import { ISchedules,  } from 'src/app/model/notifications';
+import { NotificationService } from 'src/app/service/notifications.service';
 
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
-export class NotificationsComponent {
-   view_schedule: INotifications [] = [
-    {
-      id: 1,
-      title: 'Are you online?',
-      description: 'Go online now to start accepting trip requests.',
-      schedule_date: 'May 18, 2022',
-      target: 'Approved Drivers',
-    }
-   ]
+export class NotificationsComponent implements OnInit {
+   view_schedule: ISchedules [] = [];
+
+   showLoader = true;
+   constructor(private Notify: NotificationService){}
+
+
+   ngOnInit(): void {
+     this.Notify.getSchedules().subscribe(
+      (res:any) =>{
+       console.log(res.data);
+       this.view_schedule = res.data
+       this.showLoader = false
+      }
+     )
+   }
 }

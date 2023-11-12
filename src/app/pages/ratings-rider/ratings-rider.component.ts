@@ -1,105 +1,31 @@
-import { Component } from '@angular/core';
-import { IRatings_Riders } from 'src/app/model/driverInfo';
+import { Component, OnInit } from '@angular/core';
+import { IRatings_R } from 'src/app/model/ridersinfo';
+import { RiderService } from 'src/app/service/riders.service';
 
 @Component({
   selector: 'app-ratings-rider',
   templateUrl: './ratings-rider.component.html',
   styleUrls: ['./ratings-rider.component.scss']
 })
-export class RatingsRiderComponent {
+export class RatingsRiderComponent implements OnInit {
 
-  riders: IRatings_Riders [] = [
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-    {
-      id: 0,
-      trip_no: 'VRM2304',
-      rider: 'Stephen Olubyoyo',
-      rating: 5,
-      comments: 'Very good',
-      phone: '+2348163084205',
-      review_date: 'Sep 18, 2023, 9:35:56 PM',
-      canDelete: true,
-    },
-  ]
+ constructor(
+  private Riders: RiderService 
+  ){}
+
+  riders: IRatings_R [] = []
+  showLoader = true;
+
+  ngOnInit(): void {
+    this.Riders.getRidersRatings().subscribe(
+      (res:any)=> {
+        console.log(res);
+        this.riders = res.data;
+        this.showLoader = false;
+      }
+    )
+
+  }
 
 
 }

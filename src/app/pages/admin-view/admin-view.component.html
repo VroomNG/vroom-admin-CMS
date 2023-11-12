@@ -40,13 +40,36 @@
                                 <th style="width:15%">ACTION </th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-admins>
-                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
+                        <ng-template pTemplate="body" let-admins  >
+                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px "
+                         *ngIf="admins.user_type === '3' || admins.user_type === '4' ">
+                            
                                 <td>{{ admins.firstname }}</td>
-                                <td>{{ admins.lastname }}</td>
+                                <td>
+                                    <div *ngIf="admins.lastname">
+                                        {{ admins.lastname }}
+                                    </div>
+                                    <div *ngIf="admins.lastname == null || admins.lastname == ''">
+                                        No lastname
+                                    </div>    
+                                </td>
                                 <td>{{ admins.email }}</td>
-                                <td>{{ admins.phone_no }}</td>
-                                <td>{{ admins.user_type }}</td>
+                                <td>
+                                    <div *ngIf="admins.phone_no == null ">
+                                        no number
+                                    </div>
+                                    <div *ngIf="admins.phone_no">
+                                        {{ admins.phone_no }}
+                                    </div>
+                                </td>
+                                <td>
+                                   <div *ngIf="admins.user_type == '4'">
+                                      Super Admin
+                                   </div>
+                                   <div *ngIf="admins.user_type == '3'">
+                                      Sub Admin
+                                   </div>
+                                </td>
                                 <td><i class="fa-solid fa-pencil"></i></td>
                             </tr>
                         </ng-template>

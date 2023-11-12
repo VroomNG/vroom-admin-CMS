@@ -1,13 +1,23 @@
+
 export interface IRiders {
-    id:number,
-    name:string,
-    lastname:string,
+    id: number
     email: string
-    phone:string,
-    registered_on:Date,
-    lastTrip:Date,
-    wallet:number,
-    isEditable: boolean,
-    isNotify: boolean,
-    isBlock: boolean
-}
+    firstname: string
+    lastname: any,
+    phone_no: any,
+    user_type: any,
+    ref_code: string
+  }
+
+  export interface IRatings_R {
+    id: number
+    riderName: string
+    driverName: string
+    rating: number
+    comments: string
+    updated_at: string
+    trip_id: number
+    phone_no: string
+  }
+  
+  
