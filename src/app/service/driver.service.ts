@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
-import { IApproved_Drivers, IPending, IRatings_D } from '../model/driverInfo';
+import { IApproved_Drivers, IPending, IRatings_D, IRejected } from '../model/driverInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { IApproved_Drivers, IPending, IRatings_D } from '../model/driverInfo';
 export class DriversService {
 
   private baseUrl = environment.serverUrl
+  private user = 2;
 
   constructor(public http: HttpClient) { }
   getDrivers(): Observable<IApproved_Drivers[]>{
@@ -18,11 +19,14 @@ export class DriversService {
 
   getPending(): Observable<IPending[]>{
     return this.http.get<IPending[]>(`${this.baseUrl}/api/v1/pendingDriver`)
+
+  }
+  getRejected(): Observable<IRejected[]>{
+    return this.http.get<IRejected[]>(`${this.baseUrl}/api/v1/pendingDriver`)
   }
   getDriversRatings(): Observable<IRatings_D[]>{
-    return this.http.get<IRatings_D[]>(`${this.baseUrl}/api/v1/pendingDriver`)
+    return this.http.get<IRatings_D[]>(`${this.baseUrl}/api/v1/driverReview/${this.user}`);
   }
-
 
 }
 

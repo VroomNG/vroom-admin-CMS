@@ -13,3 +13,76 @@ export interface ITrips {
   past: string,
   isViewable?: boolean
 }
+
+export interface IAllTrips {
+  id: number
+  user_id: number
+  from_lat: string
+  from_long: string
+  to_lat: string
+  to_long: string
+  from_address: string
+  to_address: string
+  isSchedule: number
+  utc_trip_datetime: string
+  distance: number
+  trip_fare_data: string
+  trip_amount: number
+  trip_amount_without_discount: number
+  tips: number
+  travel_time: number
+  payment_type: string
+  payment_status: number
+  trip_type: string
+  is_round_trip: any
+  security_code: any
+  driver_id: any
+  vehicle_id: number
+  vehicle_type: any
+  ratings: any
+  trip_status: string
+  created_at: string
+  updated_at: string
+  decline_driver_id: any
+  split_fare_ids: any
+  fare_accepted: any
+  fare_rejected: any
+  from_title: string
+  to_title: string
+  travel_time_full: string
+  no_of_members: any
+  reference_id: string
+  surge_ids: string
+  driver_canceled_reason: any
+  user_canceled_reason: any
+  tested: number
+  trip_accept_time: any
+  trip_start_time: any
+  trip_complete_time: any
+  copy_travel_time: string
+  surge_by_traffic: number
+  total_surge: number
+  shareEta: number
+  stopat: number
+  stop_address: any
+  stop_title: any
+  stop_lat: any
+  stop_long: any
+  firstname: string
+  lastname: string
+  phone_no: string
+  profile_url: string
+  driver_firstname: any
+  driver_lastname: any
+  driver_phone_no: any
+  driver_profile_url: any
+  make: string
+  model: string
+  type: string
+  number: string
+  licence_no: string
+  averageRating: any
+  bearing: any
+  current_lat: any
+  current_long: any
+}

@@ -1,159 +1,24 @@
-import { Component } from '@angular/core';
-import { IPending } from 'src/app/model/driverInfo';
+import { Component, OnInit } from '@angular/core';
+import { IRejected } from 'src/app/model/driverInfo';
+import { DriversService } from 'src/app/service/driver.service';
 
 @Component({
   selector: 'app-drivers-rejected',
   templateUrl: './drivers-rejected.component.html',
   styleUrls: ['./drivers-rejected.component.scss']
 })
-export class DriversRejectedComponent {
-
-  drivers_approved: IPending[] = []
-  //   {
-  //     id:1,
-  //     code:'DRV0054',
-  //     name:'Samuel Mcdavid Anyim',
-  //     city: 'Lagos State',
-  //     vehicle_type:'Sedan',
-  //     email:'rex2davy@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0054',
-  //     name:'Samuel Mcdavid Anyim',
-  //     city: 'Lagos State',
-  //     vehicle_type:'Sedan',
-  //     email:'rex2davy@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0060',
-  //     name:'Abiodun Bolarinwa',
-  //     city: 'Abuja',
-  //     vehicle_type:'Sedan',
-  //     email:'abiodunb190@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0060',
-  //     name:'Abiodun Bolarinwa',
-  //     city: 'Abuja',
-  //     vehicle_type:'Sedan',
-  //     email:'abiodunb190@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0054',
-  //     name:'Samuel Mcdavid Anyim',
-  //     city: 'Lagos State',
-  //     vehicle_type:'Sedan',
-  //     email:'rex2davy@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0054',
-  //     name:'Samuel Mcdavid Anyim',
-  //     city: 'Lagos State',
-  //     vehicle_type:'Sedan',
-  //     email:'rex2davy@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0060',
-  //     name:'Abiodun Bolarinwa',
-  //     city: 'Abuja',
-  //     vehicle_type:'Sedan',
-  //     email:'abiodunb190@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0054',
-  //     name:'Samuel Mcdavid Anyim',
-  //     city: 'Lagos State',
-  //     vehicle_type:'Sedan',
-  //     email:'rex2davy@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0060',
-  //     name:'Abiodun Bolarinwa',
-  //     city: 'Abuja',
-  //     vehicle_type:'Sedan',
-  //     email:'abiodunb190@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0054',
-  //     name:'Samuel Mcdavid Anyim',
-  //     city: 'Lagos State',
-  //     vehicle_type:'Sedan',
-  //     email:'rex2davy@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-  //   {
-  //     id:1,
-  //     code:'DRV0060',
-  //     name:'Abiodun Bolarinwa',
-  //     city: 'Abuja',
-  //     vehicle_type:'Sedan',
-  //     email:'abiodunb190@gmail.com',
-  //     phone:'+2348020974432',
-  //     registered_on:new Date(),
-  //     wallet:5000,
-  //     isEditable: true,
-  //     isNotify: false
-  //   },
-   
-  // ] 
-  
-
+export class DriversRejectedComponent implements OnInit {
+  rejected: IRejected[] = []
+  showLoader = true;
+  checked = false;
+  constructor(private Drivers: DriversService){}
+  ngOnInit(): void {
+    this.Drivers.getRejected().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.rejected = res.data;
+        this.showLoader = false
+      }
+    )
+}
 }

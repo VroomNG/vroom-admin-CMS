@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="grid-header">
                         <div class="title">
-                            <h6>Trip Reviews From Driver</h6>
+                            <h6>Trip Reviews From Drivers</h6>
                         </div>
                         <div class="search">
                             <span class="p-input-icon-left">
@@ -20,7 +20,8 @@
                         </div>
                     </div> 
                     <div>
-                    <p-table
+                    <app-loader *ngIf="showLoader"></app-loader>
+                    <p-table *ngIf="!showLoader"
                         [value]="drivers"
                         [paginator]="true"
                         [rows]="6"
@@ -33,6 +34,7 @@
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
                                 <th style="width:5%">TRIP NO</th>
                                 <th style="width:5%">DRIVER</th>
+                                <th style="width:5%">RIDER</th>
                                 <th style="width:5%">RATING</th>
                                 <th style="width:5%">COMMENTS</th>
                                 <th style="width:5%">PHONE</th>
@@ -43,16 +45,49 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-drivers>
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
-                                <td>{{ drivers.trip_no }}</td>
-                                <td>{{ drivers.driver }}</td>
-                                <td>{{ drivers.rating }}</td>
-                                <td>{{ drivers.comments }}</td>
-                                <td>{{ drivers.phone }}</td>
-                                <td>{{ drivers.review_date }}</td>
+                                <td>VRM{{ drivers.trip_id}}</td>
                                 <td>
-                                    <div *ngIf="drivers.canDelete">
+                                    <div *ngIf="drivers.driverName">
+                                      {{ drivers.driverName }}
+                                    </div> 
+                                    <div *ngIf="drivers.driverName === null">
+                                       No name
+                                    </div> 
+                                    <div *ngIf="drivers.driverName === '' ">
+                                       No name
+                                    </div> 
+                                 </td>
+                                <td>{{ drivers.rating }}</td>
+                                <td>
+                                   <div *ngIf="drivers.riderName">
+                                     {{ drivers.riderName }}
+                                   </div> 
+                                   <div *ngIf="drivers.riderName === null">
+                                      No name
+                                   </div> 
+                                   <div *ngIf="drivers.riderName === '' ">
+                                      No name
+                                   </div> 
+                                </td>
+                               
+                                <td>
+                                    <div *ngIf="drivers.comments">
+                                        "{{ drivers.comments }}"
+                                    </div>
+                                    <div *ngIf="drivers.comments === null">
+                                        "No comments"
+                                    </div>
+                                    <div *ngIf="drivers.comments === '' ">
+                                        "No comments"
+                                    </div>
+                                    
+                                </td>
+                                <td>{{ drivers.phone_no }}</td>
+                                <td>{{ drivers.updated_at }}</td>
+                                <td>
+                                    
                                         <button type="button" class="btn btn-danger">Delete</button>
-                                    </div>  
+                                  
                                 </td>
                             </tr>
                         </ng-template>

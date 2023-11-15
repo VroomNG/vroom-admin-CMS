@@ -34,6 +34,7 @@
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
                                 <th style="width:5%">TRIP NO</th>
                                 <th style="width:5%">RIDER</th>
+                                <th style="width:5%">DRIVER</th>
                                 <th style="width:5%">RATING</th>
                                 <th style="width:5%">COMMENTS</th>
                                 <th style="width:5%">PHONE</th>
@@ -44,12 +45,44 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-riders>
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
-                                <td>{{ riders.trip_no }}</td>
-                                <td>{{ riders.firstname }} {{riders.lastname}}</td>
+                                <td>VRM{{ riders.trip_id}}</td>
+                                <td>
+                                   <div *ngIf="riders.riderName">
+                                     {{ riders.riderName }}
+                                   </div> 
+                                   <div *ngIf="riders.riderName === null">
+                                      No name
+                                   </div> 
+                                   <div *ngIf="riders.riderName === '' ">
+                                      No name
+                                   </div> 
+                                </td>
+                                <td>
+                                    <div *ngIf="riders.driverName">
+                                      {{ riders.driverName }}
+                                    </div> 
+                                    <div *ngIf="riders.driverName === null">
+                                       No name
+                                    </div> 
+                                    <div *ngIf="riders.driverName === '' ">
+                                       No name
+                                    </div> 
+                                 </td>
                                 <td>{{ riders.rating }}</td>
-                                <td>{{ riders.comments }}</td>
+                                <td>
+                                    <div *ngIf="riders.comments">
+                                        "{{ riders.comments }}"
+                                    </div>
+                                    <div *ngIf="riders.comments === null">
+                                        "No comments"
+                                    </div>
+                                    <div *ngIf="riders.comments === '' ">
+                                        "No comments"
+                                    </div>
+                                    
+                                </td>
                                 <td>{{ riders.phone_no }}</td>
-                                <td>{{ riders.update_at }}</td>
+                                <td>{{ riders.updated_at }}</td>
                                 <td>
                                     
                                         <button type="button" class="btn btn-danger">Delete</button>
