@@ -105,13 +105,13 @@ export class SidebarComponent implements OnInit {
           { path: '/notifications', title: 'View Schedule', icon: 'fa fa-eye ', class: '', children: '' },
         ]
       },
-      { id:12,
-        path: '/', title: 'App messages', icon: 'fa-solid fa-envelope text-primary', class: '', 
-          children:[ 
-          { path: '/new-message', title: 'Push New Message', icon: 'fa-solid fa-comments text-primary', class: '', children: '' },
-          { path: 'messages', title: 'View Messages', icon: 'fa-solid fa-eye ', class: '', children: '' },
-        ]
-      },
+      // { id:12,
+      //   path: '/', title: 'App messages', icon: 'fa-solid fa-envelope text-primary', class: '', 
+      //     children:[ 
+      //     { path: '/new-message', title: 'Push New Message', icon: 'fa-solid fa-comments text-primary', class: '', children: '' },
+      //     { path: 'messages', title: 'View Messages', icon: 'fa-solid fa-eye ', class: '', children: '' },
+      //   ]
+      // },
       { id:13,
         path: '/', title: 'Reports', icon: 'fa-solid fa-chart-pie text-primary', class: '', 
         children:[ 
