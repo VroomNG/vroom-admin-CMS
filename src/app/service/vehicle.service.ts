@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
-import { IVehicleType } from '../model/vehicleInfo';
+import { IVehicleType, addVehicle } from '../model/vehicleInfo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,12 @@ export class VehicleService {
 
   private baseUrl = environment.serverUrl
 
-
-
   constructor(public http: HttpClient) { }
+
+  addVehicle(addVehicleForm:any){
+    return this.http.post(`${this.baseUrl}/api/v1/createVehicle`, addVehicleForm)
+  }
+
   getVehicles(): Observable<IVehicleType[]>{
     return this.http.get<IVehicleType[]>(`${this.baseUrl}/api/v1/vehicle`);
   }

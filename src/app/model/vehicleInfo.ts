@@ -27,3 +27,26 @@ export interface IVehicleType {
         promo_status: number
         max_fare_value: number
 }
+
+
+export interface addVehicle {
+        vehicle_type: string | null;
+        trip_type: string  | null; 
+        per_km_rate: string  | null;
+        minimum_fare: string  | null;
+        commission: string  | null;
+        available_seat: string  | null;
+        cancel_charge_driver: string  | null;
+        cancel_charge_rider: string  | null;
+        isactive: string  | null;
+        description: string  | null;
+        per_minute_rate: string  | null;
+        base_fare: string  | null;
+        tolls_fees: string  | null;
+        peek_hour_fare: string  | null;
+        make: string  | null;
+        model: string  | null;
+        year: string  | null;
+        vehicle_image: string  | null;
+      }
+      

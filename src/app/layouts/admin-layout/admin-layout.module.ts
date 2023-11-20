@@ -67,6 +67,7 @@ import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-
 import { VRInputComponent } from '../../layouts/shared/vr-input/vr-input.component';
 import { VrAlertComponent } from '../../layouts/shared/vr-alert/vr-alert.component';
 import { LoaderComponent } from '../../layouts/shared/loader/loader.component';
+import { VrDropdownComponent } from '../../layouts/shared/vr-dropdown/vr-dropdown.component';
 
 import { CheckboxModule } from 'primeng/checkbox';
 // import { ToastrModule } from 'ngx-toastr';
@@ -137,7 +138,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     AppActionDriverSettingsComponent,
     VRInputComponent,
     VrAlertComponent,
-    LoaderComponent
+    LoaderComponent,
+    VrDropdownComponent
   ]
 })
 

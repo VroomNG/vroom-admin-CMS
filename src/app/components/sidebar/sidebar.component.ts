@@ -120,13 +120,13 @@ export class SidebarComponent implements OnInit {
         ] 
       
       },
-      {
-      id:14,
-      path: '/', title: 'Surge Charge', icon: 'fa-solid fa-face-smile', class: '', children: [
-        { path: '/add-charge', title: 'Add Surge Charge', icon: 'fa fa-user-plus', class: '' },
-        { path: '/view-edit-charge', title: 'View & Edit', icon: 'fa fa-eye', class: '' }
-      ]
-    },
+    //   {
+    //   id:14,
+    //   path: '/', title: 'Surge Charge', icon: 'fa-solid fa-face-smile', class: '', children: [
+    //     { path: '/add-charge', title: 'Add Surge Charge', icon: 'fa fa-user-plus', class: '' },
+    //     { path: '/view-edit-charge', title: 'View & Edit', icon: 'fa fa-eye', class: '' }
+    //   ]
+    // },
     {
       id:15,
       path: '/', title: 'Discount', icon: 'fa-solid fa-percent', class: '', children: [

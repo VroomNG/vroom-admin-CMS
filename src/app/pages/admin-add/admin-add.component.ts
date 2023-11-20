@@ -25,9 +25,6 @@ export class AdminAddComponent implements OnInit {
 
   inSubmission = false; 
 
-
-  
-  
   cities!: City[] |  undefined;
   userType!: Users[] |  undefined;
   
