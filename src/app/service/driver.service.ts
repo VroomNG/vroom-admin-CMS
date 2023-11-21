@@ -8,11 +8,19 @@ import { IApproved_Drivers, IPending, IRatings_D, IRejected } from '../model/dri
   providedIn: 'root'
 })
 export class DriversService {
-
+// variables
   private baseUrl = environment.serverUrl
   private user = 2;
 
+  // constructor
   constructor(public http: HttpClient) { }
+
+  // crud functions
+
+  addDrivers(addDrivers:any){
+    return this.http.post(`${this.baseUrl}/newUserEntry`, addDrivers)
+  }
+
   getDrivers(): Observable<IApproved_Drivers[]>{
     return this.http.get<IApproved_Drivers[]>(`${this.baseUrl}/api/v1/driverView`);
   }

@@ -23,7 +23,7 @@ export class VehicleAddComponent  implements OnInit {
   trip_type_list?: Options[] | undefined;
   selectActive?: Options[]  | undefined;
   years: number[] = [];
-  value1: number = 0;
+  // value1: number = 0;
   showAlert = false;
   alertMsg = 'Please wait';
   alertColor = 'primary';
@@ -138,9 +138,6 @@ export class VehicleAddComponent  implements OnInit {
   })
 
   onSubmit(){
-    // if(this.addVehicleForm.valid) {
-      
-    // }
     console.log(this.addVehicleForm.value)
     this.showAlert = true
     setTimeout(() => {

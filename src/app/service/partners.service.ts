@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { IPartners } from '../model/partners';
@@ -13,9 +13,13 @@ export class PartnerService {
 
   constructor(public http: HttpClient) { }
 
-  // addAdmin(adminForm:any){
-  //   return this.http.post(`${this.baseUrl}/addAdmin`, adminForm)
-  // }
+  addPartners(partnersForm:any){
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'token': 'TOPSECRETE'
+    // });
+    return this.http.post(`${this.baseUrl}/newUserEntry`, partnersForm)
+  }
 
   getPartners(): Observable<IPartners[]>{
     return this.http.get<IPartners[]>(`${this.baseUrl}/getAllUsers`);
