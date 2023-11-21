@@ -12,6 +12,10 @@ export class RiderService {
   private baseUrl = environment.serverUrl;
   
   constructor(public http: HttpClient) { }
+  
+  addRiders(addRiders:any){
+    return this.http.post(`${this.baseUrl}/newUserEntry`, addRiders)
+  }
   getRiders(): Observable<IRiders[]>{
     return this.http.get<IRiders[]>(`${this.baseUrl}/getAllUsers`);
   }

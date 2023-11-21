@@ -80,7 +80,18 @@ button {
     height: 100%;
     // padding: 10px;
 }
+select {
+    width: 95%;
+    padding: 8.5px;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    color: #797676;
+}
 
-// .form-group {
-//     background-color: red;
-// }
+select:hover {
+    color: rgb(20, 20, 20);
+}
+
+select.selected {
+    border: 1px solid #d6d6d6 !important;
+}
