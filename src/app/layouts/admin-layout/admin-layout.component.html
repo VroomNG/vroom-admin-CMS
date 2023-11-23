@@ -14,8 +14,54 @@
                   <!-- <img [src]="imagePath" alt="My Image" class="user-img rounded-circle"> -->
                 </div>
                 <div class="username pt-3 mx-2 " style="height: 100%;">
-                  <p>Tolulope Ajao</p>
-                  <button (click)="logout()">logout</button>
+                  <div (click)="pDropdown()" style="cursor: pointer;">
+                    <!-- <p>Tolulope Ajao</p> -->
+                    <div *ngIf="userDetails">
+                      <p>{{userDetails.firstname}} {{userDetails.lastname}}</p>
+
+                    </div>
+                  </div>
+                  <div class="profile-dropdown" *ngIf="showDropdown">
+                    <div class="cont1">
+                      <div class="cont">
+                        <div class="my-profile">
+                    
+                            <h1>Welcome!!</h1>
+                          
+                          <span class="flex">
+                            <span class="icon">
+                              <i class="fa-solid fa-user"></i>
+                            </span>
+                            <span class="text">
+                              <span class="p">My Profile</span>
+                            </span>
+                          </span>
+                       
+                        </div>
+                        <div class="logout"  (click)="logout()">    
+                          <span class="flex">
+                            <span class="icon">
+                              <i class="fa-solid fa-person-running"></i>
+                            </span>
+                            <span class="text">
+                              <span class="p">Log out</span>
+                            </span>
+                          </span>
+                        </div>
+                        <div class="change-p">
+                          <span class="flex">
+                            <span class="icon">
+                              <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <span class="text">
+                              <span class="p">Change Password</span>
+                            </span>
+                          </span>
+                        </div>    
+                      </div>
+                    </div>
+                  </div>
+                 
                 </div> 
               </div>
           </div>
