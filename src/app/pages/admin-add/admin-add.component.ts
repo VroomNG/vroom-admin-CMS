@@ -20,7 +20,6 @@ interface Users {
   styleUrls: ['./admin-add.component.scss']
 })
 
-
 export class AdminAddComponent implements OnInit {
 
   inSubmission = false; 
@@ -58,7 +57,7 @@ export class AdminAddComponent implements OnInit {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
-   
+  
   }
 
   firstname = new FormControl('',[Validators.required, Validators.minLength(3)])

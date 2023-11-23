@@ -2,25 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/service/users.service';
 
-interface IUser {
+// interface IUser {
   
-   id:number,
-   email:string,
-   password:string,
-   user_type:number,
-   device_token:number,
-   device_type:number,
-   created_at:string,
-   firstname:string,
-   lastname:string,
-   profile_url:string,
-   is_active:number,
-   ride_check:number,
-   phone_no: number,
-   city: string,
-   token: string 
+//    id:number,
+//    email:string,
+//    password:string,
+//    user_type:number,
+//    device_token:number,
+//    device_type:number,
+//    created_at:string,
+//    firstname:string,
+//    lastname:string,
+//    profile_url:string,
+//    is_active:number,
+//    ride_check:number,
+//    phone_no: number,
+//    city: string,
+//    token: string 
 
-}
+// }
 
 @Component({
   selector: 'app-admin-layout',
@@ -47,18 +47,12 @@ export class AdminLayoutComponent implements OnInit {
       // Parse the storedUserDetails JSON string to an object
       this.userDetails = JSON.parse(storedUserDetails);
 
-      // Convert object to array of objects
-      // this.userDetailsArray = Object.keys(this.userDetails).map(key => {
-      //   return { key };
-      // });
-
       console.log('In admin component');
       console.log('userDetailsArray', this.userDetails);
     } else {
       console.log('User details not found in localStorage.');
     }
-    // console.log('In admin component');
-    // console.log('userDetails', this.userDetails);
+  
   }
 
   logout(){
@@ -70,8 +64,8 @@ export class AdminLayoutComponent implements OnInit {
   pDropdown(){
     this.showDropdown = !this.showDropdown
   }
-  getObjectKeys(obj: any): string[] {
-    return Object.keys(obj);
-  }
+  // getObjectKeys(obj: any): string[] {
+  //   return Object.keys(obj);
+  // }
 
 }
