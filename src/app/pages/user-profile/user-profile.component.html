@@ -7,9 +7,9 @@
   <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
-      <div class="col-lg-7 col-md-10" >
+      <div class="col-lg-7 col-md-10" *ngIf="userDetails">
         <h1 class="display-2 text-white font-weight-600">
-          Hello Tolulope
+          Hello {{userDetails.firstname}}
         </h1>
         <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
         <button class="btn btn-info" (click)="setEdit()">Edit profile</button>
@@ -41,7 +41,7 @@
             <div class="col">
               <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                 <div>
-                  <span class="heading">Tolulope ajao</span>
+                  <span class="heading">{{userDetails.firstname}} {{userDetails.lastname}}</span>
                   <span class="description"></span>
                 </div>
                 <!-- <div>
@@ -90,18 +90,18 @@
         <div class="card-body">
           <form [formGroup]="userForm" disabled>
             <h6 class="heading-small text-muted mb-4">User information</h6>
-            <div class="pl-lg-4" >
+            <div class="pl-lg-4" *ngIf="userDetails">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="first name" [readonly]="isReadOnly">
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{userDetails.firstname}}" [readonly]="isReadOnly">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="first name" [readonly]="isReadOnly">
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{userDetails.lastname}}" [readonly]="isReadOnly">
                   </div>
                 </div>
               </div>
@@ -109,13 +109,13 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" value="first name" [readonly]="isReadOnly">
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" value="{{userDetails.email}}" [readonly]="isReadOnly">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-Phone">Phone Number</label>
-                    <input type="text" id="input-phone" class="form-control form-control-alternative" placeholder="Username" value="first name" [readonly]="isReadOnly">
+                    <input type="text" id="input-phone" class="form-control form-control-alternative" placeholder="Username" value="{{userDetails.phone_no}}" [readonly]="isReadOnly">
                   </div>
                 </div>
               </div>
@@ -129,7 +129,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="" type="text" [readOnly]="isReadOnly">
+                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="{{userDetails.address}}" type="text" [readOnly]="isReadOnly">
                   </div>
                 </div>
               </div>
@@ -137,7 +137,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-city">City</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="city" [readOnly]="isReadOnly">
+                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="{{userDetails.city}}" [readOnly]="isReadOnly">
                   </div>
                 </div>
                 <!-- <div class="col-lg-4">
