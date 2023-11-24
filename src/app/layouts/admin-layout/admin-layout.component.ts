@@ -42,13 +42,12 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit() {
     
     const storedUserDetails = localStorage.getItem('userDetails');
-
+    // check if the gotten items exists in local storage
     if (storedUserDetails) {
       // Parse the storedUserDetails JSON string to an object
       this.userDetails = JSON.parse(storedUserDetails);
+      console.log('in admin component:', this.userDetails);
 
-      console.log('In admin component');
-      console.log('userDetailsArray', this.userDetails);
     } else {
       console.log('User details not found in localStorage.');
     }

@@ -14,19 +14,19 @@ export class UsersService {
 
    setLoginResponse(response: any) {
      this.loginResponseSubject.next(response);
-     console.log(response.firstname);
+     console.log(response);
+     const res = JSON.stringify(response)
+     localStorage.setItem('userDetails',(res));
+    // const storedUserDetails = localStorage.getItem('userDetails');
 
-    localStorage.setItem('userDetails', (response));
-    const storedUserDetails = localStorage.getItem('userDetails');
-
-    if (storedUserDetails) {
-      // The item exists in localStorage
-      const userDetails = JSON.parse(storedUserDetails);
-      console.log('User details found:', userDetails);
-    } else {
-      // The item does not exist in localStorage
-      console.log('User details not found in localStorage.');
-    }
+    // if (storedUserDetails) {
+    //   // The item exists in localStorage
+    //   const userDetails = JSON.parse(storedUserDetails);
+    //   console.log('User details found:', userDetails);
+    // } else {
+    //   // The item does not exist in localStorage
+    //   console.log('User details not found in localStorage.');
+    // }
      return response
    }
  

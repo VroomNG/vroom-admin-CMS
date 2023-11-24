@@ -24,16 +24,16 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     
-    const storedUserDetails = localStorage.getItem('userDetails');
+    // const storedUserDetails = localStorage.getItem('userDetails');
 
-    if (storedUserDetails) {
-      // Parse the storedUserDetails JSON string to an object
-      this.userDetails = JSON.parse(storedUserDetails);
-      console.log('In userProfile component');
-      console.log('userDetailsArray', this.userDetails);
-    } else {
-      console.log('User details not found in localStorage.');
-    }
+    // if (storedUserDetails) {
+    //   // Parse the storedUserDetails JSON string to an object
+    //   this.userDetails = JSON.parse(storedUserDetails);
+    //   console.log('In userProfile component');
+    //   console.log('userDetailsArray', this.userDetails);
+    // } else {
+    //   console.log('User details not found in localStorage.');
+    // }
 
     this.cities = [
       { name: 'New York' },
