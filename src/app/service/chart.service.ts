@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Configuration } from '../../configuration';
+import { environment } from 'src/environments/environment.prod';
 import { DefaultUrlSerializer, Params } from '@angular/router';
 
 @Injectable()
 export class chartService {
+
+    private baseUrl = environment.serverUrl
+    
     readonly httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
