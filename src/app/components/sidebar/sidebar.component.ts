@@ -69,7 +69,7 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:6,
-      path: '/', title: 'Trips', icon: 'fa-solid fa-bus', class: '', children: [
+      path: '/trips', title: 'Trips', icon: 'fa-solid fa-bus', class: '', children: [
         { path: 'trips', title: 'Trips', icon: 'fas fa-suitcase-rolling', class: '', children: '' },
         { path: 'upcoming-trips', title: 'Upcoming Trips',  icon: 'fas fa-luggage-cart', class: '',children:''},
         { path: 'past-trips', title: 'Past Trip', icon: 'fa fa-map ', class: '', children: '' },
@@ -78,14 +78,14 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:7,
-      path: '/', title: 'Reviews and Ratings', icon: 'fas fa-star', class: '', children: [
+      path: '/driver-ratings', title: 'Reviews and Ratings', icon: 'fas fa-star', class: '', children: [
         { path: '/driver-ratings', title: 'Driver Ratings',  icon: 'fas fa-star-half-alt text-primary', class: '',children:''},
         { path: '/rider-ratings', title: 'Rider Ratings',  icon: 'far fa-star', class: '',children:''},
       ]
     },
     {
       id:8,
-      path: '/#', title: 'Settlements', icon: 'fa-solid fa-money-bill-transfer', class: '', children: [
+      path: '/cash-settlements', title: 'Settlements', icon: 'fa-solid fa-money-bill-transfer', class: '', children: [
         { path: 'cash-settlements', title: 'Cash Settlement', icon: 'fa-solid fa-money-bill', class: '', children: '' },
         { path: 'partner-settlements', title: 'Partner withdraw Request', icon: ' fa-solid fa-arrow-right-arrow-left fa-flip ', class: '', children: '' },
         { path: 'withdrawal-details', title: 'Withdraw Request', icon: 'fa-solid fa-arrow-right-arrow-left fa-flip ', class: '', children: '' },
@@ -113,7 +113,7 @@ export class SidebarComponent implements OnInit {
       //   ]
       // },
       { id:13,
-        path: '/', title: 'Reports', icon: 'fa-solid fa-chart-pie text-primary', class: '', 
+        path: '/reports', title: 'Reports', icon: 'fa-solid fa-chart-pie text-primary', class: '', 
         children:[ 
           { path: 'reports', title: 'View Report', icon: 'fa-regular fa-folder-open text-primary', class: '', children: '' },
           { path: 'reports-ref', title: 'View Referal Report', icon: 'fa-solid fa-eye ', class: '', children: '' },
@@ -129,7 +129,7 @@ export class SidebarComponent implements OnInit {
     // },
     {
       id:15,
-      path: '/', title: 'Discount', icon: 'fa-solid fa-percent', class: '', children: [
+      path: '/add-discount', title: 'Discount', icon: 'fa-solid fa-percent', class: '', children: [
         { path: '/add-discount', title: 'Add Discount', icon: 'fa fa-user-plus', class: '' },
         { path: '/view-discount', title: 'View discount', icon: 'fa fa-eye', class: '' },
         { path: '/view-code-use', title: 'View discount Code Use', icon: 'fa fa-eye', class: '' }
@@ -137,7 +137,7 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:16,
-      path: '/', title: 'App actions', icon: 'fa-solid fa-gear', class: '', children: [
+      path: '/uninstalls', title: 'App actions', icon: 'fa-solid fa-gear', class: '', children: [
         { path: '/uninstalls', title: 'View uninstalls', icon: 'fa-solid fa-trash-can', class: '' },
         { path: '/driver-visibility-history', title: 'Driver Visibility History', icon: 'fa fa-eye', class: '' },
         { path: '/manage-settings', title: 'Manage Settings', icon: 'fa-solid fa-wrench', class: '' }
