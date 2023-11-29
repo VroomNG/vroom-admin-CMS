@@ -18,7 +18,7 @@ export class PartnerService {
     //   'Content-Type': 'application/json',
     //   'token': 'TOPSECRETE'
     // });
-    return this.http.post(`${this.baseUrl}/newUserEntry`, partnersForm)
+    return this.http.post(`${this.baseUrl}/addAdmin`, partnersForm)
   }
 
   getPartners(): Observable<IPartners[]>{

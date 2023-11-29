@@ -1,6 +1,8 @@
 import { Component , OnInit} from '@angular/core';
 // import { MockdataService } from 'src/app/data/mockdata.service';
 import { dashboardInfo } from 'src/app/model/dashboardInfo';
+import { IChart_data } from 'src/app/model/dashboardInfo';
+import { ChartService } from 'src/app/service/chart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +12,11 @@ import { dashboardInfo } from 'src/app/model/dashboardInfo';
 export class DashboardComponent implements OnInit {
   data: any;
   options: any;
+  chart: IChart_data[] = [];
 
-  constructor() { }
+  constructor(
+    private Chart: ChartService
+    ) { }
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
@@ -27,14 +32,16 @@ export class DashboardComponent implements OnInit {
                 borderColor: documentStyle.getPropertyValue('--blue-500'),
                 data: [65, 59, 80, 81, 56, 55, 40]
             },
-            // {
-            //     label: 'My Second dataset',
-            //     backgroundColor: documentStyle.getPropertyValue('--pink-500'),
-            //     borderColor: documentStyle.getPropertyValue('--pink-500'),
-            //     data: [28, 48, 40, 19, 86, 27, 90]
-            // }
+          
         ]
     };
+
+    this.Chart.getChartData().subscribe(
+        (res:any)=>{
+            console.log(res)
+            this.chart = res.data
+        }
+    )
 
     this.options = {
         maintainAspectRatio: false,

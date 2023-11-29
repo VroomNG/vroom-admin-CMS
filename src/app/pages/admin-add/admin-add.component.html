@@ -63,7 +63,9 @@
                             <div>
                                 <label htmlFor="city">Service Available City*</label>
                             </div>
-                            <app-vr-input pInputText [control]="city" type="text" placeholder="Enter city" ></app-vr-input> 
+                            <select id="city" name="city" [(ngModel)]="city" formControlName="city">
+                                <option *ngFor="let option of cities" [value]="option.name">{{ option.name }}</option>
+                            </select>
                             <!-- <p-dropdown formControlName="city" [options]="cities" optionLabel="name" class="dropdown"></p-dropdown> -->
                         </div>
                     </div>
@@ -74,8 +76,25 @@
                             <div>
                                 <label htmlFor="city">Admin Type*</label>
                             </div>
-                            <app-vr-input pInputText [control]="user_type" type="text" placeholder="Admin Type" ></app-vr-input> 
+                            <select id="user_type" name="user_type" [(ngModel)]="user_type" formControlName="user_type">
+                                <option *ngFor="let option of userType" [value]="option.code">{{ option.type }}</option>
+                            </select>
                             <!-- <p-dropdown formControlName="user_type" [options]="userType" optionLabel="type" class="dropdown"></p-dropdown> -->
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="city">Admin Role</label>
+                            </div>
+                           <div class="admin_role">
+                                <ul>
+                                    <li><b>Super Admin</b>: Can view, Can add, Can edit, Can delete.</li>
+                                    <li><b>Sub Admin</b>: Can view, Can edit </li>
+                                    <li><b>Partner</b>: Can view  </li>
+                                </ul>
+                           </div>
+                            
                         </div>
                     </div>
                 </div>

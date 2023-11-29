@@ -86,6 +86,26 @@ button {
 label {
     color: rgb(4, 4, 51);
 }
+
+select {
+    width: 95%;
+    padding: 8.5px;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    color: #797676;
+}
+
+select:hover {
+    color: rgb(20, 20, 20);
+}
+
+select.selected {
+    border: 1px solid #d6d6d6 !important;
+}
+
+.admin_role li {
+    font-size: 12px;
+}
 // .form-group {
 //     background-color: red;
 // }

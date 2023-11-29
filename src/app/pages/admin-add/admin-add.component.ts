@@ -48,11 +48,11 @@ export class AdminAddComponent implements OnInit {
       { type: 'Partner', code: '5' },
   ];
     this.cities = [
-      { name: 'New York' },
-      { name: 'Rome' },
-      { name: 'London' },
-      { name: 'Istanbul' },
-      { name: 'Paris' },
+      { name: 'Abia' },
+      { name: 'Enugu' },
+      { name: 'Bauchi' },
+      { name: 'Calabar' },
+      { name: 'Uyo' },
       { name: 'Port Harcourt' },
       { name: 'Abuja' },
       { name: 'Lagos'},
@@ -90,7 +90,7 @@ export class AdminAddComponent implements OnInit {
 
   submit(){
      console.log(this.adminForm.value)
-    //  window.alert('in process') 
+     window.alert('in process') 
     this.showAlert = true
     setTimeout(() => {
       this.showAlert = true

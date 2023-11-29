@@ -1,1 +1,9 @@
-<p>discount-code-use works!</p>
+<!-- dropdown.component.html -->
+<label for="cityDropdown">Select a City:</label>
+<select id="cityDropdown" [(ngModel)]="selectedCity" name="selectedCity">
+  <option *ngFor="let city of cities" [ngValue]="city">{{ city.name }} - {{ city.code }}</option>
+</select>
+
+<div *ngIf="selectedCity">
+  <p>Selected City: {{ selectedCity.name }}</p>
+</div>
