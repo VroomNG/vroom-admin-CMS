@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators, } from '@angular/forms';
-import { DriversService } from 'src/app/service/driver.service';
+import { DiscountService } from 'src/app/service/discount.service';
 
 interface City {
   name: string;
@@ -16,43 +16,38 @@ export class DiscountAddComponent implements OnInit {
 
   
 // variables
-cities!: City[] |  undefined;
+
 showAlert = false;
 alertMsg = 'Please wait';
 alertColor = 'primary';
 
 // constructor and lifecycle methods
-constructor(private drivers: DriversService){
+constructor(private discount: DiscountService){
    }
 
 ngOnInit(){
-  this.cities = [
-    { name: 'New York', code: 'NY' },
-    { name: 'Rome', code: 'RM' },
-    { name: 'London', code: 'LDN' },
-    { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' }
-];}
+}
 
  // validators & formcontrols
-  
- firstname = new FormControl('',[Validators.required, Validators.minLength(3)]);
- lastname = new FormControl('', [Validators.required, Validators.minLength(3)]);
- email = new FormControl('', [Validators.required, Validators.minLength(3)]);
- phone_no = new FormControl('',[Validators.required, Validators.minLength(3)]);
- password = new FormControl('', [Validators.required, Validators.minLength(3)]);
- user_type = new FormControl('2',[Validators.required, Validators.minLength(3)]);
- city = new FormControl('',[Validators.required, Validators.minLength(3)]);
+ discount_code = new FormControl('',[Validators.required, Validators.minLength(1)]);
+ title = new FormControl('',[Validators.required, Validators.minLength(3)]);
+ description = new FormControl('',[Validators.required, Validators.minLength(3)]);
+ start_date = new FormControl('',[Validators.required, Validators.minLength(3)]);
+ end_date = new FormControl('',[Validators.required, Validators.minLength(3)]);
+ discount_percent = new FormControl('',[Validators.required, Validators.minLength(1)]);
+ max_discount_amount = new FormControl('',[Validators.required, Validators.minLength(1)]);
+ max_no_of_users = new FormControl('',[Validators.required, Validators.minLength(1)]);
  
  // Grouped Form
- addDrivers = new FormGroup({
-   firstname: this.firstname,
-   lastname: this.lastname,
-   email: this.email,
-   phone_no: this.phone_no,
-   password: this.password,
-   user_type: this.user_type,
-   city: this.city
+ addDiscount = new FormGroup({
+   discount_code: this.discount_code,
+   title: this.title,
+   description: this.description,
+   start_date: this.start_date,
+   end_date: this.end_date,
+   discount_percent: this.discount_percent,
+   max_discount_amount: this.max_discount_amount,
+   max_no_of_users: this.max_no_of_users
  })
 
 //  functions 
@@ -62,13 +57,13 @@ onSubmit(){
     this.showAlert = true
     this.alertMsg = 'Loading... If sync persists check network'
     this.alertColor = 'info'
-    const driverData = this.addDrivers.value
-    console.log(driverData)
-    this.drivers.addDrivers(driverData).subscribe(
+    const discountData = this.addDiscount.value
+    console.log(discountData)
+    this.discount.addDiscount(discountData).subscribe(
       (res:any) => {
        console.log(res)
        if(res.code == 200){
-        this.alertMsg = 'Vehicle successfully added';
+        this.alertMsg = 'Discount added';
         this.alertColor = "success"
        } else {
         this.alertMsg = 'something went wrong check connectivity and try again';
@@ -77,6 +72,10 @@ onSubmit(){
        } 
     )
     }, 1600)
+}
+
+reset(){
+  this.addDiscount.reset()
 }
 
 }

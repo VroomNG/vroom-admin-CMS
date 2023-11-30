@@ -15,5 +15,8 @@ export class DiscountService {
   getDiscounts(): Observable<IDiscount[]>{
     return this.http.get<IDiscount[]>(`${this.baseUrl}/api/v1/discount`);
   }
-
+ 
+  addDiscount(addDiscount:any){
+    return this.http.post(`${this.baseUrl}/api/v1/discount`, addDiscount);
+  }
 }

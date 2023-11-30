@@ -223,29 +223,17 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="container">
-                        <div class="card-input">
-                            <div class="form-group">
-                                <div>
-                                    <label htmlFor="payment_email">Payment Email*</label>
-                                </div>
-                                <app-vr-input pInputText [control]="payment_email" type="text" name="email" id="email" placeholder="Payment Email" ></app-vr-input>
-                                
-                            </div>
-                        </div>
-                        <div class="card-input">
-                            <div class="form-group">
-                                <div>
-                                    <label htmlFor="IFSC_code">Bank Sort Code*</label>
-                                </div>
-                                <app-vr-input pInputText [control]="IFSC_code" type="text" name="IFSC_code" id="IFSC_code" placeholder="Bank Sort Code" ></app-vr-input>
-                                
-                            </div>
-                        </div>
-                    </div>  -->
+                    
                     <div class="button_container">
                         <button type="submit" label="submit" class="button btn-primary" 
                         (click)="onSubmit()"
+
+                        [disabled]="firstname.invalid || lastname.invalid || city.invalid 
+                        || phone_no.invalid || email.invalid || password.invalid || licence_no.invalid
+                        || vehicle_type.invalid || holder_name.invalid || account_number.invalid || bank_name.invalid || location.invalid
+                        || payment_email.invalid || IFSC_code.invalid 
+                        
+                        "
                          >
                             Add 
                         </button>

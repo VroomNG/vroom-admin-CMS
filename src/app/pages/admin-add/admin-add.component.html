@@ -101,7 +101,10 @@
 
                 <!-- <div class="btn"> -->
                     <button type="submit" label="submit"  class="button btn-primary my-4"
-                    (click)="submit()">
+                    (click)="submit()"
+                    [disabled]="firstname.invalid || lastname.invalid || email.invalid || password.invalid || city.invalid || user_type.invalid"
+                    
+                    >
                        Add 
                     </button>
                     <button type="submit" label="submit" class="button" (click)="reset()">
