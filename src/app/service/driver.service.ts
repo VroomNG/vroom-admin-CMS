@@ -18,7 +18,7 @@ export class DriversService {
   // crud functions
 
   addDrivers(addDrivers:any){
-    return this.http.post(`${this.baseUrl}/newUserEntry`, addDrivers)
+    return this.http.post(`${this.baseUrl}/addDriver`, addDrivers)
   }
 
   getDrivers(): Observable<IApproved_Drivers[]>{

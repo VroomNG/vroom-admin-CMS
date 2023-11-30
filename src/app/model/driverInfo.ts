@@ -10,7 +10,6 @@ export interface IRatings_D {
   phone_no: string
   }
 
-
 export interface IApproved_Drivers {
         id: number
         firstname: string
