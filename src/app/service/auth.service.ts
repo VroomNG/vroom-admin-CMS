@@ -9,14 +9,17 @@ import {environment} from '../../environments/environment.prod';
 export class AuthService {
 
   private baseUrl = environment.serverUrl
+  userid = 230;
 
   constructor(public http: HttpClient) { }
-
-
 
   // login function
   login(credentials: { email: string; password: string }) {
     return this.http.post(`${this.baseUrl}/loginadmin`, credentials); 
+  }
+
+  changePassword(credentials: {old_pass: string; new_pass: string}){
+    return this.http.post(`${this.baseUrl}/changepassword/230`, credentials)
   }
 
 }

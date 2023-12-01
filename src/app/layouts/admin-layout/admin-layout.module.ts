@@ -68,6 +68,7 @@ import { VRInputComponent } from '../../layouts/shared/vr-input/vr-input.compone
 import { VrAlertComponent } from '../../layouts/shared/vr-alert/vr-alert.component';
 import { LoaderComponent } from '../../layouts/shared/loader/loader.component';
 import { VrDropdownComponent } from '../../layouts/shared/vr-dropdown/vr-dropdown.component';
+import { SearchPipe } from 'src/app/helpers/search.pipe';
 
 import { CheckboxModule } from 'primeng/checkbox';
 // import { ToastrModule } from 'ngx-toastr';
@@ -139,7 +140,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     VRInputComponent,
     VrAlertComponent,
     LoaderComponent,
-    VrDropdownComponent
+    VrDropdownComponent,
+    SearchPipe
   ]
 })
 

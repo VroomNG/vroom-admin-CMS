@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ITrips } from 'src/app/model/trips';
+import { Component, OnInit } from '@angular/core';
+import { IAllTrips } from 'src/app/model/trips';
+import { TripService } from 'src/app/service/trips.service';
 
 @Component({
   selector: 'app-trips-upcoming',
@@ -7,202 +8,17 @@ import { ITrips } from 'src/app/model/trips';
   styleUrls: ['./trips-upcoming.component.scss']
 })
 export class TripsUpcomingComponent {
-  trips: ITrips[] = [
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
-    {
-      id: 1,
-      trip_no: 'VRM2304',
-      trip_type: 'Individual',
-      trip_date: '09/18/2023',
-      driver: 'Moshood Salu',
-      rider: 'Stephen Olubyoyo',
-      actual_amount: '6,411.00',
-      rounding_amount: '6,400.00',
-      vehicle_type: 'Sedan',
-      trip_status: 'Completed',
-      payment_mode: 'cash',
-      past: 'Past',
-      isViewable: true
-    },
+  trips: IAllTrips[] = [];
+  showLoader = true;
   
-  ]
+  constructor(private Trips: TripService){}
+  ngOnInit(): void {
+    this.Trips.getAllTrips().subscribe(
+      (res:any) =>{
+        console.log(res.data)
+        this.trips = res.data
+        this.showLoader = false;
+      }
+    )
+  }
 }

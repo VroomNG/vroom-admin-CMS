@@ -25,6 +25,7 @@
                     
                             <h1>Welcome!!</h1>
                           
+                        <a routerLink="/user-profile" >
                           <span class="flex">
                             <span class="icon">
                               <i class="fa-solid fa-user"></i>
@@ -33,6 +34,7 @@
                               <span class="p">My Profile</span>
                             </span>
                           </span>
+                        </a>
                        
                         </div>
                         <div class="logout"  (click)="logout()">    
@@ -45,15 +47,18 @@
                             </span>
                           </span>
                         </div>
+                    
                         <div class="change-p">
-                          <span class="flex">
-                            <span class="icon">
-                              <i class="fa-solid fa-lock"></i>
+                          <a routerLink="/change-password" >
+                            <span class="flex">
+                              <span class="icon">
+                                <i class="fa-solid fa-lock"></i>
+                              </span>
+                              <span class="text">
+                                <span class="p">Change Password</span>
+                              </span>
                             </span>
-                            <span class="text">
-                              <span class="p">Change Password</span>
-                            </span>
-                          </span>
+                          </a>
                         </div>    
                       </div>
                     </div>

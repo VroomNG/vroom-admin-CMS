@@ -11,6 +11,7 @@ import { AlertsComponent } from '../../layouts/shared/alerts/alerts.component';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
+import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,8 @@ import { RegisterComponent } from '../../pages/register/register.component';
     LoginComponent,
     RegisterComponent,
     InputComponent,
-    AlertsComponent
+    AlertsComponent,
+    ChangePasswordComponent
   ]
 })
 export class AuthLayoutModule { }

@@ -18,7 +18,7 @@ export class AdminService {
   }
 
   getAdmins(): Observable<IAdmin[]>{
-    return this.http.get<IAdmin[]>(`${this.baseUrl}/getAllUsers`);
+    return this.http.get<IAdmin[]>(`${this.baseUrl}/api/v1/adminView`);
   }
   
   getAccessTrail(): Observable<IAccessTrail[]>{

@@ -69,7 +69,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'add-riders', component: RidersAddComponent, canActivate: [AuthClassGuard]},
     { path: 'view-riders', component: RidersComponent, canActivate: [AuthClassGuard]},
     { path: 'trips', component: TripsComponent, canActivate: [AuthClassGuard]},
-    { path: 'upcoming-trips', component: TripsUpcomingComponent, canActivate: [AuthClassGuard]},
+    { path: 'Ongoing-trips', component: TripsUpcomingComponent, canActivate: [AuthClassGuard]},
     { path: 'past-trips', component: TripsPastComponent, canActivate: [AuthClassGuard]},
     { path: 'trips-settings', component: TripsSettingsComponent, canActivate: [AuthClassGuard]},
     { path: 'cash-settlements', component: SettlementsComponent, canActivate: [AuthClassGuard]},

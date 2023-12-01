@@ -70,9 +70,9 @@ export class SidebarComponent implements OnInit {
     {
       id:6,
       path: '/trips', title: 'Trips', icon: 'fa-solid fa-bus', class: '', children: [
-        { path: 'trips', title: 'Trips', icon: 'fas fa-suitcase-rolling', class: '', children: '' },
-        { path: 'upcoming-trips', title: 'Upcoming Trips',  icon: 'fas fa-luggage-cart', class: '',children:''},
-        { path: 'past-trips', title: 'Past Trip', icon: 'fa fa-map ', class: '', children: '' },
+        { path: 'trips', title: 'Completed Trips', icon: 'fas fa-suitcase-rolling', class: '', children: '' },
+        { path: 'Ongoing-trips', title: 'Scheduled Trips',  icon: 'fas fa-luggage-cart', class: '',children:''},
+        { path: 'past-trips', title: 'Cancelled Trip', icon: 'fa fa-map ', class: '', children: '' },
         { path: 'trips-settings', title: 'Trip Settings',  icon: 'fas fa-ban', class: '',children:''},
       ]
     },

@@ -60,9 +60,17 @@
                                     {{ riders.phone_no }}
                                 </div>
                                </td>
-                                <td>{{ riders.registered_on }}</td>
+                                <td>{{ riders.created_at }}</td>
                                 <td>{{ riders.wallet }}</td>
-                                <td>{{ riders.last_tripDate }}</td>       
+                                <td>
+                                    <div *ngIf="riders.last_update">
+                                        {{ riders.last_update }}
+                                    </div>
+                                    <div *ngIf="riders.last_update == null || '' ">
+                                        No records
+                                    </div>
+                                    
+                                </td>       
                                 <td><i class="fa-solid fa-pencil"></i></td>
                             </tr>
                         </ng-template>

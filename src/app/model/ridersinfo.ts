@@ -6,7 +6,9 @@ export interface IRiders {
     lastname: any,
     phone_no: any,
     user_type: any,
-    ref_code: string
+    ref_code: string,
+    created_at: string,
+    last_update: string
   }
 
   export interface IRatings_R {
