@@ -85,6 +85,9 @@ td i {
     color: #5E72E4;
     cursor: pointer;
 }
+.del i {
+    color: rgb(214, 37, 37);
+}
 th {
     padding: 0px 20px;
     color: #ABB4CE;
@@ -119,4 +122,14 @@ th {
 
 .clr:hover {
     background-color: #1fbffd ;
+}
+
+.action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-form {
+    width: 50rem;
+    height: 30rem;
 }

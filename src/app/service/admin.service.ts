@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { IAdmin, IAccessTrail } from '../model/admins';
@@ -9,6 +9,12 @@ import { IAdmin, IAccessTrail } from '../model/admins';
 })
 export class AdminService {
 
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };  
+
   private baseUrl = environment.serverUrl
 
   constructor(public http: HttpClient) { }
@@ -16,6 +22,13 @@ export class AdminService {
   addAdmin(adminForm:any){
     return this.http.post(`${this.baseUrl}/addAdmin`, adminForm)
   }
+  
+    updateAdmin(admin: IAdmin): any {
+      const userId = admin.id; // Assuming 'id' is the property that represents the user ID
+      return this.http.put(`${this.baseUrl}/updateUser/${userId}`, admin);
+    }
+   
+
 
   getAdmins(): Observable<IAdmin[]>{
     return this.http.get<IAdmin[]>(`${this.baseUrl}/api/v1/adminView`);
@@ -25,15 +38,8 @@ export class AdminService {
     return this.http.get<IAccessTrail[]>(`${this.baseUrl}/getAccessLog`);
   }
 
+
 }
-
-
-
-
-
-
-
-
 
 
 // import { Injectable } from '@angular/core';

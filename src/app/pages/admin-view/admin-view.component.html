@@ -1,4 +1,19 @@
 <div class="main-container">
+    <p-dialog [(visible)]="displayDialog" [modal]="true" [responsive]="true">
+        <div class="edit-form">
+          <h3>Edit Admin</h3>
+          <p>Admin ID: {{ editedAdmin?.id }}</p>
+          <p>Admin name: {{ editedAdmin?.firstname }}</p>
+          <form [formGroup]="editAdminForm" (ngSubmit)="saveEdit()">
+            <!-- Add form fields for editing admin details -->
+            <input [(ngModel)]="editAdmin" name="firstname" placeholder="First Name" />
+            <!-- Add more fields as needed -->
+      
+            <button type="submit">Update</button>
+            <button type="button" (click)="toggleDialog()">Cancel</button>
+          </form>
+        </div>
+      </p-dialog>
     <div class="header">
         <div class="view-admin-grid">
             <div class="container">
@@ -13,8 +28,7 @@
                                 <input type="text" pInputText placeholder="Search"
                                 [(ngModel)]="searchText"
                                 (input)="applyFilter()"
-                                > 
-                                       
+                                >           
                             </div>
                             <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
@@ -77,7 +91,15 @@
                                       Sub Admin
                                    </div>
                                 </td>
-                                <td><i class="fa-solid fa-pencil"></i></td>
+                                <td class="action">
+                                    <span class="edit">
+                                        <i class="fa-solid fa-pencil" (click)="editAdmin(admins)"></i>
+                                    </span>
+                                    <span class="del">
+                                        <i class="fa-solid fa-trash" (click)="deleteAdmin(admins.id)"></i>
+                                    </span>
+                                </td>
+                               
                             </tr>
                         </ng-template>
                         

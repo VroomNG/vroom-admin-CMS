@@ -71,6 +71,7 @@ import { VrDropdownComponent } from '../../layouts/shared/vr-dropdown/vr-dropdow
 import { SearchPipe } from 'src/app/helpers/search.pipe';
 
 import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -91,7 +92,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     ToolbarModule,
     FileUploadModule,
     InputNumberModule,
-    CheckboxModule
+    CheckboxModule,
+    DialogModule
     
   ],
   declarations: [
