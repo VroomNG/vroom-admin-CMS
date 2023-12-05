@@ -112,4 +112,18 @@ th {
 .button:hover {
     background-color: #1fbffd ;
 }
+button {
+    padding: 8px 12px;
+    // width: 30%;
+    border-radius: 6px;
+    margin: 10px;
+    background-color: #26125e;
+    color: white;
+    font-weight: 600;
+    border-color: transparent;
+    // box-shadow: 2px 2px #442c88ee;
+}
+button:hover {
+    background-color: #1fbffd ;
+}
 

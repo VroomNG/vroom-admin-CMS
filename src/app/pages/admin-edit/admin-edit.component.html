@@ -6,17 +6,20 @@
         <div class="add-admin-form">
            <div class="card">
             <div class="card-title">
-                <h5>Add Admin</h5>
+                <h5>Edit Admin</h5>
             </div>
-        <div class="card-body">
-            <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+        <app-loader *ngIf="!admins"></app-loader>
+        <div class="card-body"*ngIf="admins" >       
+            <form> 
                 <div class="container">
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="fistname">First Name*</label>
+                                <label htmlFor="fistname" >First Name*</label>
                             </div>
-                             <app-vr-input pInputText [control]="firstname" type="text" placeholder="First Name" ></app-vr-input> 
+                            <div>
+                                <input type="text" id="input-first-name" [(ngModel)]="admins.firstname" name="firstname" class="form-control form-control-alternative" placeholder="First name" value="{{admins.firstname}}">
+                            </div>
                         </div>
                     </div>
                     <div class="card-input">
@@ -24,7 +27,9 @@
                             <div>
                                 <label htmlFor="lastname">Last Name*</label>
                             </div>
-                             <app-vr-input pInputText [control]="lastname" type="text" placeholder="Last Name" ></app-vr-input> 
+                            <div>
+                                <input type="text" id="input-last-name" [(ngModel)]="admins.lastname" name="lastname" class="form-control form-control-alternative" placeholder="Last Name" value="{{admins.lastname}}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -34,7 +39,9 @@
                             <div>
                                 <label htmlFor="email">Email Address*</label>
                             </div>
-                            <app-vr-input pInputText [control]="email" type="email" placeholder="Email " ></app-vr-input> 
+                            <div>
+                                <input type="text" id="input-email" [(ngModel)]="admins.email" name="email" class="form-control form-control-alternative" placeholder="Email" value="{{admins.email}}">
+                            </div>
                         
                         </div>
                     </div>
@@ -43,8 +50,9 @@
                             <div>
                                 <label htmlFor="phone">Phone Number*</label>
                             </div>
-                            <app-vr-input pInputText pKeyFilter="int" [control]="phone_no" placeholder="Phone" format="(000)000-0000"
-                              />
+                            <div>
+                                <input type="text" id="input-phone_no" [(ngModel)]="admins.Phone_no" name="phone_no" class="form-control form-control-alternative" placeholder="Phone Number" value="{{admins.Phone_no}}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,8 +62,9 @@
                             <div>
                                 <label htmlFor="password">Password*</label>
                             </div>
-                            <app-vr-input pInputText pKeyFilter="int" [control]="password" placeholder="Password"
-                            />   
+                            <div>
+                                <input type="text" id="input-password" [(ngModel)]="admins.password" name="password" class="form-control form-control-alternative" placeholder="Password" value="{{admins.password}}">
+                            </div>  
                         </div>
                     </div>
                     <div class="card-input">
@@ -63,9 +72,9 @@
                             <div>
                                 <label htmlFor="city">City*</label>
                             </div>
-                            <select id="city" name="city" [(ngModel)]="city" formControlName="city">
-                                <option *ngFor="let option of cities" [value]="option.name">{{ option.name }}</option>
-                            </select>
+                            <div>
+                                <input type="text" id="input-city"  [(ngModel)]="admins.city" name="city" class="form-control form-control-alternative" placeholder="City" value="{{admins.city}}">
+                            </div>
                             <!-- <p-dropdown formControlName="city" [options]="cities" optionLabel="name" class="dropdown"></p-dropdown> -->
                         </div>
                     </div>
@@ -76,13 +85,13 @@
                             <div>
                                 <label htmlFor="city">Admin Type*</label>
                             </div>
-                            <select id="user_type" name="user_type" [(ngModel)]="user_type" formControlName="user_type">
-                                <option *ngFor="let option of userType" [value]="option.code">{{ option.type }}</option>
-                            </select>
+                            <div>
+                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Admin Type" [value]="admins.user_type === '4' ? 'Super Admin' : (admins.user_type === '3' ? 'Sub Admin' : admins.user_type)" readonly="true">
+                            </div>
                             <!-- <p-dropdown formControlName="user_type" [options]="userType" optionLabel="type" class="dropdown"></p-dropdown> -->
                         </div>
                     </div>
-                    <div class="card-input">
+                    <!-- <div class="card-input">
                         <div class="form-group">
                             <div>
                                 <label htmlFor="city">Admin Role</label>
@@ -96,19 +105,15 @@
                            </div>
                             
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- <div class="btn"> -->
-                    <button type="submit" label="submit"  class="button btn-primary my-4"
-                    (click)="submit()"
-                    [disabled]="firstname.invalid || lastname.invalid || email.invalid || password.invalid || city.invalid || user_type.invalid"
-                    
-                    >
-                       Add 
+                    <button type="submit" label="submit"  class="button btn-primary " (click)="updateAdmin()">
+                     Update 
                     </button>
-                    <button type="submit" label="submit" class="button" (click)="reset()">
-                       Cancel
+                    <button type="submit" label="submit" class="button  btn-danger" (click)="deleteAdmin()">
+                       delete
                     </button>
                 <!-- </div> -->
               </form>

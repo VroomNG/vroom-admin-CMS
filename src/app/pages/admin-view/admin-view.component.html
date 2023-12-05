@@ -1,19 +1,13 @@
 <div class="main-container">
+    <!-- item details dialog -->
     <p-dialog [(visible)]="displayDialog" [modal]="true" [responsive]="true">
         <div class="edit-form">
           <h3>Edit Admin</h3>
-          <p>Admin ID: {{ editedAdmin?.id }}</p>
-          <p>Admin name: {{ editedAdmin?.firstname }}</p>
-          <form [formGroup]="editAdminForm" (ngSubmit)="saveEdit()">
-            <!-- Add form fields for editing admin details -->
-            <input [(ngModel)]="editAdmin" name="firstname" placeholder="First Name" />
-            <!-- Add more fields as needed -->
-      
-            <button type="submit">Update</button>
-            <button type="button" (click)="toggleDialog()">Cancel</button>
-          </form>
+          <p>Admin ID: {{ editedAdmin1?.id }}</p>
+          <p>Admin name: {{ editedAdmin1?.firstname }}</p>
         </div>
       </p-dialog>
+
     <div class="header">
         <div class="view-admin-grid">
             <div class="container">
@@ -41,74 +35,73 @@
                         </div>
                     </div> 
                     <div>
-                    <app-loader *ngIf="showLoader"></app-loader>
-                    <p-table *ngIf="!showLoader"
-                        [value]="admins"
-                        [paginator]="true"
-                        [rows]="6"
-                        [showCurrentPageReport]="false"
-                        [tableStyle]="{ 'min-width': '50rem' }"
-                        currentPageReportTemplate=""
-                        [rowsPerPageOptions]="[10, 25, 50]"
-                    >
-                        <ng-template pTemplate="header">
-                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
-                                <th style="width:20%">FIRST NAME</th>
-                                <th style="width:20%">LAST NAME</th>
-                                <th style="width:25%">EMAIL</th>
-                                <th style="width:15%">PHONE </th>
-                                <th style="width:15%">ADMIN </th>
-                                <th style="width:15%">ACTION </th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-admins  >
-                            <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px "
-                         >
+                        <app-loader *ngIf="showLoader"></app-loader>
+                        <p-table *ngIf="!showLoader" 
+                            [value]="admins"
+                            [paginator]="true"
+                            [rows]="6"
+                            [showCurrentPageReport]="false"
+                            [tableStyle]="{ 'min-width': '50rem' }"
+                            currentPageReportTemplate=""
+                            [rowsPerPageOptions]="[10, 25, 50]"
+                        >
+                            <ng-template pTemplate="header">
+                                <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ;">
+                                    <th style="width:20%">FIRST NAME</th>
+                                    <th style="width:20%">LAST NAME</th>
+                                    <th style="width:25%">EMAIL</th>
+                                    <th style="width:15%">PHONE </th>
+                                    <th style="width:15%">ADMIN </th>
+                                    <th style="width:15%">ACTION </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-admins>
+                                <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
+                                
+                                    <td>
+                                        {{admins.firstname}}
+                                    </td>
+                                    <td>
+                                        {{admins.lastname}}
+                                    </td>
+                                    <td>
+                                        {{admins.email}}
+                                    </td>
+                                    <td>
+                                        <div *ngIf="admins.phone_no == null ">
+                                            no number
+                                        </div>
+                                        <div *ngIf="admins.phone_no">
+                                            
+                                                    {{admins.phone_no}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <div *ngIf="admins.user_type == '4'">
+                                        Super Admin
+                                    </div>
+                                    <div *ngIf="admins.user_type == '3'">
+                                        Sub Admin
+                                    </div>
+                                    </td>
+                                    <td class="action">
+                                        <span class="edit">
+                                            <div class="flex align-items-center justify-content-center gap-2">
+                                               <a routerLink="/users/{{admins.id}}/edit">
+                                                <button pButton pRipple type="button" icon="fa-solid fa-pencil" class="p-button-rounded p-button-text"></button>
+                                               </a>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </ng-template>
                             
-                                <td>{{ admins.firstname }}</td>
-                                <td>
-                                    <div *ngIf="admins.lastname">
-                                        {{ admins.lastname }}
-                                    </div>
-                                    <div *ngIf="admins.lastname == null || admins.lastname == ''">
-                                        No lastname
-                                    </div>    
-                                </td>
-                                <td>{{ admins.email }}</td>
-                                <td>
-                                    <div *ngIf="admins.phone_no == null ">
-                                        no number
-                                    </div>
-                                    <div *ngIf="admins.phone_no">
-                                        {{ admins.phone_no }}
-                                    </div>
-                                </td>
-                                <td>
-                                   <div *ngIf="admins.user_type == '4'">
-                                      Super Admin
-                                   </div>
-                                   <div *ngIf="admins.user_type == '3'">
-                                      Sub Admin
-                                   </div>
-                                </td>
-                                <td class="action">
-                                    <span class="edit">
-                                        <i class="fa-solid fa-pencil" (click)="editAdmin(admins)"></i>
-                                    </span>
-                                    <span class="del">
-                                        <i class="fa-solid fa-trash" (click)="deleteAdmin(admins.id)"></i>
-                                    </span>
-                                </td>
-                               
-                            </tr>
-                        </ng-template>
-                        
-                            <ng-template pTemplate="paginatorleft">
-                                <!-- <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button> -->
-                            </ng-template>
-                            <ng-template pTemplate="paginatorright">
-                                <!-- <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button> -->
-                            </ng-template>
+                                <ng-template pTemplate="paginatorleft">
+                                    <!-- <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button> -->
+                                </ng-template>
+                                <ng-template pTemplate="paginatorright">
+                                    <!-- <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button> -->
+                                </ng-template>
                         </p-table>  
                     </div>
                 </div>

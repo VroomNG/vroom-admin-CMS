@@ -8,6 +8,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { AdminAddComponent } from 'src/app/pages/admin-add/admin-add.component';
 import { AdminViewComponent } from 'src/app/pages/admin-view/admin-view.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
+import { AdminEditComponent } from 'src/app/pages/admin-edit/admin-edit.component';
 
 import { VehicleAddComponent } from 'src/app/pages/vehicle-add/vehicle-add.component';
 import { VehicleTypeComponent } from 'src/app/pages/vehicle-type/vehicle-type.component';
@@ -59,6 +60,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'view-admin',      component: AdminViewComponent, canActivate: [AuthClassGuard] },
     { path: 'view-access-trail',      component: AdminViewAccessComponent, canActivate: [AuthClassGuard] },
     { path: 'view-vehicle', component: VehicleTypeComponent, canActivate: [AuthClassGuard] },
+    { path: 'users/:id/edit', component: AdminEditComponent, title:'Edit Admin', canActivate: [AuthClassGuard] }, 
     { path: 'add-vehicle', component: VehicleAddComponent, canActivate: [AuthClassGuard]},
     { path: 'view-partners', component: PartnersComponent, canActivate: [AuthClassGuard]},
     { path: 'add-partners', component: PartnersAddComponent, canActivate: [AuthClassGuard]},

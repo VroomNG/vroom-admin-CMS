@@ -93,7 +93,7 @@ export class VehicleAddComponent  implements OnInit {
     ];
     this.selectActive = [
       {id: 1, name: 'Yes'},
-      {id: 1, name: 'No'},
+      {id: 0, name: 'No'},
     ]
   }
 

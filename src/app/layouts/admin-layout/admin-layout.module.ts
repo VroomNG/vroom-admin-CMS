@@ -22,6 +22,7 @@ import {ToolbarModule} from 'primeng/toolbar';
 import { AdminAddComponent } from 'src/app/pages/admin-add/admin-add.component';
 import { AdminViewComponent } from '../../pages/admin-view/admin-view.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
+import { AdminEditComponent } from '../../pages/admin-edit/admin-edit.component';
 
 import { VehicleTypeComponent } from '../../pages/vehicle-type/vehicle-type.component';
 import { VehicleAddComponent } from '../../pages/vehicle-add/vehicle-add.component';
@@ -105,6 +106,7 @@ import { DialogModule } from 'primeng/dialog';
     AdminAddComponent,
     AdminViewComponent,
     AdminViewAccessComponent,
+    AdminEditComponent,
     VehicleTypeComponent,
     VehicleAddComponent,
     PartnersComponent,

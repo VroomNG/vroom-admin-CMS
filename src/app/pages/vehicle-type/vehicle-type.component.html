@@ -8,19 +8,19 @@
                             <h6>Vehicle Type</h6>
                         </div>
                         <div class="search">
-                            <span class="p-input-icon-left">
+                            <div class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <input type="text" pInputText placeholder="Search">         
-                            </span>
+                                <input type="text" pInputText placeholder="Search"
+                                [(ngModel)]="searchText"
+                                (input)="applyFilter()"
+                                >           
+                            </div>
+                            <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
-                        <div class="radius">
-                            <h6>Searchable Radius</h6>
-                            <button class="button" type="submit" label="submit">
-                                change
-                             </button>
-                        </div>
+                        
                         <div class="export">
-                            <button class="button" type="submit" label="submit">
+                            <button class="button" type="submit" 
+                            label="submit"  (click)="exportExcel()">
                                 Export
                              </button>
                         </div>

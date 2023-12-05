@@ -24,9 +24,8 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div class="form-label">
-                                <label htmlFor="minimum_fare">Minimum Fare*
-                                    <app-vr-input pInputText [control]="minimum_fare" type="text" name="minimum_fare" id="minimum_fare" placeholder="Minimum Fare" ></app-vr-input> 
-                                </label>
+                                <label htmlFor="minimum_fare">Minimum Fare*</label>
+                                <app-vr-input pInputText [control]="minimum_fare" type="text" name="minimum_fare" id="minimum_fare" placeholder="Minimum Fare" ></app-vr-input> 
                             </div>
                             
                     
@@ -69,12 +68,9 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div class="form-label">
-                                <label htmlFor="commission">Commission(%)*
-                                    <app-vr-input pInputText [control]="commission" type="text" name="commission" placeholder="Commission"></app-vr-input> 
-                                </label>
+                                <label htmlFor="commission">Commission(%)*</label>
                             </div>
-                            
-
+                            <app-vr-input pInputText [control]="commission" type="text" name="commission" placeholder="Commission"></app-vr-input> 
                         </div>
                     </div>
                 </div>
@@ -94,10 +90,10 @@
                             <div class="form-label">
                                 <label htmlFor="isactive">Is Vehicle Available*</label>
                             </div>
-                            <!-- <select id="dropdown" name="dropdown" [(ngModel)]="isactive" formControlName="isactive">
-                                <option *ngFor="let option of selectActive" [value]="option.name">{{ option.name }}</option>
-                            </select> -->
-                            <app-vr-input pInputText [control]="isactive" type="text" placeholder="Is Vehicle Available"></app-vr-input> 
+                            <select id="dropdown" name="dropdown" [(ngModel)]="isactive" formControlName="isactive">
+                                <option *ngFor="let option of selectActive" [value]="option.id">{{ option.name }}</option>
+                            </select>
+                            <!-- <app-vr-input pInputText [control]="isactive" type="text" placeholder="Is Vehicle Available"></app-vr-input>  -->
                         </div>
                     </div>
                 </div>
