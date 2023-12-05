@@ -19,5 +19,15 @@ export interface IChart_data {
     October: number,
     November: number,
     December: number,
+}
+export interface IDashboard {
+    riders: number
+    drivers: number
+    vehicles: number
+    trips: number
+    completedTrips: number
+    trip_payment: number
+    total_driverShared: number
+    total_adminShared: number
   }
   

@@ -29,7 +29,7 @@ export class VehicleEditComponent implements OnInit {
   selectedOption: any;
   form: any;
   showAlert:boolean = false;
-  alertMsg = 'please wait your account is being created';
+  alertMsg = 'please wait...';
   alertColor = 'primary';
 
   constructor(
@@ -114,8 +114,10 @@ export class VehicleEditComponent implements OnInit {
 
 
   update() {
-
-    var editVehicleForm = {
+    this.showAlert = true;
+    this.alertMsg = 'please wait if sync persisct check network';
+    this.alertColor = 'primary';
+      var editVehicleForm = {
       vehicle_type: this.vehicleType.vehicle_type,
       minimum_fare: this.vehicleType.minimum_fare,
       make: this.vehicleType.make,
@@ -140,6 +142,13 @@ export class VehicleEditComponent implements OnInit {
     this.Vehicle.updateVehicle(editVehicleForm, this.vehicleId).subscribe({
       next: (res:any) => {
         console.log(res)
+        if(res.code == 200){
+          this.alertMsg = 'Updated successfully';
+          this.alertColor = 'success';
+        } else {
+          this.alertMsg = 'Updated failed';
+          this.alertColor = 'danger';
+        }
       }
     })
    
