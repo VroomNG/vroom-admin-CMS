@@ -31,16 +31,16 @@ export class AdminViewAccessComponent implements OnInit {
   }
 
   applyFilter() {
-    const filteredAccessTrail = this.admin_access_trail.filter((item:any) => {
+    const filteredAdmins = this.admin_access_trail.filter((item) => {
+      // Adjust the conditions based on your filtering requirements
       return (
-        item.ID.toString().includes(this.searchText) ||
-        item.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.access_time.toString().includes(this.searchText) ||
-        item.action.toLowerCase().includes(this.searchText.toLowerCase())
+      item.login.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      item.action.toLowerCase().includes(this.searchText.toLowerCase())
       );
     });
-
-    this.admin_access_trail = filteredAccessTrail;
+    // Update the table data with the filtered results
+    // If you are using server-side filtering, you may need to call an API here
+    this.admin_access_trail = filteredAdmins;
   }
 
   searchItems(items: any[], searchText: string, searchProperties: string[]): void {

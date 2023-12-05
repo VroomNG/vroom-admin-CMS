@@ -44,8 +44,6 @@ export class VehicleTypeComponent implements OnInit {
       this.vehicleType = this.originalData
   }
 
-
-
   applyFilter() {
     const filteredAdmins = this.vehicleType.filter((item) => {
       // Adjust the conditions based on your filtering requirements
