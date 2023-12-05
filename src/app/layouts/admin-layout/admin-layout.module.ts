@@ -26,6 +26,7 @@ import { AdminEditComponent } from '../../pages/admin-edit/admin-edit.component'
 
 import { VehicleTypeComponent } from '../../pages/vehicle-type/vehicle-type.component';
 import { VehicleAddComponent } from '../../pages/vehicle-add/vehicle-add.component';
+import { VehicleEditComponent } from '../../pages/vehicle-edit/vehicle-edit.component';
 
 import {FileUploadModule} from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -94,7 +95,8 @@ import { DialogModule } from 'primeng/dialog';
     FileUploadModule,
     InputNumberModule,
     CheckboxModule,
-    DialogModule
+    DialogModule,
+    
     
   ],
   declarations: [
@@ -145,6 +147,7 @@ import { DialogModule } from 'primeng/dialog';
     VrAlertComponent,
     LoaderComponent,
     VrDropdownComponent,
+    VehicleEditComponent,
     SearchPipe
   ]
 })

@@ -79,9 +79,13 @@
                                 <td>{{ vehicleType.minimum_fare_share }}</td>
                                 <td>{{ vehicleType.base_fare_share }}</td>
                                 <td>
-                                    <div *ngIf="vehicleType.isactive == 1">
-                                    <i class="fa-solid fa-pencil"></i>
-                                   </div>
+                                    <span class="edit">
+                                        <div class="flex align-items-center justify-content-center gap-2">
+                                           <a routerLink="/vehicleUpdate/{{vehicleType.id}}/edit">
+                                            <button pButton pRipple type="button" icon="fa-solid fa-pencil" class="p-button-rounded p-button-text"></button>
+                                           </a>
+                                        </div>
+                                    </span>
                                 </td>
                             </tr>
                         </ng-template>

@@ -12,6 +12,7 @@ import { AdminEditComponent } from 'src/app/pages/admin-edit/admin-edit.componen
 
 import { VehicleAddComponent } from 'src/app/pages/vehicle-add/vehicle-add.component';
 import { VehicleTypeComponent } from 'src/app/pages/vehicle-type/vehicle-type.component';
+import { VehicleEditComponent } from 'src/app/pages/vehicle-edit/vehicle-edit.component';
 
 import { PartnersComponent } from '../../pages/partners/partners.component';
 import { PartnersAddComponent } from '../../pages/partners-add/partners-add.component';
@@ -62,6 +63,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'view-vehicle', component: VehicleTypeComponent, canActivate: [AuthClassGuard] },
     { path: 'users/:id/edit', component: AdminEditComponent, title:'Edit Admin', canActivate: [AuthClassGuard] }, 
     { path: 'add-vehicle', component: VehicleAddComponent, canActivate: [AuthClassGuard]},
+    { path: 'vehicleUpdate/:id/edit', component: VehicleEditComponent, canActivate: [AuthClassGuard]},
     { path: 'view-partners', component: PartnersComponent, canActivate: [AuthClassGuard]},
     { path: 'add-partners', component: PartnersAddComponent, canActivate: [AuthClassGuard]},
     { path: 'add-drivers', component: DriversAddComponent, canActivate: [AuthClassGuard]},

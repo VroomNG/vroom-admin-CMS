@@ -34,7 +34,6 @@ export class VehicleAddComponent  implements OnInit {
   constructor(private vehicle: VehicleService){
     const currentYear = new Date().getFullYear();
     const startYear = 1990;
-
     this.years = Array.from({ length: currentYear - startYear + 1 }, (_, index) => startYear + index);
     
   }

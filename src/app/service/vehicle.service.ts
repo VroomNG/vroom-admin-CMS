@@ -21,6 +21,20 @@ export class VehicleService {
   getVehicles(): Observable<IVehicleType[]>{
     return this.http.get<IVehicleType[]>(`${this.baseUrl}/api/v1/vehicle`);
   }
+
+  getSingleVehicle(vehicleId: any): Observable<IVehicleType[]>{
+    return this.http.get<IVehicleType[]>(`${this.baseUrl}/api/v1/vehicleSingle/${vehicleId}`);
+  }
+
+  deleteVehicleType(vehicleId:any) {
+    // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
+    return this.http.delete(`${this.baseUrl}/api/v1/vehicledelete/${vehicleId}`);
+  }
+  updateVehicle(editVehicleForm: object, vehicleId:any) {
+    // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
+    return this.http.put(`${this.baseUrl}/api/v1/vehicleUpdate//${vehicleId}`, editVehicleForm);
+  }
+
 }
 
 
