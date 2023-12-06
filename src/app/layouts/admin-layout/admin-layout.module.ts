@@ -74,6 +74,7 @@ import { SearchPipe } from 'src/app/helpers/search.pipe';
 
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -96,6 +97,7 @@ import { DialogModule } from 'primeng/dialog';
     InputNumberModule,
     CheckboxModule,
     DialogModule,
+    CalendarModule
     
     
   ],

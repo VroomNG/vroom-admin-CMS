@@ -11,11 +11,13 @@ export class NotificationService {
 
   private baseUrl = environment.serverUrl
 
-
-
   constructor(public http: HttpClient) { }
+
   getSchedules(): Observable<ISchedules[]>{
     return this.http.get<ISchedules[]>(`${this.baseUrl}/api/v1/getSchedules`);
+  }
+  addNotify(addNotifyValue:any){
+    return this.http.post(`${this.baseUrl}/api/v1/addNoteSchedule`, addNotifyValue)
   }
 }
 
