@@ -16,6 +16,8 @@ import { VehicleEditComponent } from 'src/app/pages/vehicle-edit/vehicle-edit.co
 
 import { PartnersComponent } from '../../pages/partners/partners.component';
 import { PartnersAddComponent } from '../../pages/partners-add/partners-add.component';
+import { PartnersEditComponent } from 'src/app/pages/partners-edit/partners-edit.component';
+
 import { DriversAddComponent } from '../../pages/drivers-add/drivers-add.component';
 import { DriversApprovedComponent } from '../../pages/drivers-approved/drivers-approved.component';
 import { DriversPendingComponent } from '../../pages/drivers-pending/drivers-pending.component';
@@ -49,6 +51,7 @@ import { AppActionUninstallComponent } from '../../pages/app-action-uninstall/ap
 import { AppActionDriverVisibilityComponent } from '../../pages/app-action-driver-visibility/app-action-driver-visibility.component';
 import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
 import { AuthClassGuard } from 'src/app/helpers/auth-class.guard';
+import { DriversEditComponent } from 'src/app/pages/drivers-edit/drivers-edit.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -62,14 +65,19 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'view-access-trail',      component: AdminViewAccessComponent, canActivate: [AuthClassGuard] },
     { path: 'view-vehicle', component: VehicleTypeComponent, canActivate: [AuthClassGuard] },
     { path: 'users/:id/edit', component: AdminEditComponent, title:'Edit Admin', canActivate: [AuthClassGuard] }, 
+    
     { path: 'add-vehicle', component: VehicleAddComponent, canActivate: [AuthClassGuard]},
     { path: 'vehicleUpdate/:id/edit', component: VehicleEditComponent, canActivate: [AuthClassGuard]},
     { path: 'view-partners', component: PartnersComponent, canActivate: [AuthClassGuard]},
     { path: 'add-partners', component: PartnersAddComponent, canActivate: [AuthClassGuard]},
+    { path: 'updateUser/:id/edit', component: PartnersEditComponent, canActivate: [AuthClassGuard]},
+    
     { path: 'add-drivers', component: DriversAddComponent, canActivate: [AuthClassGuard]},
     { path: 'approved-drivers', component: DriversApprovedComponent, canActivate: [AuthClassGuard]},
     { path: 'unapproved-drivers', component: DriversPendingComponent, canActivate: [AuthClassGuard]},
     { path: 'rejected-drivers', component: DriversRejectedComponent, canActivate: [AuthClassGuard]},
+    { path: 'drivers/:id/edit', component: DriversEditComponent, canActivate: [AuthClassGuard]},
+
     { path: 'add-riders', component: RidersAddComponent, canActivate: [AuthClassGuard]},
     { path: 'view-riders', component: RidersComponent, canActivate: [AuthClassGuard]},
     { path: 'trips', component: TripsComponent, canActivate: [AuthClassGuard]},

@@ -8,13 +8,19 @@
                             <h6>Approved Drivers</h6>
                         </div>
                         <div class="search">
-                            <span class="p-input-icon-left">
+                            <div class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <input type="text" pInputText placeholder="Search">         
-                            </span>
+                                <input type="text" pInputText placeholder="Search"
+                                [(ngModel)]="searchText"
+                                (input)="applyFilter()"
+                                >           
+                            </div>
+                            <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
+                        
                         <div class="export">
-                            <button class="button" type="submit" label="submit">
+                            <button class="button" type="submit" 
+                            label="submit"  (click)="exportExcel()">
                                 Export
                              </button>
                         </div>
@@ -101,10 +107,14 @@
                                         not recorded
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="d-flex justify-content-center ">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </div>  
+                                <td class="action">
+                                    <span class="edit">
+                                        <div class="flex align-items-center justify-content-center gap-2">
+                                           <a routerLink="/drivers/{{app_drivers.id}}/edit">
+                                            <button pButton pRipple type="button" icon="fa-solid fa-pencil" class="p-button-rounded p-button-text"></button>
+                                           </a>
+                                        </div>
+                                    </span>
                                 </td>
                                 <!-- <td>
                                     <div class="d-flex justify-content-center ">

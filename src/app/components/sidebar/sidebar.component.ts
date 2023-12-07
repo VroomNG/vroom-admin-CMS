@@ -115,7 +115,7 @@ export class SidebarComponent implements OnInit {
       { id:13,
         path: '/reports', title: 'Reports', icon: 'fa-solid fa-chart-pie text-primary', class: '', 
         children:[ 
-          // { path: 'reports', title: 'View Report', icon: 'fa-regular fa-folder-open text-primary', class: '', children: '' },
+          { path: 'reports', title: 'View Report', icon: 'fa-regular fa-folder-open text-primary', class: '', children: '' },
           { path: 'reports-ref', title: 'View Referal Report', icon: 'fa-solid fa-eye ', class: '', children: '' },
         ] 
       
@@ -139,7 +139,7 @@ export class SidebarComponent implements OnInit {
       id:16,
       path: '/uninstalls', title: 'App actions', icon: 'fa-solid fa-gear', class: '', children: [
         { path: '/uninstalls', title: 'View uninstalls', icon: 'fa-solid fa-trash-can', class: '' },
-        // { path: '/driver-visibility-history', title: 'Driver Visibility History', icon: 'fa fa-eye', class: '' },
+        { path: '/driver-visibility-history', title: 'Driver Visibility History', icon: 'fa fa-eye', class: '' },
         { path: '/manage-settings', title: 'Manage Settings', icon: 'fa-solid fa-wrench', class: '' }
       ]
     },

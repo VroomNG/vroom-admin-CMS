@@ -72,6 +72,8 @@ export class AdminEditComponent implements OnInit {
 
   updateAdmin() {
 
+   this.showAlert = true;
+
     var editAdminForm = {
       firstname: this.admins.firstname,
       lastname: this.admins.lastname,
@@ -85,7 +87,13 @@ export class AdminEditComponent implements OnInit {
     console.log(editAdminForm)
     this.admin.updateAdmin(editAdminForm, this.adminId).subscribe({
       next: (res:any) => {
-        console.log(res)
+     if(res.code === 200){
+      this.alertMsg = 'User Updated',
+      this.alertColor = 'success'
+     } else {
+      this.alertMsg = 'Update failed!!, ERROR from Server ',
+      this.alertColor = 'danger'
+     }
       }
     })
    

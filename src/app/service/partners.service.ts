@@ -22,9 +22,20 @@ export class PartnerService {
   }
 
   getPartners(): Observable<IPartners[]>{
-    return this.http.get<IPartners[]>(`${this.baseUrl}/getAllUsers`);
+    return this.http.get<IPartners[]>(`${this.baseUrl}/partners`);
+  }
+
+  getSinglePartners(partnerId: any): Observable<IPartners[]>{
+    return this.http.get<IPartners[]>(`${this.baseUrl}/users/${partnerId}`);
+  }
+
+  deletePartner(partnerId:any) {
+    return this.http.delete(`${this.baseUrl}/users/${partnerId}`);
   }
   
+  updatePartner(editPartnerForm: object, partnerId:any) {
+    return this.http.put(`${this.baseUrl}/updateUser/${partnerId}`, editPartnerForm);
+  }
 
 }
 

@@ -5,16 +5,22 @@
                 <div class="card">
                     <div class="grid-header">
                         <div class="title">
-                            <h6>Partners</h6>
+                            <h6>All Partners</h6>
                         </div>
                         <div class="search">
-                            <span class="p-input-icon-left">
+                            <div class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <input type="text" pInputText placeholder="Search">         
-                            </span>
+                                <input type="text" pInputText placeholder="Search"
+                                [(ngModel)]="searchText"
+                                (input)="applyFilter()"
+                                >           
+                            </div>
+                            <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
+                        
                         <div class="export">
-                            <button class="button" type="submit" label="submit">
+                            <button class="button" type="submit" 
+                            label="submit"  (click)="exportExcel()">
                                 Export
                              </button>
                         </div>
@@ -37,6 +43,7 @@
                                 <th style="width:5%">EMAIL</th>
                                 <th style="width:5%">PHONE NUMBER </th>
                                 <th style="width:5%">REFERRAL CODE </th>
+                                <!-- <th style="width:5%"></th> -->
                                 <th style="width:5%">ACTION</th>
                             </tr>
                         </ng-template>
@@ -47,10 +54,11 @@
                                 <td>{{partners.email}}</td>
                                 <td>{{partners.phone_no}}</td>
                                 <td>{{partners.ref_code}}</td>
+                                <!-- <td>{{partners.holder_name}}</td> -->
                                 <td>
-                                    <!-- <div *ngIf="partners.isEditable"> -->
-                                        <i class="fa-solid fa-pencil"></i>
-                                    <!-- </div>   -->
+                                    <a routerLink="/updateUser/{{partners.id}}/edit">
+                                        <button pButton pRipple type="button" icon="fa-solid fa-pencil" class="p-button-rounded p-button-text"></button>
+                                    </a>
                                 </td>
                             </tr>
                         </ng-template>

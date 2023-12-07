@@ -33,6 +33,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 import { PartnersComponent } from '../../pages/partners/partners.component';
 import { PartnersAddComponent } from '../../pages/partners-add/partners-add.component';
+import { PartnersEditComponent } from '../../pages/partners-edit/partners-edit.component';
+
 import { DriversAddComponent } from '../../pages/drivers-add/drivers-add.component';
 import { DriversApprovedComponent } from '../../pages/drivers-approved/drivers-approved.component';
 import { DriversPendingComponent } from '../../pages/drivers-pending/drivers-pending.component';
@@ -74,7 +76,6 @@ import { SearchPipe } from 'src/app/helpers/search.pipe';
 
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
-import { CalendarModule } from 'primeng/calendar';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -97,7 +98,6 @@ import { CalendarModule } from 'primeng/calendar';
     InputNumberModule,
     CheckboxModule,
     DialogModule,
-    CalendarModule
     
     
   ],
@@ -115,6 +115,7 @@ import { CalendarModule } from 'primeng/calendar';
     VehicleAddComponent,
     PartnersComponent,
     PartnersAddComponent,
+    PartnersEditComponent,
     DriversAddComponent,
     DriversApprovedComponent,
     DriversPendingComponent,

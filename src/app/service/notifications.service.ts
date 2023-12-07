@@ -19,8 +19,8 @@ export class NotificationService {
   addNotify(addNotifyValue:any){
     return this.http.post(`${this.baseUrl}/api/v1/addNoteSchedule`, addNotifyValue)
   }
+ 
 }
-
 
 // import { Injectable } from '@angular/core';
 // import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';

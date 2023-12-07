@@ -8,13 +8,19 @@
                             <h6>UnApproved Drivers</h6>
                         </div>
                         <div class="search">
-                            <span class="p-input-icon-left">
+                            <div class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <input type="text" pInputText placeholder="Search">         
-                            </span>
+                                <input type="text" pInputText placeholder="Search"
+                                [(ngModel)]="searchText"
+                                (input)="applyFilter()"
+                                >           
+                            </div>
+                            <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
+                        
                         <div class="export">
-                            <button class="button" type="submit" label="submit">
+                            <button class="button" type="submit" 
+                            label="submit"  (click)="exportExcel()">
                                 Export
                              </button>
                         </div>
@@ -46,22 +52,19 @@
                                 <th style="width:5%">ONLINE STATUS </th>
                                 <th style="width:5%">LAST TRIP DATE </th>
                                 <th style="width:5%">ACTION </th>     
-                                <th style="width:5%">INACTIVE </th>     
-                                <th style="width:5%">NOTIFY</th>
+                                <!-- <th style="width:5%">INACTIVE </th>     
+                                <th style="width:5%">NOTIFY</th> -->
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-pending>
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px ">
                                 <td> DRV00{{ pending.id }}</td>
                                 <td>{{pending.firstname}} {{pending.lastname}}</td>
-                                <td>
+                                <td class="city_row">
                                     <div *ngIf="pending.city !== null">
-                                        {{pending.city}}
+                                        {{ pending.city.length > 5 ? pending.city.slice(0, 10) + '...' : pending.city }}
                                     </div>
-                                    <div *ngIf="pending.city === null">
-                                        Not specified
-                                    </div>
-                                    <div *ngIf="pending.city == '' ">
+                                    <div *ngIf="pending.city === null || pending.city === '' ">
                                         Not specified
                                     </div>
                                 </td>
@@ -101,12 +104,16 @@
                                         not recorded
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="d-flex justify-content-center ">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </div>  
+                                <td class="action">
+                                    <span class="edit">
+                                        <div class="flex align-items-center justify-content-center gap-2">
+                                           <a routerLink="/drivers/{{pending.id}}/edit">
+                                            <button pButton pRipple type="button" icon="fa-solid fa-pencil" class="p-button-rounded p-button-text"></button>
+                                           </a>
+                                        </div>
+                                    </span>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <div class="d-flex justify-content-center ">
                                          <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
                                     </div>  
@@ -115,7 +122,7 @@
                                     <div class="d-flex justify-content-center ">
                                          <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
                                     </div>  
-                                </td>
+                                </td> -->
                             </tr>
                         </ng-template>
                         

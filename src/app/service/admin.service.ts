@@ -28,6 +28,7 @@ export class AdminService {
     // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
     return this.http.put(`${this.baseUrl}/updateUser/${adminId}`, editAdminForm);
   }
+
   deleteAdmin(adminId:any) {
     // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
     return this.http.delete(`${this.baseUrl}/users/${adminId}`);
@@ -44,6 +45,8 @@ export class AdminService {
   getAccessTrail(): Observable<IAccessTrail[]>{
     return this.http.get<IAccessTrail[]>(`${this.baseUrl}/getAccessLog`);
   }
+
+  
 
 
 }
