@@ -39,6 +39,8 @@ import { DriversAddComponent } from '../../pages/drivers-add/drivers-add.compone
 import { DriversApprovedComponent } from '../../pages/drivers-approved/drivers-approved.component';
 import { DriversPendingComponent } from '../../pages/drivers-pending/drivers-pending.component';
 import { DriversRejectedComponent } from '../../pages/drivers-rejected/drivers-rejected.component';
+import { DriversEditComponent } from 'src/app/pages/drivers-edit/drivers-edit.component';
+
 import { RidersComponent } from '../../pages/riders/riders.component';
 import { RidersAddComponent } from '../../pages/riders-add/riders-add.component';
 import { TripsComponent } from '../../pages/trips/trips.component';
@@ -151,6 +153,7 @@ import { DialogModule } from 'primeng/dialog';
     LoaderComponent,
     VrDropdownComponent,
     VehicleEditComponent,
+    DriversEditComponent,
     SearchPipe
   ]
 })

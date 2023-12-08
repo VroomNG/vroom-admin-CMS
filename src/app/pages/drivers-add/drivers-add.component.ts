@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators, } from '@angular/forms';
 import { DriversService } from 'src/app/service/driver.service';
+
 interface City {
   name: string;
   code: string;
 }
+
 @Component({
   selector: 'app-drivers-add',
   templateUrl: './drivers-add.component.html',

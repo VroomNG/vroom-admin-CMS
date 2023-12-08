@@ -29,11 +29,26 @@ export class DriversService {
     return this.http.get<IPending[]>(`${this.baseUrl}/api/v1/pendingDriver`)
 
   }
+
+  updateDriver(editDriverForm: object, driverId:any) {
+    // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
+    return this.http.put(`${this.baseUrl}/updateUser/${driverId}`, editDriverForm);
+  }
+
+  deleteDriver(driverId:any) {
+    // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
+    return this.http.delete(`${this.baseUrl}/users/${driverId}`);
+  }
+
   getRejected(): Observable<IRejected[]>{
     return this.http.get<IRejected[]>(`${this.baseUrl}/api/v1/pendingDriver`)
   }
   getDriversRatings(): Observable<IRatings_D[]>{
     return this.http.get<IRatings_D[]>(`${this.baseUrl}/api/v1/driverReview/${this.user}`);
+  }
+
+  getSingleDriver(driverId: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/users/${driverId}`);
   }
 
 }
