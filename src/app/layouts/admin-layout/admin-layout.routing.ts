@@ -22,8 +22,10 @@ import { DriversAddComponent } from '../../pages/drivers-add/drivers-add.compone
 import { DriversApprovedComponent } from '../../pages/drivers-approved/drivers-approved.component';
 import { DriversPendingComponent } from '../../pages/drivers-pending/drivers-pending.component';
 import { DriversRejectedComponent } from '../../pages/drivers-rejected/drivers-rejected.component';
+
 import { RidersComponent } from '../../pages/riders/riders.component';
 import { RidersAddComponent } from '../../pages/riders-add/riders-add.component';
+import { RidersEditComponent } from 'src/app/pages/riders-edit/riders-edit.component';
 import { TripsComponent } from '../../pages/trips/trips.component';
 import { TripsUpcomingComponent } from '../../pages/trips-upcoming/trips-upcoming.component';
 import { TripsPastComponent } from '../../pages/trips-past/trips-past.component';
@@ -80,6 +82,8 @@ export const AdminLayoutRoutes: Routes = [
 
     { path: 'add-riders', component: RidersAddComponent, canActivate: [AuthClassGuard]},
     { path: 'view-riders', component: RidersComponent, canActivate: [AuthClassGuard]},
+    { path: 'riders/:id/edit', component: RidersEditComponent, canActivate: [AuthClassGuard]},
+
     { path: 'trips', component: TripsComponent, canActivate: [AuthClassGuard]},
     { path: 'Ongoing-trips', component: TripsUpcomingComponent, canActivate: [AuthClassGuard]},
     { path: 'past-trips', component: TripsPastComponent, canActivate: [AuthClassGuard]},

@@ -5,16 +5,22 @@
                 <div class="card">
                     <div class="grid-header">
                         <div class="title">
-                            <h6>View Riders</h6>
+                            <h6>All Riders</h6>
                         </div>
                         <div class="search">
-                            <span class="p-input-icon-left">
+                            <div class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <input type="text" pInputText placeholder="Search">         
-                            </span>
+                                <input type="text" pInputText placeholder="Search"
+                                [(ngModel)]="searchText"
+                                (input)="applyFilter()"
+                                >           
+                            </div>
+                            <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
+                        
                         <div class="export">
-                            <button class="button" type="submit" label="submit">
+                            <button class="button" type="submit" 
+                            label="submit"  (click)="exportExcel()">
                                 Export
                              </button>
                         </div>
@@ -41,8 +47,8 @@
                                 <th style="width:10%">WALLET</th>
                                 <th style="width:25%">LAST TRIP DATE</th>
                                 <th style="width:5%">ACTION </th>
-                                <th style="width:5%">BLOCK </th>
-                                <th style="width:5%">NOTIFY </th>
+                                <!-- <th style="width:5%">BLOCK </th>
+                                <th style="width:5%">NOTIFY </th> -->
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-riders>
@@ -71,7 +77,15 @@
                                     </div>
                                     
                                 </td>       
-                                <td><i class="fa-solid fa-pencil"></i></td>
+                                <td class="action">
+                                    <span class="edit">
+                                        <div class="flex align-items-center justify-content-center gap-2">
+                                           <a routerLink="/riders/{{riders.id}}/edit">
+                                            <button pButton pRipple type="button" icon="fa-solid fa-pencil" class="p-button-rounded p-button-text"></button>
+                                           </a>
+                                        </div>
+                                    </span>
+                                </td>
                             </tr>
                         </ng-template>
                         
