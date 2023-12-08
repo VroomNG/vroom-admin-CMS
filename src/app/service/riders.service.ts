@@ -16,8 +16,21 @@ export class RiderService {
   addRiders(addRiders:any){
     return this.http.post(`${this.baseUrl}/newUserEntry`, addRiders)
   }
-  getRiders(): Observable<IRiders[]>{
+
+  updateRider(editRiderForm: object, riderId:any) {
+    return this.http.put(`${this.baseUrl}/updateUser/${riderId}`, editRiderForm);
+  }
+
+  deleteRider(riderId:any) {
+    return this.http.delete(`${this.baseUrl}/users/${riderId}`);
+  }
+
+  getRiders():Observable<IRiders[]>{
     return this.http.get<IRiders[]>(`${this.baseUrl}/getAllUsers`);
+  }
+
+  getSingleRider(riderId: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/users/${riderId}`);
   }
 
   getRidersRatings(): Observable<IRatings_R[]>{

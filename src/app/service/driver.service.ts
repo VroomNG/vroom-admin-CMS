@@ -27,16 +27,13 @@ export class DriversService {
 
   getPending(): Observable<IPending[]>{
     return this.http.get<IPending[]>(`${this.baseUrl}/api/v1/pendingDriver`)
-
   }
 
   updateDriver(editDriverForm: object, driverId:any) {
-    // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
     return this.http.put(`${this.baseUrl}/updateUser/${driverId}`, editDriverForm);
   }
 
   deleteDriver(driverId:any) {
-    // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
     return this.http.delete(`${this.baseUrl}/users/${driverId}`);
   }
 

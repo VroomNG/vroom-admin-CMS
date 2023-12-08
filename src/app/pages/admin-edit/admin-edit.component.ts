@@ -79,7 +79,7 @@ export class AdminEditComponent implements OnInit {
       lastname: this.admins.lastname,
       email: this.admins.email,
       phone_no: this.admins.Phone_no,
-      password: this.admins.password,
+      // password: this.admins.password,
       city: this.admins.city,
       user_type: this.admins.user_type,
     }

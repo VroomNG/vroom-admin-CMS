@@ -43,6 +43,8 @@ import { DriversEditComponent } from 'src/app/pages/drivers-edit/drivers-edit.co
 
 import { RidersComponent } from '../../pages/riders/riders.component';
 import { RidersAddComponent } from '../../pages/riders-add/riders-add.component';
+import { RidersEditComponent } from 'src/app/pages/riders-edit/riders-edit.component';
+
 import { TripsComponent } from '../../pages/trips/trips.component';
 import { TripsUpcomingComponent } from '../../pages/trips-upcoming/trips-upcoming.component';
 import { TripsPastComponent } from '../../pages/trips-past/trips-past.component';
@@ -154,6 +156,7 @@ import { DialogModule } from 'primeng/dialog';
     VrDropdownComponent,
     VehicleEditComponent,
     DriversEditComponent,
+    RidersEditComponent,
     SearchPipe
   ]
 })

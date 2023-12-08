@@ -4,7 +4,7 @@ import { RiderService } from 'src/app/service/riders.service';
 
 interface City {
   name: string;
-  code: string;
+  // code: string;
 }
 
 @Component({
@@ -24,11 +24,14 @@ export class RidersAddComponent {
   }
   ngOnInit(){
     this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
+      { name: 'Abia' },
+      { name: 'Enugu' },
+      { name: 'Bauchi' },
+      { name: 'Calabar' },
+      { name: 'Uyo' },
+      { name: 'Port Harcourt' },
+      { name: 'Abuja' },
+      { name: 'Lagos'},
   ];
 }
 // functions
@@ -41,6 +44,14 @@ phone_no = new FormControl('',[Validators.required, Validators.minLength(3)]);
 password = new FormControl('', [Validators.required, Validators.minLength(3)]);
 user_type = new FormControl('1',[Validators.required, Validators.minLength(3)]);
 city = new FormControl('',[Validators.required, Validators.minLength(3)]);
+balance = new FormControl('',[Validators.required, Validators.minLength(0)]);
+ref_by = new FormControl('SAMUELD1122',[Validators.required, Validators.minLength(0)]);
+profile_url = new FormControl('https://res.cloudinary.com/xenxei46/image/upload/v1682686741/boy_rexp5y.png',[Validators.required, Validators.minLength(0)]);
+device_token = new FormControl('ertyu1',[Validators.required, Validators.minLength(0)]);
+device_type = new FormControl('1',[Validators.required, Validators.minLength(0)]);
+ride_check = new FormControl('1',[Validators.required, Validators.minLength(0)]);
+country_code = new FormControl('NG',[Validators.required, Validators.minLength(0)]);
+country_dailing_code = new FormControl('+234',[Validators.required, Validators.minLength(0)]);
 
 // Grouped Form
 addRiders = new FormGroup({
@@ -50,8 +61,18 @@ addRiders = new FormGroup({
   phone_no: this.phone_no,
   password: this.password,
   user_type: this.user_type,
-  city: this.city
+  city: this.city,
+  balane: this.balance,
+  ref_by: this.ref_by,
+  profile_url: this.profile_url,
+  device_token: this.device_token,
+  device_type: this.device_type,
+  ride_check: this.ride_check,
+  country_code: this.country_code,
+  country_dailing_code: this.country_dailing_code
+
 })
+
 onSubmit(){
   this.showAlert = true
   setTimeout(() => {
@@ -64,10 +85,10 @@ onSubmit(){
       (res:any) => {
        console.log(res)
        if(res.code == 200){
-        this.alertMsg = 'Vehicle successfully added';
+        this.alertMsg = res.message,
         this.alertColor = "success"
        } else {
-        this.alertMsg = 'something went wrong check connectivity and try again';
+        this.alertMsg = res.message,
         this.alertColor = 'danger'
        }
        } 
