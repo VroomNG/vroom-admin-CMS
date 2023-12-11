@@ -1,7 +1,8 @@
 <app-vr-alert *ngIf="showAlert" [color]="alertColor">
     {{ alertMsg }}
 </app-vr-alert>
-<div class="main-container">
+<app-loader *ngIf="!riders"></app-loader>
+<div class="main-container" *ngIf="riders">
     <div class="header">
         <div class="add-admin-form">
            <div class="card">

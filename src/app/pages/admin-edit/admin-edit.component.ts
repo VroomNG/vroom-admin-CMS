@@ -77,7 +77,7 @@ export class AdminEditComponent implements OnInit {
     var editAdminForm = {
       firstname: this.admins.firstname,
       lastname: this.admins.lastname,
-      email: this.admins.email,
+      // email: this.admins.email,
       phone_no: this.admins.Phone_no,
       // password: this.admins.password,
       city: this.admins.city,

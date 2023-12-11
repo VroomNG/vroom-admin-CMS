@@ -59,7 +59,7 @@ export class RidersEditComponent implements OnInit {
       next: (res:any) => {
         console.log(res)
         if(res.code === 200){
-        this.alertMsg = res.message
+        this.alertMsg = 'User Updated'
         this.alertColor = 'success'
       }else {
         this.alertMsg = res.message
@@ -71,19 +71,22 @@ export class RidersEditComponent implements OnInit {
   }
   
   deleteRider() {
-      window.alert('are you sure?');
+      this.showAlert === true;
+      window.alert('are you sure?')
       const riderId = this.riderId;
         this.Rider.deleteRider(riderId).subscribe((res:any) => {
           console.log(res);
   
           const response = res.data;
           if(res.code == 200){
-           this.alertMsg = res.message
+            window.alert('successfully deleted')
+           this.alertMsg = 'Successfully deleted'
            this.alertColor = 'success'
-            this.router.navigate(['/dashboard']);
+            // this.router.navigate(['/dashboard']);
           } else {
+            window.alert('failed to delete')
             this.alertMsg = res.message
-           this.alertColor = 'success'
+           this.alertColor = 'danger'
           }
   
         })
