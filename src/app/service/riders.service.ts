@@ -24,6 +24,9 @@ export class RiderService {
   deleteRider(riderId:any) {
     return this.http.delete(`${this.baseUrl}/users/${riderId}`);
   }
+  deleteRiderReview(riderId:any) {
+    return this.http.delete(`${this.baseUrl}/api/v1/deletedriverReview/${riderId}`);
+  }
 
   getRiders():Observable<IRiders[]>{
     return this.http.get<IRiders[]>(`${this.baseUrl}/getAllUsers`);

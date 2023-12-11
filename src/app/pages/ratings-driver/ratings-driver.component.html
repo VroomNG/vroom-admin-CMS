@@ -5,16 +5,22 @@
                 <div class="card">
                     <div class="grid-header">
                         <div class="title">
-                            <h6>Trip Reviews From Drivers</h6>
+                            <h6>Trips Review from Drivers</h6>
                         </div>
                         <div class="search">
-                            <span class="p-input-icon-left">
+                            <div class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <input type="text" pInputText placeholder="Search">         
-                            </span>
+                                <input type="text" pInputText placeholder="Search"
+                                [(ngModel)]="searchText"
+                                (input)="applyFilter()"
+                                >           
+                            </div>
+                            <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
                         </div>
+                        
                         <div class="export">
-                            <button class="button" type="submit" label="submit">
+                            <button class="button" type="submit" 
+                            label="submit"  (click)="exportExcel()">
                                 Export
                              </button>
                         </div>
@@ -57,7 +63,7 @@
                                        No name
                                     </div> 
                                  </td>
-                                <td>{{ drivers.rating }}</td>
+                               
                                 <td>
                                    <div *ngIf="drivers.riderName">
                                      {{ drivers.riderName }}
@@ -69,6 +75,7 @@
                                       No name
                                    </div> 
                                 </td>
+                                <td>{{ drivers.rating }}</td>
                                
                                 <td>
                                     <div *ngIf="drivers.comments">
@@ -86,7 +93,7 @@
                                 <td>{{ drivers.updated_at }}</td>
                                 <td>
                                     
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteDriver(drivers)">Delete</button>
                                   
                                 </td>
                             </tr>

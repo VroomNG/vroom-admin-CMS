@@ -36,6 +36,9 @@ export class DriversService {
   deleteDriver(driverId:any) {
     return this.http.delete(`${this.baseUrl}/users/${driverId}`);
   }
+  deleteDriverReview(driverId:any) {
+    return this.http.delete(`${this.baseUrl}/api/v1/deletedriverReview/${driverId}`);
+  }
 
   getRejected(): Observable<IRejected[]>{
     return this.http.get<IRejected[]>(`${this.baseUrl}/api/v1/pendingDriver`)
