@@ -106,3 +106,101 @@ th {
     background-color: #1fbffd ;
 }
 
+.trip-details {
+    width: 60rem;
+    height: 60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trip-details .cont {
+    width: 95%;
+    height: 98%;
+    // background-color: rgb(142, 151, 142);
+}
+
+.details1 {
+    // background-color: red;
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+.details2 {
+    // background-color: red;
+    // display: flex;
+    width: 100%;
+    height: 50%;
+}
+.box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.box-card {
+    width: 95%;
+    height: 60%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 8px;
+}
+.box-card-1 {
+    width: 95%;
+    height: 30%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-card-2 {
+    width: 95%;
+    height: 60%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.box-1 {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+.box-2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.box-card-3 {
+    width: 100%;
+    height: 95%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-cont {
+    width: 95%;
+    height: 90%;
+    // background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border: 2px solid grey;
+}
+// table {
+//     border: 2px solid grey;
+// }
+
+

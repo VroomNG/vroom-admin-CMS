@@ -9,9 +9,11 @@ import { FormControl } from '@angular/forms';
 })
 export class VRInputComponent implements OnInit {
   @Input() control: FormControl = new FormControl()
-    @Input() type = ''
-    @Input() placeholder = '';
-    @Input() format = ''
+  @Input() type = ''
+  @Input() placeholder = '';
+  @Input() format = ''
+  @Input() value = ''
+  
     
   constructor() { }
 

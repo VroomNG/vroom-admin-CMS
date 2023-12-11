@@ -86,3 +86,13 @@ export interface IAllTrips {
   current_lat: any
   current_long: any
 }
+
+export interface ITripSet {
+  threshold_amount: number
+  max_days: number
+  radius: number
+  map_size: number
+  free_wait_time: number
+  mst_per_min_rate: number
+  poll_interval: number
+}
