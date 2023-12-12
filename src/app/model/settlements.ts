@@ -27,3 +27,14 @@ export interface Iwithdraw_Request {
     details_history: boolean,
     
 }
+
+export interface IPartnerWRQ {
+  id: number
+  firstname: string
+  lastname: string
+  ref_code: string
+  amount: number
+  withdrawal_time: string
+  paid: number
+  pay_date: string
+}

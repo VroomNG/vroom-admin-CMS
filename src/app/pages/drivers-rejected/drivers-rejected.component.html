@@ -74,7 +74,7 @@
                                 <td>{{rejected.vehicle_type}}</td>
                                 <td>{{rejected.email}}</td>
                                 <td>{{rejected.phone_no}}</td>
-                                <td>{{rejected.created_at}}</td>
+                                <td>{{rejected.created_at  | date:'short':'UTC'}}</td>
                                 <td>{{rejected.balance}}</td>
                                 <td>
                                     <div *ngIf="rejected.driver_status == 1">

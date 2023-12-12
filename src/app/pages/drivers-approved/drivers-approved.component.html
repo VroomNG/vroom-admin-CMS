@@ -74,7 +74,7 @@
                                 <td>{{app_drivers.vehicle_type}}</td>
                                 <td>{{app_drivers.email}}</td>
                                 <td>{{app_drivers.phone_no}}</td>
-                                <td>{{app_drivers.created_at}}</td>
+                                <td>{{app_drivers.created_at  | date:'short':'UTC'  }}</td>
                                 <td>{{app_drivers.balance}}</td>
                                 <td>
                                     <div *ngIf="app_drivers.driver_status == 1">
@@ -102,7 +102,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    {{app_drivers.last_tripDate}}
+                                    {{app_drivers.last_tripDate  | date:'short':'UTC'}}
                                     <div *ngIf="app_drivers.last_tripDate == null">
                                         not recorded
                                     </div>

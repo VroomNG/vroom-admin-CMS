@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from 'src/app/service/map.service';
+import { IMapList } from 'src/app/model/maps';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 declare const google: any;
 
 @Component({
@@ -8,7 +11,11 @@ declare const google: any;
 })
 export class MapsComponent implements OnInit {
 
-  constructor() { }
+  maplist!: IMapList | any;
+
+  constructor(
+    private MapService: MapService
+  ){}
 
   ngOnInit() {
     let map = document.getElementById('map-canvas');
@@ -48,9 +55,12 @@ export class MapsComponent implements OnInit {
         content: contentString
     });
 
-    // google.maps.event.addListener(marker, 'click', function() {
-    //     infowindow.open(map, marker);
-    // });
+    this.MapService.getMapList().subscribe(
+      (res:any)=> {
+        console.log(res.data);
+        this.maplist = res.data[0]
+      }
+    )
   }
 
 }

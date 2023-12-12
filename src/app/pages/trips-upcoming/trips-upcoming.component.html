@@ -55,7 +55,7 @@
                                     </div>
                                 </td>
                                 <td>VRM {{ trips.id }}</td>
-                                <td> {{ trips.utc_trip_datetime }}</td>
+                                <td> {{ trips.utc_trip_datetime  | date:'short':'UTC' }}</td>
                                 <td>{{ trips.driver_firstname }}</td>
                                 <td>{{ trips.firstname }}  {{ trips.lastname }}</td>
                                 <td>{{ trips.trip_amount }}</td>

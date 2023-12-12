@@ -88,7 +88,7 @@
                                     
                                 </td>
                                 <td>{{ riders.phone_no }}</td>
-                                <td>{{ riders.updated_at }}</td>
+                                <td>{{ riders.updated_at  | date:'short':'UTC' }}</td>
                                 <td>
                                     
                                         <button type="button" class="btn btn-danger" (click)="deleteRider(riders)">Delete</button>

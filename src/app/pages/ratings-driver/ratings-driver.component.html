@@ -90,7 +90,7 @@
                                     
                                 </td>
                                 <td>{{ drivers.phone_no }}</td>
-                                <td>{{ drivers.updated_at }}</td>
+                                <td>{{ drivers.updated_at  | date:'short':'UTC' }}</td>
                                 <td>
                                     
                                     <button type="button" class="btn btn-danger" (click)="deleteDriver(drivers)">Delete</button>

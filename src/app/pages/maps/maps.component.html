@@ -2,25 +2,90 @@
     <div class="container">
       <div class="header  pb-4 pt-5 pt-md-4" >
       <div class="container-fluid">
-        <div class="header-body">
+        <div class="header-body" *ngIf="maplist">
           <!-- Card stats -->
           <div class="row">
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
+                <div class="card-body" >
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">In Trip Drivers</h5>
+                      <span class="h2 font-weight-bold mb-0">{{maplist.InTrip}}</span>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                        <i class="fas fa-chart-bar"></i>
+                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                        <i class="fa-solid fa-car"></i>
+                        
                       </div>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 98%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" >
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Online Drivers</h5>
+                      <span class="h2 font-weight-bold mb-0">{{maplist.online_drivers}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                        <i class="fa-solid fa-road"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 50%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" >
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0"> Awaiting Ride</h5>
+                      <span class="h2 font-weight-bold mb-0">{{maplist.OnPickUp
+                      }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 0%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" >
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0"> Drivers Arrived</h5>
+                      <span class="h2 font-weight-bold mb-0">{{maplist.Arrived }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                        <i class="fa-solid fa-plane-arrival"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 0%</span>
                     <span class="text-nowrap">Since last month</span>
                   </p>
                 </div>

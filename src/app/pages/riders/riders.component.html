@@ -66,11 +66,11 @@
                                     {{ riders.phone_no }}
                                 </div>
                                </td>
-                                <td>{{ riders.created_at }}</td>
+                                <td>{{ riders.created_at  | date:'short':'UTC' }}</td>
                                 <td>{{ riders.balance }}</td>
                                 <td>
                                     <div *ngIf="riders.last_update">
-                                        {{ riders.last_update }}
+                                        {{ riders.last_update  | date:'short':'UTC' }}
                                     </div>
                                     <div *ngIf="riders.last_update == null || '' ">
                                         No records

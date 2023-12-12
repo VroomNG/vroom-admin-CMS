@@ -71,7 +71,7 @@
                                 <td>{{pending.vehicle_type}}</td>
                                 <td>{{pending.email}}</td>
                                 <td>{{pending.phone_no}}</td>
-                                <td>{{pending.created_at}}</td>
+                                <td>{{pending.created_at  | date:'short':'UTC'}}</td>
                                 <td>{{pending.balance}}</td>
                                 <td>
                                     <div *ngIf="pending.driver_status == 1">
@@ -99,7 +99,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    {{pending.last_tripDate}}
+                                    {{pending.last_tripDate  | date:'short':'UTC'}}
                                     <div *ngIf="pending.last_tripDate == null">
                                         not recorded
                                     </div>
