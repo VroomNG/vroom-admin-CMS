@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
       path: '/dashboard', title: 'Dashboard', icon: 'fa fa-store', class: '', children: '' },
     {
       id:1,
-      path: '/', title: 'Admin', icon: 'fa-solid fa-user-tie', class: '', 
+      path: '/view-admin', title: 'Admin', icon: 'fa-solid fa-user-tie', class: '', 
       children: [
         { path: 'add-admin', title: 'Add Admin', icon: 'fa fa-user-plus', class: '' },
         { path: 'view-admin', title: 'View Admin', icon: 'fa fa-eye', class: '' },
@@ -39,21 +39,21 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:2,
-      path: '/', title: 'Vehicle Type', icon: 'fa-solid fa-truck-monster text-primary', class: '', children: [
+      path: '/view-vehicle', title: 'Vehicle Type', icon: 'fa-solid fa-truck-monster text-primary', class: '', children: [
         { path: 'add-vehicle', title: 'Add Vehicle type', icon: 'fa fa-car-side text-primary', class: '', children: '' },
         { path: 'view-vehicle', title: 'View Vehicle Type', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
     },
     {
       id:3,
-      path: '/partners', title: 'partners', icon: ' fa-solid fa-handshake text-primary', class: '', children: [
+      path: '/view-partners', title: 'partners', icon: ' fa-solid fa-handshake text-primary', class: '', children: [
         { path: 'add-partners', title: 'Add Partners', icon: 'fa fa-plus text-primary', class: '', children: '' },
         { path: '/view-partners', title: 'View Partners', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
     },
     {
       id:4,
-      path: '/driver', title: 'Driver', icon: 'fa-solid fa-car text-primary', class: '', children: [
+      path: '/approved-drivers', title: 'Driver', icon: 'fa-solid fa-car text-primary', class: '', children: [
         { path: 'add-drivers', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', children: '' },
         { path: 'approved-drivers', title: 'Approved Drivers', icon: 'fa fa-eye text-primary', class: '', children: '' },
         { path: 'unapproved-drivers', title: 'Pending Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
@@ -62,7 +62,7 @@ export class SidebarComponent implements OnInit {
     },
     {
       id:5,
-      path: '/rider', title: 'Rider', icon: 'fa-solid fa-motorcycle fa-shake text-primary', class: '', children: [
+      path: '/view-riders', title: 'Rider', icon: 'fa-solid fa-motorcycle text-primary', class: '', children: [
         { path: 'add-riders', title: 'Add Rider', icon: 'fa fa-plus-square text-primary', class: '', children: '' },
         { path: 'view-riders', title: 'View Riders', icon: 'fa fa-eye text-primary', class: '', children: '' },
       ]
@@ -100,7 +100,7 @@ export class SidebarComponent implements OnInit {
       path: '/user-profile', title: 'User profile', icon: 'fa-solid fa-user text-primary', class: '', children: '' },
       {
         id:11,
-        path: '/', title: 'Notification Centre', icon: 'fa-solid fa-bell fa-shake', class: '', children: [
+        path: '/notifications', title: 'Notification Centre', icon: 'fa-solid fa-bell fa-shake', class: '', children: [
           { path: '/add-notification', title: 'Add Schedule', icon: 'fa fa-user-plus text-primary', class: '', children: '' },
           { path: '/notifications', title: 'View Schedule', icon: 'fa fa-eye ', class: '', children: '' },
         ]
@@ -113,20 +113,20 @@ export class SidebarComponent implements OnInit {
       //   ]
       // },
       { id:13,
-        path: '/reports', title: 'Reports', icon: 'fa-solid fa-chart-pie text-primary', class: '', 
+        path: '/reports-ref', title: 'Reports', icon: 'fa-solid fa-chart-pie text-primary', class: '', 
         children:[ 
-          { path: 'reports', title: 'View Report', icon: 'fa-regular fa-folder-open text-primary', class: '', children: '' },
+          // { path: 'reports', title: 'View Report', icon: 'fa-regular fa-folder-open text-primary', class: '', children: '' },
           { path: 'reports-ref', title: 'View Referal Report', icon: 'fa-solid fa-eye ', class: '', children: '' },
         ] 
       
       },
-    //   {
-    //   id:14,
-    //   path: '/', title: 'Surge Charge', icon: 'fa-solid fa-face-smile', class: '', children: [
-    //     { path: '/add-charge', title: 'Add Surge Charge', icon: 'fa fa-user-plus', class: '' },
-    //     { path: '/view-edit-charge', title: 'View & Edit', icon: 'fa fa-eye', class: '' }
-    //   ]
-    // },
+      {
+      id:14,
+      path: '/add-charge', title: 'Surge Charge', icon: 'fa-solid fa-face-smile', class: '', children: [
+        { path: '/add-charge', title: 'Add Surge Charge', icon: 'fa fa-user-plus', class: '' },
+        { path: '/view-edit-charge', title: 'View & Edit', icon: 'fa fa-eye', class: '' }
+      ]
+    },
     {
       id:15,
       path: '/add-discount', title: 'Discount', icon: 'fa-solid fa-percent', class: '', children: [
