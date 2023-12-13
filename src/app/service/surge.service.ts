@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
-import { ISurge } from '../model/surge';
-
-
+import { ISurge, ISurgeParams } from '../model/surge';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +16,14 @@ export class SurgeService {
   };  
 
   private baseUrl = environment.serverUrl
-
   constructor(public http: HttpClient) { }
 
   addSurge(surgeForm:any){
     return this.http.post(`${this.baseUrl}/api/v1/surge`, surgeForm)
   }
   
-  updateSurge(editSurgeForm: object, surgeId:any) {
-    return this.http.put(`${this.baseUrl}/api/v1/updateSurgeParameters/${surgeId}`, editSurgeForm);
+  updateSurgeParams(surgeForm: any) {
+    return this.http.put(`${this.baseUrl}/api/v1/updateSurgeParameters/`, surgeForm);
   }
 
   deleteSurge(surgeId:any) {
@@ -36,12 +33,11 @@ export class SurgeService {
   getSurge(): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/api/v1/surge`);
   }
-
-  getSingleSurge(surgeId: any): Observable<ISurge[]>{
-    return this.http.get<ISurge[]>(`${this.baseUrl}/api/v1/surge/${surgeId}`);
-  }
-  getSurgeParams(surgeId: any): Observable<ISurge[]>{
-    return this.http.get<ISurge[]>(`${this.baseUrl}/api/v1/surge/${surgeId}`);
+  // getSingleSurge(): Observable<ISurgeParams[]>{
+  //   return this.http.get<ISurgeParams[]>(`${this.baseUrl}/api/v1/getSurgeParameters`);
+  // }
+  getSurgeParams(): Observable<ISurgeParams[]>{
+    return this.http.get<ISurgeParams[]>(`${this.baseUrl}/api/v1/getSurgeParameters`);
   } 
   
 }

@@ -46,6 +46,7 @@ import { ReportsComponent } from '../../pages/reports/reports.component';
 import { ReportsRefComponent } from '../../pages/reports-ref/reports-ref.component';
 import { SurgeChargeComponent } from '../../pages/surge-charge/surge-charge.component';
 import { SurgeAddComponent } from '../../pages/surge-add/surge-add.component';
+import { SurgeEditComponent } from 'src/app/pages/surge-edit/surge-edit.component';
 import { DiscountComponent } from '../../pages/discount/discount.component';
 import { DiscountAddComponent } from '../../pages/discount-add/discount-add.component';
 import { DiscountCodeUseComponent } from '../../pages/discount-code-use/discount-code-use.component';
@@ -54,7 +55,6 @@ import { AppActionDriverVisibilityComponent } from '../../pages/app-action-drive
 import { AppActionDriverSettingsComponent } from '../../pages/app-action-driver-settings/app-action-driver-settings.component';
 import { AuthClassGuard } from 'src/app/helpers/auth-class.guard';
 import { DriversEditComponent } from 'src/app/pages/drivers-edit/drivers-edit.component';
-
 
 export const AdminLayoutRoutes: Routes = [
    
@@ -101,6 +101,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reports', component: ReportsComponent, canActivate: [AuthClassGuard]},
     { path: 'reports-ref', component: ReportsRefComponent, canActivate: [AuthClassGuard]},
     { path: 'add-charge', component: SurgeAddComponent, canActivate: [AuthClassGuard]},
+    { path: 'edit-surge', component: SurgeEditComponent, canActivate: [AuthClassGuard]},
     { path: 'view-edit-charge', component: SurgeChargeComponent, canActivate: [AuthClassGuard]},
     { path: 'add-discount', component: DiscountAddComponent,canActivate: [AuthClassGuard]},
     { path: 'view-discount', component: DiscountComponent, canActivate: [AuthClassGuard]},

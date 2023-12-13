@@ -80,6 +80,7 @@ import { SearchPipe } from 'src/app/helpers/search.pipe';
 
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
+import { SurgeEditComponent } from 'src/app/pages/surge-edit/surge-edit.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -102,8 +103,6 @@ import { DialogModule } from 'primeng/dialog';
     InputNumberModule,
     CheckboxModule,
     DialogModule,
-    
-    
   ],
   declarations: [
     DashboardComponent,
@@ -157,6 +156,7 @@ import { DialogModule } from 'primeng/dialog';
     VehicleEditComponent,
     DriversEditComponent,
     RidersEditComponent,
+    SurgeEditComponent,
     SearchPipe
   ]
 })
