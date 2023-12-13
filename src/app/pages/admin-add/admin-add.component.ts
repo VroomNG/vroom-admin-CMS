@@ -59,7 +59,6 @@ export class AdminAddComponent implements OnInit {
   ];
   
   }
-
   firstname = new FormControl('',[Validators.required, Validators.minLength(3)])
   lastname = new FormControl('',[Validators.required, Validators.minLength(3)])
   email = new FormControl('',
