@@ -1,12 +1,23 @@
+
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor() { }
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };  
+
+  private baseUrl = environment.serverUrl
+
+  constructor(public http: HttpClient) { }
 
    // response storage
    private loginResponseSubject = new BehaviorSubject<any>(null);
@@ -17,23 +28,20 @@ export class UsersService {
      console.log(response);
      const res = JSON.stringify(response)
      localStorage.setItem('userDetails',(res));
-    // const storedUserDetails = localStorage.getItem('userDetails');
-
-    // if (storedUserDetails) {
-    //   // The item exists in localStorage
-    //   const userDetails = JSON.parse(storedUserDetails);
-    //   console.log('User details found:', userDetails);
-    // } else {
-    //   // The item does not exist in localStorage
-    //   console.log('User details not found in localStorage.');
-    // }
      return response
    }
  
-   // uData = this.loginResponseSubject.getValue()
     getUserDetails() {
      const response = this.loginResponseSubject.getValue();
      console.log(response.lastname)
      return response;
    }
+
+   updateUser(updateUserForm: object, userId:any) {
+    return this.http.put(`${this.baseUrl}/updateUser/${userId}`, updateUserForm);
+  }
+  getSingleUser(userId: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/users/${userId}`);
+  }
+
 }
