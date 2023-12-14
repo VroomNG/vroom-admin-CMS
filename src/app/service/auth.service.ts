@@ -18,9 +18,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/loginadmin`, credentials); 
   }
 
-  changePassword(credentials: {old_pass: string; new_pass: string}){
-    return this.http.post(`${this.baseUrl}/changepassword/230`, credentials)
-  }
+
 
   
 

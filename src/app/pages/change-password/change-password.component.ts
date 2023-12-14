@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
+// import { AuthService } from 'src/app/service/auth.service';
 import { UsersService } from 'src/app/service/users.service';
 import {Router} from '@angular/router';
 
@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 })
 export class ChangePasswordComponent implements OnInit {
 
+  userDetails:any;
+  userId:any;
   showAlert = false;
   alertMsg = 'Please wait! we are logging you in.'
   alertColor = 'info'
@@ -21,24 +23,48 @@ export class ChangePasswordComponent implements OnInit {
     }
   
     constructor( 
-      private auth:AuthService, 
+      // private auth:AuthService, 
       public router: Router,
       private users: UsersService
       ) { }
   
-    ngOnInit(): void {
-      
-    }
-    async login(){
+      ngOnInit() {
+        window.alert('on init')
+    
+        const storedUserDetails = localStorage.getItem('userDetails');
+        
+    
+        if (storedUserDetails) {
+          // Parse the storedUserDetails JSON string to an object
+          this.userDetails = JSON.parse(storedUserDetails);
+          console.log('change pass:', this.userDetails);
+        } else {
+          console.log('User details not found in localStorage.');
+        }
+    
+        window.alert(this.userDetails.id)
+    
+        this.userId = this.userDetails.id
+        // this.UserProfile.getSingleUser(this.userDetails.id).subscribe(
+        //   (res:any)=>{
+        //     console.log(res + 'single user')
+        //     this.displayDtls = res.data
+        //   }
+        // )
+  
+        
+      }
+
+    async changePassword(){
       this.showAlert = true;
+      console.log(this.credentials)
 
       setTimeout(() => {
       this.showAlert = true
       this.alertMsg = 'Loading... If sync persists check network'
       this.alertColor = 'info'
-    try {
-      
-      this.auth.changePassword(this.credentials).subscribe( 
+     try {   
+      this.users.changePassword(this.credentials, this.userId).subscribe( 
         (res:any) => {
           console.log(res.data)
           // let {message} = res;
@@ -53,14 +79,12 @@ export class ChangePasswordComponent implements OnInit {
             this.alertColor = "success"
             const {token} = res.data;
             const data = res.data;
-            // const {firstname} = res.data;
-            
             console.log(token);
-            // localStorage.setItem('token', token)
 
-            // this.users.setLoginResponse(res.data);
-            // localStorage.setItem('firstname',  firstname)
-              this.router.navigate(['/dashboard']);
+            setTimeout(() => {
+            localStorage.clear()
+            this.router.navigate(['/login']) 
+          }, 1600)
           }
 
         }

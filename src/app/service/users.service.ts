@@ -40,8 +40,12 @@ export class UsersService {
    updateUser(updateUserForm: object, userId:any) {
     return this.http.put(`${this.baseUrl}/updateUser/${userId}`, updateUserForm);
   }
-  getSingleUser(userId: any): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/users/${userId}`);
-  }
+    getSingleUser(userId: any): Observable<any>{
+      return this.http.get<any>(`${this.baseUrl}/users/${userId}`);
+    }
+
+    changePassword(credentials: {old_pass: string; new_pass: string}, userId:any){
+      return this.http.put(`${this.baseUrl}/changepassword/${userId}`, credentials)
+    }
 
 }

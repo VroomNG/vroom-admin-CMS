@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
             this.inSubmission = false
           } 
           else if(res.code == "200"){
-            this.alertMsg = "Login Successful"
+            this.alertMsg = "Password Changed"
             this.alertColor = "success"
             const {token} = res.data;
             const data = res.data;

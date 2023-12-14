@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/users.service';
+import { Router } from '@angular/router';
 
 
 interface City {
@@ -26,7 +27,8 @@ export class UserProfileComponent implements OnInit {
   alertColor = 'primary';
 
   constructor(
-    private UserProfile:UsersService
+    private UserProfile:UsersService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -42,7 +44,7 @@ export class UserProfileComponent implements OnInit {
       console.log('User details not found in localStorage.');
     }
 
-    window.alert(this.userDetails.id)
+    // window.alert(this.userDetails.id)
 
     this.userId = this.userDetails.id
     this.UserProfile.getSingleUser(this.userDetails.id).subscribe(
@@ -91,6 +93,10 @@ export class UserProfileComponent implements OnInit {
       this.alertColor = 'success',
       this.isEdit = !this.isEdit
       this.isReadOnly = !this.isReadOnly;
+      setTimeout(() => {
+        localStorage.clear()
+        this.router.navigate(['/']) 
+      }, 1600)
       // location.reload()
      } else {
       this.alertMsg = 'Update failed!!, ERROR from Server ',
