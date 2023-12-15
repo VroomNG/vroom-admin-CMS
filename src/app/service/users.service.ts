@@ -47,5 +47,8 @@ export class UsersService {
     changePassword(credentials: {old_pass: string; new_pass: string}, userId:any){
       return this.http.put(`${this.baseUrl}/changepassword/${userId}`, credentials)
     }
+    forgotPassword(credentials: {email: any;}, userEmail:any){
+      return this.http.put(`${this.baseUrl}/forgotPassword/${userEmail}`, credentials)
+    }
 
 }

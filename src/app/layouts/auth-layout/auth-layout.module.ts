@@ -8,10 +8,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InputComponent } from '../../layouts/shared/input/input.component';
 import { AlertsComponent } from '../../layouts/shared/alerts/alerts.component';
 
-
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
+import { ForgotPasswordComponent } from 'src/app/pages/forgot-password/forgot-password.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { ChangePasswordComponent } from 'src/app/pages/change-password/change-pa
     RegisterComponent,
     InputComponent,
     AlertsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ForgotPasswordComponent
   ]
 })
 export class AuthLayoutModule { }

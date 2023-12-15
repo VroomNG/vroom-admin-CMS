@@ -25,8 +25,6 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CustomDatePipe,
-    // SurgeEditComponent,
-    // DriversEditComponent,
     // SearchPipe,
   ],
   imports: [
