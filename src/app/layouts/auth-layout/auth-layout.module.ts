@@ -12,6 +12,7 @@ import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
 import { ForgotPasswordComponent } from 'src/app/pages/forgot-password/forgot-password.component';
+import { ForgotPasswordUpdateComponent } from 'src/app/pages/forgot-password-update/forgot-password-update.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ForgotPasswordComponent } from 'src/app/pages/forgot-password/forgot-pa
     InputComponent,
     AlertsComponent,
     ChangePasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ForgotPasswordUpdateComponent 
   ]
 })
 export class AuthLayoutModule { }
