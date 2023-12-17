@@ -65,7 +65,7 @@ export class AdminAddComponent implements OnInit {
   [Validators.required,Validators.email], 
   // [this.emailTaken.validate]
   )
-  phone_no = new FormControl('', [
+  phone_no = new FormControl('+234', [
     Validators.required,
     Validators.minLength(11),
     Validators.maxLength(15)

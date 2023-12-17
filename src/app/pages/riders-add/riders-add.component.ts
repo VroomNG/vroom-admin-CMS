@@ -40,7 +40,7 @@ export class RidersAddComponent {
 firstname = new FormControl('',[Validators.required, Validators.minLength(3)]);
 lastname = new FormControl('', [Validators.required, Validators.minLength(3)]);
 email = new FormControl('', [Validators.required, Validators.minLength(3)]);
-phone_no = new FormControl('',[Validators.required, Validators.minLength(3)]);
+phone_no = new FormControl('+234',[Validators.required, Validators.minLength(3)]);
 password = new FormControl('', [Validators.required, Validators.minLength(3)]);
 user_type = new FormControl('1',[Validators.required, Validators.minLength(3)]);
 city = new FormControl('',[Validators.required, Validators.minLength(3)]);

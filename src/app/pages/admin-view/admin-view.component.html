@@ -39,10 +39,10 @@
                         <p-table *ngIf="!showLoader" 
                             [value]="admins"
                             [paginator]="true"
-                            [rows]="6"
+                            [rows]="10"
                             [showCurrentPageReport]="false"
                             [tableStyle]="{ 'min-width': '50rem' }"
-                            currentPageReportTemplate=""
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                             [rowsPerPageOptions]="[10, 25, 50]"
                         >
                             <ng-template pTemplate="header">

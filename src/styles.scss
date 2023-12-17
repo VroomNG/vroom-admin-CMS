@@ -41,7 +41,23 @@ input[_ngcontent-ng-c2520345542] {
 
 }
 
-.p-paginator  button:not(:disabled) {
+// .p-paginator button:not(:disabled) {
+//     // cursor: pointer;
+//     border-radius: 100px;
+//     // background-color: #160729;
+//     background-color: #160729;
+//     color: white;
+//     cursor: pointer;
+// }
+.p-paginator button {
+    // cursor: pointer;
+    border-radius: 100px;
+    // background-color: #a272e2;
+    // // background-color: #37c7f3;    
+    // color: white;
+    // cursor: pointer;
+}
+.p-paginator  button:hover {
     // cursor: pointer;
     border-radius: 100px;
     background-color: #160729;
