@@ -12,7 +12,7 @@
                                 <i class="pi pi-search"></i>
                                 <input type="text" pInputText placeholder="Search"
                                 [(ngModel)]="searchText"
-                                (input)="applyFilter()"
+                           
                                 >           
                             </div>
                             <button (click)="clear()" class="clr"><i class="fa-solid fa-arrows-rotate"></i></button> 
@@ -53,7 +53,7 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-riders>
                             <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px "
-                            *ngIf="riders.user_type === '1' || riders.user_type === '1'  "
+                            *ngIf=" searchText === '' || riders.firstname.toLowerCase().includes(searchText) || riders.lastname.toLowerCase().includes(searchText)   "
                             >
                                 <td>{{ riders.firstname }}</td>
                                 <td>{{ riders.lastname }}</td>

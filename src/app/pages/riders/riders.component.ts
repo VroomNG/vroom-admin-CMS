@@ -9,9 +9,9 @@ import { RiderService } from 'src/app/service/riders.service';
 })
 export class RidersComponent implements OnInit {
 
- riders!: IRiders [];
+ riders: IRiders [] = [];
  showLoader = true;
- searchText = ''
+ searchText:string = '';
 
  constructor(private Riders: RiderService ){}
 
@@ -22,22 +22,13 @@ export class RidersComponent implements OnInit {
         this.riders = res.data;
         this.showLoader = false;
       }
-
     )
     }
 
     applyFilter() {
-      const filteredAdmins = this.riders.filter((item) => {
-        // Adjust the conditions based on your filtering requirements
-        return (
-        item.firstname.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.lastname.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.email.toLowerCase().includes(this.searchText.toLowerCase()) 
-        );
-      });
-      // Update the table data with the filtered results
-      // If you are using server-side filtering, you may need to call an API here
-      this.riders = filteredAdmins;
+      this.searchText 
+      console.log(this.searchText)
+      
     }
   
     exportExcel() {

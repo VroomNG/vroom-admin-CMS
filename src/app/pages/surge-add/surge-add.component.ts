@@ -6,6 +6,11 @@ interface City {
   name: string
 }
 
+interface Option {
+  name: string,
+  charge: number
+}
+
 @Component({
   selector: 'app-surge-add',
   templateUrl: './surge-add.component.html',
@@ -16,6 +21,7 @@ export class SurgeAddComponent implements OnInit {
   inSubmission = false; 
 
   cities!: City[] |  undefined;
+  options!: Option[] |  undefined;
   // userType!: Users[] |  undefined;
 
   showAlert = false;
@@ -43,22 +49,28 @@ export class SurgeAddComponent implements OnInit {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
+  this.options = [
+    {name:'Amount', charge: 1},
+    {name:'Multiplier', charge:2},
+  ]
+ 
+  
   
   }
 
   // generated_run_date = new FormControl('',[Validators.required, Validators.minLength(0)] ) 
   charge = new FormControl('',[Validators.required, Validators.minLength(0)]); 
-  surgeSelected = new FormControl(null,[Validators.required, Validators.minLength(0)]);
+  surgeSelected = new FormControl(1,[Validators.required, Validators.minLength(0)]);
   fromDate = new FormControl(null,[Validators.required, Validators.minLength(0)]);
   utcToDateTime = new FormControl(null,[Validators.required, Validators.minLength(0)]);
   startTime = new FormControl('',[Validators.required, Validators.minLength(0)]);
   endTime = new FormControl('',[Validators.required, Validators.minLength(0)]);
   utcStartDateTime = new FormControl(null,[Validators.required, Validators.minLength(0)]);
-  chargeOption = new FormControl('',[Validators.required, Validators.minLength(0)]);
+  chargeOption = new FormControl(null,[Validators.required, Validators.minLength(0)]);
   city = new FormControl('',[Validators.required, Validators.minLength(0)]);
   ratio = new FormControl('',[Validators.required, Validators.minLength(0)]);
-  latitude = new FormControl(null,[Validators.required, Validators.minLength(0)]);
-  longitude = new FormControl(null,[Validators.required, Validators.minLength(0)]); 
+  latitude = new FormControl('6.5244',[Validators.required, Validators.minLength(0)]);
+  longitude = new FormControl('3.3792',[Validators.required, Validators.minLength(0)]); 
 
   surgeForm = new FormGroup({
   // generated_run_date: this.generated_run_date ,
@@ -101,9 +113,9 @@ export class SurgeAddComponent implements OnInit {
     (res:any) => {
      console.log(res)
      if(res.code == 200){
-      window.alert('Success Update Type')
+      window.alert('Success ')
       // this.alertMsg = 'Email sent for verification, please verify your email';
-      // this.alertColor = "success"
+      this.alertColor = "success"
      } else {
       window.alert('Failed')
      }

@@ -83,7 +83,7 @@
                         <p-table *ngIf="!showLoader"
                         [value]="trips"
                         [paginator]="true"
-                        [rows]="6"
+                        [rows]="10"
                         [showCurrentPageReport]="false"
                         [tableStyle]="{ 'min-width': '80rem' }"
                         currentPageReportTemplate=""
@@ -107,7 +107,8 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-trips>
-                        <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px " *ngIf="trips.trip_status === '3'">
+                        <tr style="height: 3rem; border-color: #abb4ce80; border-top-width: 0.2px; border-bottom-width:0.2px "
+                         *ngIf="trips.trip_status === '3' || searchText === '' || trips.driver_firstname.toLowerCase().includes(searchText) || trips.firstname.toLowerCase().includes(searchText) || trips.lastname.toLowerCase().includes(searchText)   ">
                                 <td>
                                     <div *ngIf="trips.trip_type == '1'">
                                         Individual
