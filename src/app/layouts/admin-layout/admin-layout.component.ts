@@ -2,26 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/service/users.service';
 
-// interface IUser {
-  
-//    id:number,
-//    email:string,
-//    password:string,
-//    user_type:number,
-//    device_token:number,
-//    device_type:number,
-//    created_at:string,
-//    firstname:string,
-//    lastname:string,
-//    profile_url:string,
-//    is_active:number,
-//    ride_check:number,
-//    phone_no: number,
-//    city: string,
-//    token: string 
-
-// }
-
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
@@ -30,9 +10,8 @@ import { UsersService } from 'src/app/service/users.service';
 export class AdminLayoutComponent implements OnInit {
 
   showDropdown = false;
-
   userDetails:any;
-  // userDetailsArray: any[] = [];
+
 
   constructor(
     private router: Router,

@@ -23,12 +23,23 @@ export class UsersService {
    private loginResponseSubject = new BehaviorSubject<any>(null);
    loginResponse$ = this.loginResponseSubject.asObservable();
 
+   private resetUserResponseSubject = new BehaviorSubject<any>(null);
+   resetUserResponse$ = this.resetUserResponseSubject.asObservable();
+
    setLoginResponse(response: any) {
      this.loginResponseSubject.next(response);
      console.log(response);
      const res = JSON.stringify(response)
      localStorage.setItem('userDetails',(res));
      return response
+   }
+
+   setResetPasswordResponse(response:any){
+    this.resetUserResponseSubject.next(response);
+    console.log(response);
+    const res = JSON.stringify(response);
+    localStorage.setItem('resetDetails', (res))
+    return response
    }
  
     getUserDetails() {
@@ -47,8 +58,14 @@ export class UsersService {
     changePassword(credentials: {old_pass: string; new_pass: string}, userId:any){
       return this.http.put(`${this.baseUrl}/changepassword/${userId}`, credentials)
     }
-    forgotPassword(credentials: {email: any;}, userEmail:any){
-      return this.http.put(`${this.baseUrl}/forgotPassword/${userEmail}`, credentials)
+    forgotPassword(forgotPassForm:any, email:any){
+      return this.http.put(`${this.baseUrl}/forgotPassword/${email}`, forgotPassForm)
+    }
+    forgotPasswordChange(credentials:{password:any, user_type:string}, email:any){
+      return this.http.put(`${this.baseUrl}/forgotPasswordChange/${email}`, credentials)
+    }
+    verifyConfirmOTP(credentials:{OTPcode:string, user_type: string}, email:any){
+      return this.http.post(`${this.baseUrl}/OTPVerified/${email}`, credentials )
     }
 
 }

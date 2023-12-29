@@ -1,7 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';;
 // import { AuthService } from 'src/app/service/auth.service';
 import { UsersService } from 'src/app/service/users.service';
 import {Router} from '@angular/router';
+
+interface Users {
+  type: string;
+  code: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -9,85 +14,98 @@ import {Router} from '@angular/router';
   styleUrls: ['./forgot-password-update.component.scss']
 })
 export class ForgotPasswordUpdateComponent implements OnInit {
-
-  // userDetails:any;
-  // userId:any;
+ 
+  
+  // userType!: Users[] |  undefined;
   showAlert = false;
   alertMsg = 'Please wait! we are logging you in.'
   alertColor = 'info'
   inSubmission = false
-  
-    credentials = {
-    password: ''
-    }
-  
+  resetDetails:any;
+
     constructor( 
-      // private auth:AuthService, 
       public router: Router,
       private users: UsersService
       ) { }
   
       ngOnInit() {
-        // window.alert('on init')
-    
-        // const storedUserDetails = localStorage.getItem('userDetails');
-        
-    
-        // if (storedUserDetails) {
-        //   // Parse the storedUserDetails JSON string to an object
-        //   this.userDetails = JSON.parse(storedUserDetails);
-        //   console.log('change pass:', this.userDetails);
-        // } else {
-        //   console.log('User details not found in localStorage.');
-        // }
-    
-        // window.alert(this.userDetails.id)
-        // this.userId = this.userDetails.id  
+        const storedUserDetails = localStorage.getItem('resetDetails');
+    // check if the gotten items exists in local storage
+      if (storedUserDetails) {
+      // Parse the storedUserDetails JSON string to an object
+      this.resetDetails = JSON.parse(storedUserDetails);
+      console.log('otp component:', this.resetDetails);
+
+    } else {
+      console.log('User details not found in localStorage.');
+    }
+     this.user_Type_retrieved = this.resetDetails.user_type;
+     console.log(this.user_Type_retrieved)
+
+    //  this.user_Type_retrieved = new FormControl(this.user_Type_retrieved,[Validators.required, Validators.minLength(4)])
       }
 
-    async submit(){
-      this.showAlert = true;
-      console.log(this.credentials)
+      password:any;
+      user_Type_retrieved!:string
 
-      const userEmail = this.credentials
+      async submitEMail(){
+        const email = this.resetDetails.email
+        const password = this.password
+        const  user_type = this.user_Type_retrieved
+        console.log(email),
+        console.log(password)
+        console.log(user_type)
+  
+        const credentials = {
+          user_type: user_type,
+          password: this.password
+        }
 
-      setTimeout(() => {
-      this.showAlert = true
-      this.alertMsg = 'Loading... If sync persists check network'
-      this.alertColor = 'info'
-    //  try {   
-    //   this.users.forgotPassword(this.credentials, userEmail).subscribe( 
-    //     (res:any) => {
-    //       console.log(res)
-    //       // let {message} = res;
-    //       // console.log(message)
-    //       if(res.code == "100"){
-    //         window.alert('failed to send otp')
-    //         this.alertMsg = res.message
-    //         this.alertColor = 'danger'
-    //         this.inSubmission = false
-    //       } 
-    //       else if(res.code == "200"){
-    //         window.alert('OTP Sent')
-    //         this.alertMsg = "Password Changed succesfully"
-    //         this.alertColor = "success"
-    //         const {token} = res.data;
-    //         const data = res.data;
-    //         console.log(token);
+        console.log(credentials)
+        setTimeout(() => {
+          this.showAlert = true
+          this.alertMsg = 'Loading... If sync persists check network'
+          this.alertColor = 'info'
+         try {   
+          this.users.forgotPasswordChange(credentials, email).subscribe( 
+            (res:any) => {
+              console.log(res)
+              if(res.code == "100"){
+                window.alert('Password failed');
+                // this.alertMsg = res.message
+                // this.alertColor = 'danger'
+                this.inSubmission = false
+              } 
+              else if(res.code == "200"){
+                window.alert('Reset Successful Now login')
+                this.router.navigate(['/login']) 
+                localStorage.clear()
+                // this.alertMsg = "OTP Sent"
+                // this.alertColor = "success"
+                // const clrDetails = 'resetDetails';
+                // if (localStorage.getItem(clrDetails)) {
+                //   window.alert('about to clear storage')
+                //   localStorage.removeItem(clrDetails);
+                //   console.log(`${clrDetails} cleared from local storage.`);
+                //   this.router.navigate(['/forgot-password-update']) 
+                // }
+                
+              //   setTimeout(() => {
+              //   // localStorage.clear()
+                
+              // }, 1600)
+              }
+    
+            }
+          );
+    
+        }
+        catch(e){
+        }
+          }, 1600)
+       
 
-    //         setTimeout(() => {
-    //         localStorage.clear()
-    //         this.router.navigate(['/login']) 
-    //       }, 1600)
-    //       }
 
-    //     }
-    //   );
-
-    // }
-    // catch(e){
-    // }
-      }, 1600)
     }
     
 
