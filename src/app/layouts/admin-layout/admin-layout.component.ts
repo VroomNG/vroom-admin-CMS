@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/service/users.service';
 
@@ -11,7 +11,8 @@ export class AdminLayoutComponent implements OnInit {
 
   showDropdown = false;
   userDetails:any;
-
+  isCollapsed!: boolean;
+  isSmallScreen = false;
 
   constructor(
     private router: Router,
@@ -19,7 +20,7 @@ export class AdminLayoutComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    
+    this.checkScreenSize();
     const storedUserDetails = localStorage.getItem('userDetails');
     // check if the gotten items exists in local storage
     if (storedUserDetails) {
@@ -30,7 +31,22 @@ export class AdminLayoutComponent implements OnInit {
     } else {
       console.log('User details not found in localStorage.');
     }
+
+    var html = document.getElementsByTagName("html")[0];
+    html.classList.add("auth-layout");
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.add("bg-default");
+    this.router.events.subscribe((event) => {
+      this.isCollapsed = true;
+   });
   
+  }
+
+  ngOnDestroy() {
+    var html = document.getElementsByTagName("html")[0];
+    html.classList.remove("auth-layout");
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.remove("bg-default");
   }
 
   logout(){
@@ -42,8 +58,13 @@ export class AdminLayoutComponent implements OnInit {
   pDropdown(){
     this.showDropdown = !this.showDropdown
   }
-  // getObjectKeys(obj: any): string[] {
-  //   return Object.keys(obj);
-  // }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize(): void {
+    this.isSmallScreen = window.innerWidth < 1000; // Adjust the breakpoint as needed
+  }
 
 }
