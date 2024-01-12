@@ -8,25 +8,8 @@
     <!-- nav -->
     <div class="navbar-area">
        <div style="width:100%">
-             <!-- dashboard nav -->
-             <!-- <div class="dash-container">
-                <a [hidden]="false" [routerLink]="['/']">
-                   <div class="container">  
-                         <div class="icon ">
-                            <i class="fa-solid fa-store"></i>
-                         </div>
-                         <div class="navlink ">
-                            <span style="margin-top: 4px;">      
-                               <p>Dashboard</p>
-                            </span>
-                         </div>  
-                   </div>
-                </a>
-             </div> -->
-             <!--  -->
              <div *ngFor="let routeInfo of ROUTES; let i = index">
                 <div class="dash-container">
-                   <!-- <a href=""> -->
                       <div class="container" (click)="toggleCarretDown(i)">  
                             <div class="icon ">
                               <a [hidden]="false" [routerLink]="routeInfo.path">
@@ -57,7 +40,6 @@
                               </div>
                             </div>  
                       </div>  
-                   <!-- </a> -->
                    <div class="dropdown" *ngIf="i === openDropdown">
                      <div *ngIf="routeInfo.children">
                         <div class="d-container" *ngFor="let child of routeInfo.children">
@@ -74,7 +56,7 @@
                         </div> 
                      </div>
              </div>              
-             </div>
+              </div>
  
        </div>
     </div>

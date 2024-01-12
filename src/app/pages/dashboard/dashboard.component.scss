@@ -69,3 +69,48 @@ header .card {
     height: 90%;
     // background-color: grey;
 }
+
+@media screen and (max-width:640px) {
+    .header {
+        height: 70vh;
+        width: 100%;
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.6755077030812324) 35%, rgba(0,212,255,1) 100%);
+    }
+    .header .container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 50%;
+        padding: 5px 20px;
+    }
+    header .card {
+        width: 35%;
+        height: 80px;
+        background-color: rgb(255, 255, 252);
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+        margin: 10px 20px;
+    }  
+    .card .title {
+        color: #adb5bd;
+        font-weight: 600;
+        font-size: 8px;
+    }
+    .card .subtitle {
+        color: #172b4d;
+        font-weight: 600;
+        font-size: 8px;
+    }  
+    .card .container {
+        width: 90%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        // background-color: aqua;
+    }
+}

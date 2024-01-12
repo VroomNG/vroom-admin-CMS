@@ -161,66 +161,19 @@ export class SidebarComponent implements OnInit {
       this.carret_up = false
     }
   }
-  // user_type:any;
-  // user_id:any;
-  // public focus: any;
-  // public listTitles!: any[];
-  // public location: Location;
-  // loginName: any;
-  // filepath: any;
-  // siteURL: any;
-  // filename: any;
-  // profileDetails!: driverInfo;
-  // prifileDetails: any;
-  // nabarData: boolean = false;
-
-  // public menuItems!: any[];
-  // public isCollapsed = true;
 
   constructor(
-    // location: Location,
-    // private router: Router,
-    // private route: ActivatedRoute,
-    // private element: ElementRef,
-    // private service: adminService,
-    // private loginService: LoginService,
   ) {
-    // this.user_type = (localStorage['user_type'] != undefined ? localStorage['user_type'] : '')
-    // this.location = location;
-    // this.siteURL = environment.serverUrl;
+ 
   }
 
   ngOnInit() {
-    // this.menuItems = ROUTES.filter(menuItem => menuItem);
-    // console.log("Menu ==>", this.menuItems);
-    // this.route.params.subscribe((event) => {
-    //   this.isCollapsed = true;
-    // });
-    // this.getProfileDetails();
+
     console.log('onInit')
 
   }
 
-  // getProfileDetails() {
-    // debugger;
-    // var userId = localStorage.getItem("userId");
-    // this.user_id = userId;
-    // console.log("userId", localStorage.getItem("userId"));
-    // this.service.getInformedUsers(userId).subscribe((response: any) => {
-    //   console.log("updated image", response)
-    //   if (response) {
-    //     this.nabarData = true;
-    //     this.prifileDetails = response.data;
-        // console.log(this.prifileDetails, "prifile details")
-        // if (response.data != undefined){
-        // if (response.data.profile_url != null && response.data.profile_url.length > 0) {
-          // console.log('avatar', response.data.profile_url);
-      //     this.filepath = response.data.profile_url;
-      //   }
-      // }
-      // }
-  //   });
-  // }
+
 
 
 }
