@@ -22,6 +22,7 @@ export class DriversPendingComponent implements OnInit {
         console.log(res)
         this.pending = res.data;
         this.showLoader = false
+        this.sortDrivers()
       }
     )
   }
@@ -67,6 +68,17 @@ saveAsExcelFile(buffer: any, fileName: string): void {
       }
     )
   }
+  sortDrivers(){
+    if(this.pending){
+      console.log('App drivers Exists')
+     const newdata = this.pending.sort((a, b) => {
+        const dateA = new Date(a.created_at).getTime();
+        const dateB = new Date(b.created_at).getTime();
+        return dateB - dateA;
+      });
+      console.log('sorted array',newdata)
+    }
+    }
 
   
 

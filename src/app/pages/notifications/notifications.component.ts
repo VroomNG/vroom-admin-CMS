@@ -19,8 +19,20 @@ export class NotificationsComponent implements OnInit {
       (res:any) =>{
        console.log(res.data);
        this.view_schedule = res.data
-       this.showLoader = false
+       this.showLoader = false;
+       this.sortSchedule()
       }
      )
    }
+   sortSchedule(){
+    if(this.view_schedule){
+      console.log('App drivers Exists')
+     const newdata = this.view_schedule.sort((a, b) => {
+        const dateA = new Date(a.sendDate).getTime();
+        const dateB = new Date(b.sendDate).getTime();
+        return dateB - dateA;
+      });
+      console.log('sorted array',newdata)
+    }
+    }
 }

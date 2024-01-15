@@ -21,7 +21,8 @@ export class DriversRejectedComponent implements OnInit {
       (res:any)=>{
         console.log(res)
         this.rejected = res.data;
-        this.showLoader = false
+        this.showLoader = false;
+        this.sortDrivers()
       }
     )
 }
@@ -68,4 +69,15 @@ clear(){
     }
   )
 }
+sortDrivers(){
+  if(this.rejected){
+    console.log('App drivers Exists')
+   const newdata = this.rejected.sort((a, b) => {
+      const dateA = new Date(a.created_at).getTime();
+      const dateB = new Date(b.created_at).getTime();
+      return dateB - dateA;
+    });
+    console.log('sorted array',newdata)
+  }
+  }
 }

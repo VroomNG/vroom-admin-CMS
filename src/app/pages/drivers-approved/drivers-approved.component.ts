@@ -28,8 +28,13 @@ export class DriversApprovedComponent {
         console.log(res.data)
         this.app_drivers = res.data;
         this.showLoader = false;
+        this.sortDrivers()
+        
       }
-    )
+    );
+    
+
+
   }
 
   applyFilter() {
@@ -73,4 +78,16 @@ saveAsExcelFile(buffer: any, fileName: string): void {
       }
     )
   }
+  sortDrivers(){
+    if(this.app_drivers){
+      console.log('App drivers Exists')
+     const newdata = this.app_drivers.sort((a, b) => {
+        const dateA = new Date(a.created_at).getTime();
+        const dateB = new Date(b.created_at).getTime();
+        return dateB - dateA;
+      });
+      console.log('sorted array',newdata)
+    }
+    }
+  
 }

@@ -20,7 +20,21 @@ export class ReportsRefComponent implements OnInit {
         console.log(res.data)
         this.showLoader = false;
         this.referal = res.data
+        this.sortReferals()
       }
     )
   }
+
+  sortReferals(){
+    if(this.referal){
+      console.log('App drivers Exists')
+     const newdata = this.referal.sort((a, b) => {
+        const dateA = new Date(a.created_at).getTime();
+        const dateB = new Date(b.created_at).getTime();
+        return dateB - dateA;
+      });
+      console.log('sorted array',newdata)
+    }
+    }
+  
 }

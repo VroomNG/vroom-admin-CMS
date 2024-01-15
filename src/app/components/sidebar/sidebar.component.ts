@@ -56,7 +56,7 @@ export class SidebarComponent implements OnInit {
       path: '/approved-drivers', title: 'Driver', icon: 'fa-solid fa-car text-primary', class: '', children: [
         { path: 'add-drivers', title: 'Add Driver', icon: 'fas fa-plus text-primary', class: '', children: '' },
         { path: 'approved-drivers', title: 'Approved Drivers', icon: 'fa fa-eye text-primary', class: '', children: '' },
-        { path: 'unapproved-drivers', title: 'Pending Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
+        { path: 'unapproved-drivers', title: 'Unapproved Drivers', icon: 'fas fa-spinner text-primary', class: '', children: '' },
         { path: 'rejected-drivers', title: 'Rejected Drivers', icon: 'fas fa-power-off text-primary', class: '', children: '' },
       ]
     },

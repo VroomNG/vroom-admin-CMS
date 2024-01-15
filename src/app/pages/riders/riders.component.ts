@@ -21,6 +21,7 @@ export class RidersComponent implements OnInit {
         console.log(res);
         this.riders = res.data;
         this.showLoader = false;
+        this.sortRiders()
       }
     )
     }
@@ -58,5 +59,16 @@ export class RidersComponent implements OnInit {
         }
       )
     }
+    sortRiders(){
+      if(this.riders){
+        console.log('App drivers Exists')
+       const newdata = this.riders.sort((a, b) => {
+          const dateA = new Date(a.created_at).getTime();
+          const dateB = new Date(b.created_at).getTime();
+          return dateB - dateA;
+        });
+        console.log('sorted array',newdata)
+      }
+      }
 
 }
