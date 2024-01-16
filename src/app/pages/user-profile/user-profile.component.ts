@@ -34,7 +34,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     
     const storedUserDetails = localStorage.getItem('userDetails');
-    
 
     if (storedUserDetails) {
       // Parse the storedUserDetails JSON string to an object

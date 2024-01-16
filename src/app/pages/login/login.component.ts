@@ -52,11 +52,13 @@ export class LoginComponent implements OnInit {
             this.alertMsg = "Password Changed"
             this.alertColor = "success"
             const {token} = res.data;
+            const {email} = res.data;
             const data = res.data;
             // const {firstname} = res.data;
             
             console.log(token);
             localStorage.setItem('token', token)
+            // localStorage.setItem('email', email)
 
             // localStorage.setItem('userProfile', JSON.stringify(data));
             // const storedUserProfile = localStorage.getItem('userProfile');

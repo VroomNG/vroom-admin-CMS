@@ -47,6 +47,20 @@ export class UsersService {
      console.log(response.lastname)
      return response;
    }
+   getStoredUserDetails(): any {
+    const storedUserDetails = localStorage.getItem('userDetails');
+
+    if (storedUserDetails) {
+      try {
+        const userDetails = JSON.parse(storedUserDetails);
+        return userDetails;
+      } catch (error) {
+        console.error('Error parsing user details from local storage:', error);
+      }
+    }
+
+    return null;
+  }
 
    updateUser(updateUserForm: object, userId:any) {
     return this.http.put(`${this.baseUrl}/updateUser/${userId}`, updateUserForm);
@@ -68,4 +82,7 @@ export class UsersService {
       return this.http.post(`${this.baseUrl}/OTPVerified/${email}`, credentials )
     }
 
+    addAccesstrail(userCredentials:any){
+      return this.http.post(`${this.baseUrl}/addUserAccess`, userCredentials)
+    }
 }

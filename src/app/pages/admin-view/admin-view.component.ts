@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { IAdmin } from 'src/app/model/admins';
 import { AdminService } from 'src/app/service/admin.service';
+import { UsersService } from 'src/app/service/users.service';
 import * as FileSaver from 'file-saver';
 
 // Interfaces
@@ -34,10 +35,12 @@ export class AdminViewComponent implements OnInit {
   editedRowId: number | null = null;
   // date!: DatePipe;
   searchText:  string = '' 
+  userDetails:any
 
   //  lifecycle and constructor
   constructor(
     private Admins: AdminService,
+    private users: UsersService,
     private datePipe: DatePipe,
     // private messageService: MessageService
   ){}
@@ -64,9 +67,35 @@ export class AdminViewComponent implements OnInit {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
+  const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    // console.log('view admin', email)
+    this.addAccessTrail()
   }
+ 
 
   // functions
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+
+    const userCredetials = {
+      login: email,
+      action: 'Viewed admins'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
+      }
+    )
+  }
   applyFilter() {
     const filteredAdmins = this.admins.filter((admin) => {
       // Adjust the conditions based on your filtering requirements
