@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 import { IAdmin } from 'src/app/model/admins';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -27,6 +28,7 @@ export class AdminEditComponent implements OnInit {
 
   admins!: IAdmin [] | any;
   adminId!: any;
+  userDetails:any
 
   showAlert:boolean = false;
   alertMsg = 'please wait your account is being created';
@@ -35,7 +37,8 @@ export class AdminEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private admin: AdminService,
-    private router:Router
+    private router:Router,
+    private users: UsersService
     ){
 
   }
@@ -66,7 +69,33 @@ export class AdminEditComponent implements OnInit {
     }
 
   )
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  // console.log('view admin', email)
+  this.addAccessTrail()
 
+  }
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Edit Admin'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
+      }
+    )
   }
 
 

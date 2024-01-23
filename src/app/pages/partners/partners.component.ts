@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IPartners } from 'src/app/model/partners';
 import { PartnerService } from 'src/app/service/partners.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-partners',
@@ -13,8 +14,9 @@ export class PartnersComponent implements OnInit {
   partners: IPartners[] = [];
   showLoader = true;
   searchText:string = ''
+  userDetails:any
 
-  constructor(private Partners: PartnerService ) {}
+  constructor(private Partners: PartnerService, private users: UsersService ) {}
 
   ngOnInit(): void {
     this.Partners.getPartners().subscribe(
@@ -22,6 +24,32 @@ export class PartnersComponent implements OnInit {
         console.log(res.data)
         this.partners = res.data;
         this.showLoader = false;
+      }
+    )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    // console.log('view admin', email)
+    this.addAccessTrail()
+  
+  }
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Partners'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
       }
     )
   }

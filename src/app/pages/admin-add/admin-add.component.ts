@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterValidators } from '../../helpers/validators/register-validators'
 // import { EmailTaken } from '../../helpers/validators/email-taken';
 import { AdminService } from 'src/app/service/admin.service';
-// import { AuthService } from 'src/app/service/auth.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -26,13 +26,14 @@ export class AdminAddComponent implements OnInit {
 
   cities!: City[] |  undefined;
   userType!: Users[] |  undefined;
+  userDetails:any
   
   showAlert = false;
   alertMsg = 'please wait your account is being created';
   alertColor = 'primary';
 
   constructor(
-    // private admin: adminService,
+    private users: UsersService,
      private Admin: AdminService
     ){ }
 
@@ -57,8 +58,11 @@ export class AdminAddComponent implements OnInit {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
-  
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
   }
+
   firstname = new FormControl('',[Validators.required, Validators.minLength(3)])
   lastname = new FormControl('',[Validators.required, Validators.minLength(3)])
   email = new FormControl('',
@@ -86,7 +90,27 @@ export class AdminAddComponent implements OnInit {
   })
 
   // const selectedValue = this.form.get('selectedOption').value;
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
 
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Add Admin'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
+      }
+    )
+  }
   submit(){
      console.log(this.adminForm.value)
      window.alert('in process') 

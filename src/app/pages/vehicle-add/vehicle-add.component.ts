@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators, } from '@angular/forms';
 import { VehicleService } from 'src/app/service/vehicle.service';
-// import { addVehicle } from 'src/app/model/vehicleInfo';
+import { UsersService } from 'src/app/service/users.service';
 
 
 interface Options {
@@ -27,11 +27,12 @@ export class VehicleAddComponent  implements OnInit {
   showAlert = false;
   alertMsg = 'Please wait';
   alertColor = 'primary';
+  userDetails:any
 
   selectedOption: any;
   form: any;
   
-  constructor(private vehicle: VehicleService){
+  constructor(private vehicle: VehicleService, private users: UsersService){
     const currentYear = new Date().getFullYear();
     const startYear = 1990;
     this.years = Array.from({ length: currentYear - startYear + 1 }, (_, index) => startYear + index);
@@ -94,6 +95,9 @@ export class VehicleAddComponent  implements OnInit {
       {id: 1, name: 'Yes'},
       {id: 0, name: 'No'},
     ]
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
   }
 
   vehicle_type = new FormControl('', [Validators.required,]);
@@ -135,6 +139,28 @@ export class VehicleAddComponent  implements OnInit {
     peek_hour_fare: this.peek_hour_fare,
     vehicle_image: this.vehicle_image
   })
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Vehicle Add'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
+      }
+    )
+  }
 
   onSubmit(){
     console.log(this.addVehicleForm.value)

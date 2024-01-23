@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from 'src/app/service/vehicle.service';
-import { IVehicleType } from 'src/app/model/vehicleInfo';
+import { UsersService } from 'src/app/service/users.service';
 
 interface Options {
   id: number,
@@ -25,6 +25,7 @@ export class VehicleEditComponent implements OnInit {
   trip_type_list?: Options[] | undefined;
   selectActive?: Options[]  | undefined;
   years: number[] = [];
+  userDetails:any
 
   selectedOption: any;
   form: any;
@@ -35,7 +36,8 @@ export class VehicleEditComponent implements OnInit {
   constructor(
     private Vehicle: VehicleService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router, 
+    private users: UsersService
     ) {
       const currentYear = new Date().getFullYear();
     const startYear = 1990;
@@ -109,9 +111,32 @@ export class VehicleEditComponent implements OnInit {
       {id: 1, name: 'Yes'},
       {id: 0, name: 'No'},
     ]
-    
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()  
   }
+  
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
 
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Vehicle Edit'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
+      }
+    )
+  }
 
   update() {
     this.showAlert = true;
