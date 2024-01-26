@@ -133,7 +133,7 @@ export class SidebarComponent implements OnInit {
       path: '/add-discount', title: 'Discount', icon: 'fa-solid fa-percent', class: '', children: [
         { path: '/add-discount', title: 'Add Discount', icon: 'fa fa-user-plus', class: '' },
         { path: '/view-discount', title: 'View discount', icon: 'fa fa-eye', class: '' },
-        { path: '/view-code-use', title: 'View discount Code Use', icon: 'fa fa-eye', class: '' }
+        // { path: '/view-code-use', title: 'View discount Code Use', icon: 'fa fa-eye', class: '' }
       ]
     },
     {
