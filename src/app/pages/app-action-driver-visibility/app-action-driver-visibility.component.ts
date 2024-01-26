@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { ActionService } from 'src/app/service/action.service';
 import { IVisibility } from 'src/app/model/actions';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-app-action-driver-visibility',
@@ -13,9 +14,11 @@ export class AppActionDriverVisibilityComponent implements OnInit {
   visibility: IVisibility[]=[];
   showLoader = true;
   searchText:string = ''
+  userDetails:any
 
   constructor(
-    private AppAction: ActionService
+    private AppAction: ActionService,
+    private users: UsersService,
   ){}
 
   ngOnInit() {
@@ -24,6 +27,27 @@ export class AppActionDriverVisibilityComponent implements OnInit {
         console.log(res.data)
         this.visibility = res.data
         this.showLoader = false;
+      }
+    )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
+  }
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Driver Visibility'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
       }
     )
   }

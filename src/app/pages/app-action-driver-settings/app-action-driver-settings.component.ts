@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TripService } from 'src/app/service/trips.service';
 import { ActionService } from 'src/app/service/action.service';
-import { Router } from '@angular/router';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-app-action-driver-settings',
@@ -18,11 +18,12 @@ export class AppActionDriverSettingsComponent implements OnInit {
   alertColor = 'primary';
   searchText = ''
   readonly:boolean = true;
+  userDetails:any
 
   constructor(
     private Trips: TripService,
     private AppAction: ActionService,
-    private router: Router
+    private users: UsersService,
   ){}
 
   ngOnInit(){
@@ -33,6 +34,9 @@ export class AppActionDriverSettingsComponent implements OnInit {
         console.log(this.Settings)
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
   }
 
   interval = new FormControl('',[Validators.required, Validators.minLength(0)])
@@ -40,6 +44,24 @@ export class AppActionDriverSettingsComponent implements OnInit {
   settingsForm = new FormGroup({
     interval: this.interval,
   })
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Driver Settings'
+    }
+
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )
+  }
 
   onSubmit(){
 
