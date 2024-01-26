@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PartnerService } from 'src/app/service/partners.service';
-import { IPartners } from 'src/app/model/partners';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -17,6 +17,7 @@ export class PartnersEditComponent implements OnInit {
 
   partners!: any;
   partnerId: any;
+  userDetails:any
 
   cities!: City[] |  undefined;
 
@@ -28,6 +29,7 @@ export class PartnersEditComponent implements OnInit {
     private route: ActivatedRoute,
     private Partner: PartnerService,
     private router:Router,
+    private users:UsersService
     ){
 
   }
@@ -42,11 +44,10 @@ export class PartnersEditComponent implements OnInit {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
-  // this.userType = [
-  //   { type: 'Super Admin', code: '4' },
-  //   { type: 'Sub Admin', code: '3' },
-  //   { type: 'Partner', code: '5' },
-  // ];
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
+
   this.partnerId = this.route.snapshot.paramMap.get('id')
   console.log(this.partnerId)
   this.Partner.getSinglePartners(this.partnerId).subscribe(
@@ -57,6 +58,24 @@ export class PartnersEditComponent implements OnInit {
     }
   )
 }
+
+addAccessTrail(){
+  const {email} = this.userDetails
+  console.log(email)
+
+  const userCredetials = {
+    login: email,
+    action: 'Viewed Edit Partners'
+  }
+
+  this.users.addAccesstrail(userCredetials).subscribe(
+    (res:any)=>{
+      const {message} = res
+      if(message === "Success insering access"){
+       } else {}
+    }
+  )}
+
 
 update() {
   this.showAlert = true;

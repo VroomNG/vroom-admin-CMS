@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators, } from '@angular/forms';
 import { PartnerService } from 'src/app/service/partners.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -18,9 +19,10 @@ export class PartnersAddComponent {
   showAlert = false;
   alertMsg = 'Please wait';
   alertColor = 'primary';
+  userDetails:any
 
   // constructor and live cycle methods
-  constructor(private partners:PartnerService){ 
+  constructor(private partners:PartnerService, private users:UsersService){ 
   }
 
   ngOnInit(){
@@ -34,6 +36,10 @@ export class PartnersAddComponent {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
+
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
   }
  
   // validators 
@@ -75,10 +81,24 @@ export class PartnersAddComponent {
   })
 
   // Functions
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Add Partners'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
 
   onSubmit(){
-
-  
     this.showAlert = true
     setTimeout(() => {
       this.showAlert = true

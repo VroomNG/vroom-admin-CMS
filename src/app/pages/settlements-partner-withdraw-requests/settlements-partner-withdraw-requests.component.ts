@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IPartnerWRQ } from 'src/app/model/settlements';
 import { settlementService } from 'src/app/service/settlements.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-settlements-partner-withdraw-requests',
@@ -9,12 +10,14 @@ import { settlementService } from 'src/app/service/settlements.service';
   styleUrls: ['./settlements-partner-withdraw-requests.component.scss']
 })
 export class SettlementsPartnerWithdrawRequestsComponent implements OnInit {
+  
   withdraw: IPartnerWRQ [] = [];
   searchText:string = '';
   showLoader = true;
+  userDetails:any
 
   constructor(
-    private PayService: settlementService
+    private PayService: settlementService, private users:UsersService
   ){ }
 
   ngOnInit(){
@@ -25,7 +28,27 @@ export class SettlementsPartnerWithdrawRequestsComponent implements OnInit {
        this.showLoader = false
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
   }
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Partner withdraw Requests'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
 
   applyFilter() {
     const filteredAdmins = this.withdraw.filter((item) => {

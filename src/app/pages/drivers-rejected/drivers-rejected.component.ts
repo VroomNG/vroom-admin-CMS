@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IRejected } from 'src/app/model/driverInfo';
 import { DriversService } from 'src/app/service/driver.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-drivers-rejected',
@@ -13,9 +14,10 @@ export class DriversRejectedComponent implements OnInit {
   showLoader = true;
   checked = false;
   searchText = '';
+  userDetails:any
 
 
-  constructor(private Drivers: DriversService){}
+  constructor(private Drivers: DriversService, private users:UsersService){}
   ngOnInit(): void {
     this.Drivers.getRejected().subscribe(
       (res:any)=>{
@@ -25,9 +27,28 @@ export class DriversRejectedComponent implements OnInit {
         this.sortDrivers()
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
 }
 
+addAccessTrail(){
+  const {email} = this.userDetails
+  console.log(email)
 
+  const userCredetials = {
+    login: email,
+    action: 'Viewed Rejected Drivers'
+  }
+
+  this.users.addAccesstrail(userCredetials).subscribe(
+    (res:any)=>{
+      const {message} = res
+      if(message === "Success insering access"){
+       } else {}
+    }
+  )
+}
 applyFilter() {
   const filteredAdmins = this.rejected.filter((item) => {
     // Adjust the conditions based on your filtering requirements

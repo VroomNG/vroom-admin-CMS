@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IApproved_Drivers } from 'src/app/model/driverInfo';
 import { DriversService } from '../../service/driver.service';
 import * as FileSaver from 'file-saver';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-drivers-approved',
@@ -11,6 +12,7 @@ import * as FileSaver from 'file-saver';
 export class DriversApprovedComponent {
   app_drivers: IApproved_Drivers [] = [];
   checked = false;
+  userDetails:any
 
   loaderColor!: 'primary';
   showLoader = true;
@@ -18,7 +20,7 @@ export class DriversApprovedComponent {
 
 
   constructor(
-    private approved_drivers : DriversService
+    private approved_drivers : DriversService, private users:UsersService
   ){
 
   }
@@ -33,8 +35,27 @@ export class DriversApprovedComponent {
       }
     );
     
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
 
-
+  }
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Approved Drivers'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )
   }
 
   applyFilter() {

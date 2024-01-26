@@ -28,7 +28,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private UserProfile:UsersService,
-    private router: Router
+    private router: Router,
+    private users: UsersService,
     ) { }
 
   ngOnInit() {
@@ -63,9 +64,27 @@ export class UserProfileComponent implements OnInit {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
+  const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
     
   }
-
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed User Profile'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
   setEdit(){
     this.isEdit = !this.isEdit
     this.isReadOnly = !this.isReadOnly;

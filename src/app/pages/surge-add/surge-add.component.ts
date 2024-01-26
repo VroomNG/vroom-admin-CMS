@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SurgeService } from 'src/app/service/surge.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string
@@ -22,6 +23,7 @@ export class SurgeAddComponent implements OnInit {
 
   cities!: City[] |  undefined;
   options!: Option[] |  undefined;
+  userDetails:any
   // userType!: Users[] |  undefined;
 
   showAlert = false;
@@ -29,16 +31,11 @@ export class SurgeAddComponent implements OnInit {
   alertColor = 'primary';
 
   constructor(
-    // private admin: adminService,
+     private users:UsersService,
      private AppSurge: SurgeService
     ){ }
 
   ngOnInit(){
-  //   this.userType = [
-  //     { type: 'Super Admin', code: '4' },
-  //     { type: 'Sub Admin', code: '3' },
-  //     { type: 'Partner', code: '5' },
-  // ];
     this.cities = [
       { name: 'Abia' },
       { name: 'Enugu' },
@@ -53,9 +50,10 @@ export class SurgeAddComponent implements OnInit {
     {name:'Amount', charge: 1},
     {name:'Multiplier', charge:2},
   ]
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
  
-  
-  
   }
 
   // generated_run_date = new FormControl('',[Validators.required, Validators.minLength(0)] ) 
@@ -106,6 +104,24 @@ export class SurgeAddComponent implements OnInit {
   latitude: this.latitude,
   longitude: this.longitude
   })
+
+  
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Add Surge'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
   
  onSubmit(){
   console.log(this.surgeForm.value);

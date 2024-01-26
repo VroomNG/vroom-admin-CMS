@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IRatings_R } from 'src/app/model/ridersinfo';
 import { RiderService } from 'src/app/service/riders.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-ratings-rider',
@@ -11,7 +12,7 @@ import { RiderService } from 'src/app/service/riders.service';
 export class RatingsRiderComponent implements OnInit {
 
  constructor(
-  private Riders: RiderService 
+  private Riders: RiderService, private users:UsersService 
   ){}
 
   riders: IRatings_R [] | any;
@@ -19,6 +20,7 @@ export class RatingsRiderComponent implements OnInit {
   deleteRowId: number | null = null;
   showLoader = true;
   searchText:string = ''
+  userDetails:any
 
   ngOnInit(): void {
     this.Riders.getRidersRatings().subscribe(
@@ -28,8 +30,28 @@ export class RatingsRiderComponent implements OnInit {
         this.showLoader = false;
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
 
   }
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Rider Ratings'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
+
   applyFilter() {
     const filteredAdmins = this.riders.filter((item:any) => {
       // Adjust the conditions based on your filtering requirements

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup, Validators, } from '@angular/forms';
 import { RiderService } from 'src/app/service/riders.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -18,9 +19,10 @@ export class RidersAddComponent {
   showAlert = false;
   alertMsg = 'Please wait';
   alertColor = 'primary';
+  userDetails:any
   
   // constructors & lifecycles
-  constructor(private riders: RiderService){
+  constructor(private riders: RiderService, private users:UsersService ){
   }
   ngOnInit(){
     this.cities = [
@@ -33,6 +35,9 @@ export class RidersAddComponent {
       { name: 'Abuja' },
       { name: 'Lagos'},
   ];
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
 }
 // functions
 // validators & formcontrols
@@ -72,7 +77,22 @@ addRiders = new FormGroup({
   country_dailing_code: this.country_dailing_code
 
 })
+addAccessTrail(){
+  const {email} = this.userDetails
+  console.log(email)
 
+  const userCredetials = {
+    login: email,
+    action: 'Viewed Add Riders'
+  }
+
+  this.users.addAccesstrail(userCredetials).subscribe(
+    (res:any)=>{
+      const {message} = res
+      if(message === "Success insering access"){
+       } else {}
+    }
+  )}
 onSubmit(){
   this.showAlert = true
   setTimeout(() => {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IRiders } from 'src/app/model/ridersinfo';
 import { RiderService } from 'src/app/service/riders.service';
+import { UsersService } from 'src/app/service/users.service';
+
 @Component({
   selector: 'app-riders',
   templateUrl: './riders.component.html',
@@ -12,8 +14,9 @@ export class RidersComponent implements OnInit {
  riders: IRiders [] = [];
  showLoader = true;
  searchText:string = '';
+ userDetails:any
 
- constructor(private Riders: RiderService ){}
+ constructor(private Riders: RiderService, private users:UsersService ){}
 
   ngOnInit(): void {
     this.Riders.getRiders().subscribe(
@@ -24,7 +27,26 @@ export class RidersComponent implements OnInit {
         this.sortRiders()
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
     }
+    addAccessTrail(){
+      const {email} = this.userDetails
+      console.log(email)
+    
+      const userCredetials = {
+        login: email,
+        action: 'Viewed Riders'
+      }
+    
+      this.users.addAccesstrail(userCredetials).subscribe(
+        (res:any)=>{
+          const {message} = res
+          if(message === "Success insering access"){
+           } else {}
+        }
+      )}
 
     applyFilter() {
       this.searchText 

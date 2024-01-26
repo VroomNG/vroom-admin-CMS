@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IRatings_D } from 'src/app/model/driverInfo';
 import { DriversService } from 'src/app/service/driver.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-ratings-driver',
@@ -14,8 +15,9 @@ export class RatingsDriverComponent implements OnInit {
   deleteRowId: number | null = null;
   showLoader = true;
   searchText:string = ''
+  userDetails:any
 
-  constructor(private Drivers: DriversService){}
+  constructor(private Drivers: DriversService, private users:UsersService){}
   ngOnInit(): void {
     this.Drivers.getDriversRatings().subscribe(
       (res:any)=> {
@@ -24,7 +26,27 @@ export class RatingsDriverComponent implements OnInit {
         this.showLoader = false;
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
+  
   }
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Driver Ratings'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
 
   applyFilter() {
     const filteredAdmins = this.drivers.filter((item) => {

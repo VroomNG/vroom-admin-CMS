@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
-import { ISurge } from 'src/app/model/surge';
+import { UsersService } from 'src/app/service/users.service';
 import { SurgeService } from 'src/app/service/surge.service';
 
 @Component({
@@ -14,8 +14,9 @@ export class SurgeChargeComponent implements OnInit {
   surge: any;
   showLoader = true;
   searchText:string = ''
+  userDetails:any
 
-  constructor(private Surge: SurgeService){}
+  constructor(private Surge: SurgeService, private users:UsersService,){}
 
   ngOnInit(){
     this.Surge.getSurge().subscribe(
@@ -25,7 +26,27 @@ export class SurgeChargeComponent implements OnInit {
         this.showLoader = false;
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
    }
+
+   addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Surge Charge'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
 
    applyFilter() {
     const filteredAdmins = this.surge.filter((item:any) => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators, } from '@angular/forms';
 import { DriversService } from 'src/app/service/driver.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -14,6 +15,7 @@ interface City {
 })
 export class DriversAddComponent implements OnInit {
 
+  userDetails:any
 // variables
   cities!: City[] |  undefined;
   vehicles!: City[] |  undefined;
@@ -22,7 +24,7 @@ export class DriversAddComponent implements OnInit {
   alertColor = 'primary';
 
 // constructor and lifecycle methods
-  constructor(private drivers: DriversService){
+  constructor(private drivers: DriversService, private users:UsersService){
      }
 
   ngOnInit(){
@@ -42,8 +44,11 @@ export class DriversAddComponent implements OnInit {
     { name: 'Lagos',  code: 'lag'},
 ];
 
-}
+const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
 
+}
    // validators & formcontrols
 
   //  license_docu!: FormControl;
@@ -95,6 +100,23 @@ export class DriversAddComponent implements OnInit {
     vehicle_type: this.vehicle_type     
    })
   //  functions 
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Add Drivers'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )
+  }
   onSubmit(){
     // console.log(this.addDrivers.value)
     this.showAlert = true

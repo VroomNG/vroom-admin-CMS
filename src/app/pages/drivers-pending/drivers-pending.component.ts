@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import {IPending } from 'src/app/model/driverInfo';
 import { DriversService } from 'src/app/service/driver.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-drivers-pending',
@@ -14,8 +15,9 @@ export class DriversPendingComponent implements OnInit {
   showLoader = true;
   checked = false;
   searchText:string = ''
+  userDetails:any
 
-  constructor(private Drivers: DriversService){}
+  constructor(private Drivers: DriversService, private users:UsersService){}
   ngOnInit(): void {
     this.Drivers.getPending().subscribe(
       (res:any)=>{
@@ -25,7 +27,29 @@ export class DriversPendingComponent implements OnInit {
         this.sortDrivers()
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
   }
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Pending Drivers'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )
+  }
+  
 
   applyFilter() {
     const filteredAdmins = this.pending.filter((item) => {

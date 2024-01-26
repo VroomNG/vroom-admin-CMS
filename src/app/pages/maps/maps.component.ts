@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from 'src/app/service/map.service';
 import { IMapList } from 'src/app/model/maps';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+// import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { UsersService } from 'src/app/service/users.service';
 declare const google: any;
 
 @Component({
@@ -12,9 +13,10 @@ declare const google: any;
 export class MapsComponent implements OnInit {
 
   maplist!: IMapList | any;
+  userDetails:any
 
   constructor(
-    private MapService: MapService
+    private MapService: MapService, private users:UsersService
   ){}
 
   ngOnInit() {
@@ -59,6 +61,27 @@ export class MapsComponent implements OnInit {
       (res:any)=> {
         console.log(res.data);
         this.maplist = res.data[0]
+      }
+    )
+    const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
+  }
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Maps'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
       }
     )
   }

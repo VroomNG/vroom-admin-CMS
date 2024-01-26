@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/service/notifications.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface Option {
   id:number,
@@ -15,6 +16,7 @@ interface Option {
 export class NotifyAddComponent implements OnInit {
 
   options: Option[] = [];
+  userDetails:any
 
   checked: boolean = false;
   ischecked: boolean = false;
@@ -24,13 +26,16 @@ export class NotifyAddComponent implements OnInit {
   alertMsg = 'Sending notification, please wait...';
   alertColor = 'primary';
   
-  constructor(private NotifyService: NotificationService){ }
+  constructor(private NotifyService: NotificationService, private users:UsersService){ }
 
   ngOnInit(){
      this.options = [
       {id:0, name:'No'},
       {id:1, name:'Yes'}
     ]
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
 
    }
 
@@ -51,6 +56,24 @@ export class NotifyAddComponent implements OnInit {
     drivers: this.drivers,
     udrivers: this.udrivers
   })
+
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Add Notifications'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )
+  }
 
   submitNotify(){
     this.showAlert = true;

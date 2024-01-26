@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators, } from '@angular/forms';
 import { DiscountService } from 'src/app/service/discount.service';
-
-interface City {
-  name: string;
-  code: string;
-}
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-discount-add',
@@ -13,7 +9,7 @@ interface City {
   styleUrls: ['./discount-add.component.scss']
 })
 export class DiscountAddComponent implements OnInit {
-
+  userDetails:any
   
 // variables
 
@@ -22,10 +18,13 @@ alertMsg = 'Please wait';
 alertColor = 'primary';
 
 // constructor and lifecycle methods
-constructor(private discount: DiscountService){
+constructor(private discount: DiscountService, private users:UsersService){
    }
 
 ngOnInit(){
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
 }
 
  // validators & formcontrols
@@ -49,6 +48,24 @@ ngOnInit(){
    max_discount_amount: this.max_discount_amount,
    max_no_of_users: this.max_no_of_users
  })
+
+ addAccessTrail(){
+  const {email} = this.userDetails
+  console.log(email)
+
+  const userCredetials = {
+    login: email,
+    action: 'Viewed Discount Add'
+  }
+
+  this.users.addAccesstrail(userCredetials).subscribe(
+    (res:any)=>{
+      const {message} = res
+      if(message === "Success insering access"){
+       } else {}
+    }
+  )
+}
 
 //  functions 
 onSubmit(){

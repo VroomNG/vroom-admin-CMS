@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SurgeService } from 'src/app/service/surge.service';
-// import { TripService } from 'src/app/service/trips.service';
+import { UsersService } from 'src/app/service/users.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,10 +20,11 @@ export class SurgeEditComponent implements OnInit {
   alertColor = 'primary';
   searchText = '';
   readonly:boolean = true;
+  userDetails:any
   
  constructor(
   private Surge: SurgeService,
-    private router: Router
+  private users:UsersService
  ){}
 
  ngOnInit(){
@@ -34,6 +35,9 @@ export class SurgeEditComponent implements OnInit {
       console.log(res.data)
     }
   )
+  const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
  }
 
  hmr = new FormControl('',[Validators.required, Validators.minLength(0)])
@@ -43,6 +47,22 @@ export class SurgeEditComponent implements OnInit {
     hmr: this.hmr,
     hsvt: this.hsvt,
   })
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Edit Charge'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
 
   onSubmit(){
     console.log(this.surgeForm.value);

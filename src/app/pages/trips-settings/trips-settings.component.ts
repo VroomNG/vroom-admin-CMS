@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TripService } from 'src/app/service/trips.service';
-import { Router } from '@angular/router';
+import { UsersService } from 'src/app/service/users.service';
 
 interface Idata {
   id:number,
@@ -19,6 +19,7 @@ export class TripsSettingsComponent implements OnInit {
 
   tripSettings: | any;
   isActive = true;
+  userDetails: any;
 
   showAlert = false;
   alertMsg = 'please wait...';
@@ -28,7 +29,7 @@ export class TripsSettingsComponent implements OnInit {
 
   constructor(
     private Trips: TripService,
-    private router: Router
+    private users: UsersService,
   ){}
 
   ngOnInit(){
@@ -39,7 +40,26 @@ export class TripsSettingsComponent implements OnInit {
         console.log(this.tripSettings)
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
   }
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Past Trips'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
 
   free_wait_time = new FormControl('',[Validators.required, Validators.minLength(0)])
   mst_per_min_rate = new FormControl('',[Validators.required, Validators.minLength(0)])

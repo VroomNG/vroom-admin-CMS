@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RiderService } from 'src/app/service/riders.service';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -16,6 +17,7 @@ export class RidersEditComponent implements OnInit {
 
   riderId: any;
   riders: [] | any;
+  userDetails:any
 
   cities!: City[] |  undefined;
 
@@ -26,7 +28,7 @@ export class RidersEditComponent implements OnInit {
   constructor(
     private Rider: RiderService,
     private route: ActivatedRoute,
-    private router: Router
+    private users:UsersService
     ){}
 
   ngOnInit(){ 
@@ -39,9 +41,27 @@ export class RidersEditComponent implements OnInit {
        console.log(this.riders)
      }
    )
+   const userDetails = this.users.getStoredUserDetails();
+   this.userDetails = userDetails
+   this.addAccessTrail()
 
   }
-
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Edit Riders'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
   update() {
     this.showAlert = true;
     var editRiderForm = {

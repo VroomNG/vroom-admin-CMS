@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IAllTrips } from 'src/app/model/trips';
 import { TripService } from 'src/app/service/trips.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-trips',
@@ -15,10 +16,11 @@ export class TripsComponent implements OnInit {
   viewRowId: number | null = null;
   displayDialog: boolean = false;
   showLoader = true;
+  userDetails:any
 
   searchText:string = '';
   
-  constructor(private Trips: TripService){}
+  constructor(private Trips: TripService, private users:UsersService){}
   ngOnInit(): void {
     this.Trips.getAllTrips().subscribe(
       (res:any) =>{
@@ -27,8 +29,26 @@ export class TripsComponent implements OnInit {
         this.showLoader = false;
       }
     )
+    const userDetails = this.users.getStoredUserDetails();
+    this.userDetails = userDetails
+    this.addAccessTrail()
   }
-
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
+  
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Trips'
+    }
+  
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        const {message} = res
+        if(message === "Success insering access"){
+         } else {}
+      }
+    )}
   viewTrip(trip: IAllTrips):any {
     this.viewTrips = { ...trip }; // Create a copy to avoid modifying the original data; 
     this.viewRowId = trip.id;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriversService } from 'src/app/service/driver.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from 'src/app/service/users.service';
 
 interface City {
   name: string;
@@ -16,6 +17,7 @@ export class DriversEditComponent implements OnInit {
 
   drivers: any;
   driverId: any;
+  userDetails:any
 
   cities!: City[] |  undefined;
   vehicles!: City[] |  undefined;
@@ -27,7 +29,8 @@ export class DriversEditComponent implements OnInit {
   constructor(
     private Drivers: DriversService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private users:UsersService
   ){
 
   }
@@ -57,10 +60,32 @@ this.driverId = this.route.snapshot.paramMap.get('id')
       this.drivers = res.data
       console.log(this.drivers)
     }
-
   )
 
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
+
 }
+
+addAccessTrail(){
+  const {email} = this.userDetails
+  console.log(email)
+
+  const userCredetials = {
+    login: email,
+    action: 'Viewed Drivers Edit'
+  }
+
+  this.users.addAccesstrail(userCredetials).subscribe(
+    (res:any)=>{
+      const {message} = res
+      if(message === "Success insering access"){
+       } else {}
+    }
+  )
+}
+
 
 updateDriver() {
 
