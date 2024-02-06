@@ -6,6 +6,7 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { AdminAddComponent } from 'src/app/pages/admin-add/admin-add.component';
+import { AdminAddQuestComponent } from 'src/app/pages/admin-addquest/admin-addquest.component';
 import { AdminViewComponent } from 'src/app/pages/admin-view/admin-view.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
 import { AdminEditComponent } from 'src/app/pages/admin-edit/admin-edit.component';
@@ -63,6 +64,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent, canActivate: [AuthClassGuard] },
     { path: 'maps',           component: MapsComponent, canActivate: [AuthClassGuard] },
     { path: 'add-admin',      component: AdminAddComponent, canActivate: [AuthClassGuard]},
+    { path: 'add-quest',      component: AdminAddQuestComponent, canActivate: [AuthClassGuard]},
     { path: 'view-admin',      component: AdminViewComponent, canActivate: [AuthClassGuard] },
     { path: 'view-access-trail',      component: AdminViewAccessComponent, canActivate: [AuthClassGuard] },
     { path: 'view-vehicle', component: VehicleTypeComponent, canActivate: [AuthClassGuard] },
