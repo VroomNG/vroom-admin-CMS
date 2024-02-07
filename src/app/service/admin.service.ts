@@ -26,6 +26,9 @@ export class AdminService {
   addQuest(questForm:any){
     return this.http.post(`${this.baseUrl}/api/v1/quest`, questForm)
   }
+  addQuestLocation(locationForm:any){
+    return this.http.post(`${this.baseUrl}/api/v1/questLocation`, locationForm)
+  }
   
   updateAdmin(editAdminForm: object, adminId:any) {
     // const userId = admin.id; // Assuming 'id' is the property that represents the user ID

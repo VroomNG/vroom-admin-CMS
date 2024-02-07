@@ -84,6 +84,9 @@ import { SearchPipe } from 'src/app/helpers/search.pipe';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { SurgeEditComponent } from 'src/app/pages/surge-edit/surge-edit.component';
+
+
+import { GoogleMapsModule } from '@angular/google-maps';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -106,6 +109,7 @@ import { SurgeEditComponent } from 'src/app/pages/surge-edit/surge-edit.componen
     InputNumberModule,
     CheckboxModule,
     DialogModule,
+    GoogleMapsModule
   ],
   declarations: [
     DashboardComponent,

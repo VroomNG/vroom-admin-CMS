@@ -25,6 +25,7 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CustomDatePipe,
+    
     // SearchPipe,
   ],
   imports: [
@@ -38,6 +39,7 @@ import { CustomDatePipe  } from './pipe_filter/date-filter.pipe';
     ComponentsModule,
     NgbModule,
     RouterModule,
+    // GoogleMapsModule
     // SharedModule
     // ButtonModule
   ],

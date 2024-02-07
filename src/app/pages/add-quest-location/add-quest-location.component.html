@@ -18,10 +18,10 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="fistname">Quest Title*</label>
+                                <label htmlFor="title">Quest Title*</label>
                             </div>
                             <div>
-                                <input type="text" [(ngModel)]="quest.title" name="Quest title" 
+                                <input type="text" label="title" [(ngModel)]="quest.title" name="Quest title" 
                                 class="form-control form-control-alternative" placeholder="Quest Title" value="{{quest.title}}" readonly="true">
                             </div>
                         </div>
@@ -29,10 +29,10 @@
                     <div class="card-input">
                         <div class="form-group">
                             <div>
-                                <label htmlFor="lastname">Subtitle*</label>
+                                <label htmlFor="subTitle">Subtitle*</label>
                             </div>
                             <div>
-                                <input type="text" [(ngModel)]="quest.subTitle"  name="Subtitle" class="form-control form-control-alternative" placeholder="Subtitle" value="{{quest.subTitle}}" readonly="true">
+                                <input type="text" label="subtitle" [(ngModel)]="quest.subTitle"  name="Subtitle" class="form-control form-control-alternative" placeholder="Subtitle" value="{{quest.subTitle}}" readonly="true">
                             </div>
                         </div>
                     </div>
@@ -112,10 +112,10 @@
                         <div class="card-input">
                             <div class="form-group">
                                 <div>
-                                    <label htmlFor="fistname">Point*</label>
+                                    <label htmlFor="point">Point*</label>
                                 </div>
                                 <div>
-                                    <input type="text" [(ngModel)]="credentials.point" name="Point" 
+                                    <input label="point" type="text" [(ngModel)]="credentials.point" name="Point" 
                                     class="form-control form-control-alternative" placeholder="Point" value="">
                                 </div>
                             </div>
@@ -123,27 +123,27 @@
                         <div class="card-input">
                             <div class="form-group">
                                 <div>
-                                    <label htmlFor="lastname">location*</label>
+                                    <label htmlFor="location">location*</label>
                                 </div>
                                 <div>
-                                    <input type="text" [(ngModel)]="credentials.location"  name="Location" 
+                                    <input type="text" label="location"  [(ngModel)]="credentials.location"  name="Location" 
                                     class="form-control form-control-alternative" placeholder="Location" value="">
                                 </div>
                             </div>
                         </div>
                     </div>
                         <div class="card shadow border-3">
-                            <div id="map-canvas" class="map-canvas" data-lat="40.748817" data-lng="-73.985428">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15902.195574075227!2d6.9746144999999995!3d4.847232549999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sng!4v1698649896811!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
+
+                            <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+                            <google-map (mapClick)="mapClicked($event)" [center]="center" [zoom]="zoom" apiKey="AIzaSyDLKdWYm-EI_563Q6Aj-LAIjl7F6BzdAkQ" width="100%">
+                                <map-marker [position]="markerPosition"></map-marker>
+                            </google-map>
+                              
                         </div>
                         <button type="submit" label="submit"  class="button btn-primary ">
                             Add Location 
                         </button>
                 </form>
-                <!-- <button type="submit" label="submit"  class="button btn-primary " (click)="addLocation()">
-                    Add Location 
-                </button> -->
             </div>
            </div>
         </div>
