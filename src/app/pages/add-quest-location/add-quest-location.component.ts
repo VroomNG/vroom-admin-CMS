@@ -20,6 +20,14 @@ interface Users {
   styleUrls: ['add-quest-location.component.scss']
 })
 export class AddQuestLocationComponent implements OnInit {
+
+  credentials = {
+
+    point: '',
+    location:'',
+    latitude: '',
+    longitude: '',
+  }
   
   inSubmission = false; 
 
@@ -64,7 +72,7 @@ export class AddQuestLocationComponent implements OnInit {
     (res:any)=>{
       console.log(res)
       this.quest = res.data.quest
-      console.log(this.quest)
+      console.log(this.quest.location)
       console.log(res.data.quest)
     }
   )
@@ -75,11 +83,11 @@ export class AddQuestLocationComponent implements OnInit {
 
   }
 
-  quest_id = new FormControl('1',[Validators.required, Validators.minLength(1)])
-  location = new FormControl('nigeria',[Validators.required, Validators.minLength(3)])
+  // quest_id = new FormControl('1',[Validators.required, Validators.minLength(1)])
+  // location = new FormControl('nigeria',[Validators.required, Validators.minLength(3)])
   latitude = new FormControl('111',[Validators.required, Validators.minLength(3)])
   longitude = new FormControl('11',[Validators.required, Validators.minLength(3)])
-  point = new FormControl('10',[Validators.required, Validators.minLength(3)])
+  // point = new FormControl('10',[Validators.required, Validators.minLength(3)])
 
 
   addAccessTrail(){
@@ -107,10 +115,10 @@ export class AddQuestLocationComponent implements OnInit {
   addLocation(){
     var locationForm = {
       quest_id: this.questId,
-      location: this.location,
+      location: this.credentials.location,
       latitude: this.latitude,
       longitude: this.longitude,
-      point: this.point
+      point: this.credentials.point
     }
     console.log(locationForm)
   }
