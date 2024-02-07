@@ -22,6 +22,8 @@ import {ToolbarModule} from 'primeng/toolbar';
 import { AdminAddComponent } from 'src/app/pages/admin-add/admin-add.component';
 import { AdminAddQuestComponent } from 'src/app/pages/admin-addquest/admin-addquest.component';
 import { AdminViewComponent } from '../../pages/admin-view/admin-view.component';
+import { AdminViewQuestComponent } from 'src/app/pages/admin-view-quest/admin-view-quest.component';
+import { AddQuestLocationComponent } from 'src/app/pages/add-quest-location/add-quest-location.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
 import { AdminEditComponent } from '../../pages/admin-edit/admin-edit.component';
 
@@ -116,6 +118,8 @@ import { SurgeEditComponent } from 'src/app/pages/surge-edit/surge-edit.componen
     AdminViewComponent,
     AdminViewAccessComponent,
     AdminEditComponent,
+    AdminViewQuestComponent,
+    AddQuestLocationComponent,
     VehicleTypeComponent,
     VehicleAddComponent,
     PartnersComponent,

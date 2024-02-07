@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
-import { IAdmin, IAccessTrail } from '../model/admins';
+import { IAdmin, IAccessTrail,IQuest } from '../model/admins';
 
 
 @Injectable({
@@ -41,6 +41,14 @@ export class AdminService {
   getAdmins(): Observable<IAdmin[]>{
     return this.http.get<IAdmin[]>(`${this.baseUrl}/api/v1/adminView`);
   }
+  getQuest(): Observable<IQuest[]>{
+    return this.http.get<IQuest[]>(`${this.baseUrl}/api/v1/quests`);
+  }
+
+  getSingleQuest(questId: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/api/v1/quest/${questId}`);
+  }
+  
   getSingleAdmin(adminId: any): Observable<IAdmin[]>{
     return this.http.get<IAdmin[]>(`${this.baseUrl}/users/${adminId}`);
   }
@@ -48,9 +56,6 @@ export class AdminService {
   getAccessTrail(): Observable<IAccessTrail[]>{
     return this.http.get<IAccessTrail[]>(`${this.baseUrl}/getAccessLog`);
   }
-
-  
-
 
 }
 

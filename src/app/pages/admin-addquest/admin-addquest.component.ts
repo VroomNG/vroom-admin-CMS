@@ -51,6 +51,7 @@ export class AdminAddQuestComponent implements OnInit {
   // const userDetails = this.users.getStoredUserDetails();
   // this.userDetails = userDetails
   // this.addAccessTrail()
+  console.log('init')
   }
 
   title = new FormControl('',[Validators.required, Validators.minLength(3)])
@@ -96,25 +97,25 @@ export class AdminAddQuestComponent implements OnInit {
   submit(){
      console.log(this.questForm.value)
 
-    this.showAlert = true
-    setTimeout(() => {
-      this.showAlert = true
-      this.alertMsg = 'Adding Quest'
-      this.alertColor = 'info'
-      this.Admin.addQuest(this.questForm.value).subscribe(
-        (res:any) => {
-         console.log(res)
-         if(res.code == 200){
-          this.alertMsg = 'Quest Created Successfully';
-          this.alertColor = "success"
-         } else {
-          this.alertMsg = 'something went wrong check connectivity and try again';
-          this.alertColor = 'danger'
-         }
-         }
+    // this.showAlert = true
+    // setTimeout(() => {
+    //   this.showAlert = true
+    //   this.alertMsg = 'Adding Quest'
+    //   this.alertColor = 'info'
+    //   this.Admin.addQuest(this.questForm.value).subscribe(
+    //     (res:any) => {
+    //      console.log(res)
+    //      if(res.code == 200){
+    //       this.alertMsg = 'Quest Created Successfully';
+    //       this.alertColor = "success"
+    //      } else {
+    //       this.alertMsg = 'something went wrong check connectivity and try again';
+    //       this.alertColor = 'danger'
+    //      }
+    //      }
         
-      )
-      }, 1600)
+    //   )
+    //   }, 1600)
   }
 
   reset(){

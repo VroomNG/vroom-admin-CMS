@@ -8,8 +8,10 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { AdminAddComponent } from 'src/app/pages/admin-add/admin-add.component';
 import { AdminAddQuestComponent } from 'src/app/pages/admin-addquest/admin-addquest.component';
 import { AdminViewComponent } from 'src/app/pages/admin-view/admin-view.component';
+import { AdminViewQuestComponent } from 'src/app/pages/admin-view-quest/admin-view-quest.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
 import { AdminEditComponent } from 'src/app/pages/admin-edit/admin-edit.component';
+import { AddQuestLocationComponent } from 'src/app/pages/add-quest-location/add-quest-location.component';
 
 import { VehicleAddComponent } from 'src/app/pages/vehicle-add/vehicle-add.component';
 import { VehicleTypeComponent } from 'src/app/pages/vehicle-type/vehicle-type.component';
@@ -66,9 +68,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'add-admin',      component: AdminAddComponent, canActivate: [AuthClassGuard]},
     { path: 'add-quest',      component: AdminAddQuestComponent, canActivate: [AuthClassGuard]},
     { path: 'view-admin',      component: AdminViewComponent, canActivate: [AuthClassGuard] },
+    { path: 'view-quest',      component: AdminViewQuestComponent, canActivate: [AuthClassGuard] },
     { path: 'view-access-trail',      component: AdminViewAccessComponent, canActivate: [AuthClassGuard] },
     { path: 'view-vehicle', component: VehicleTypeComponent, canActivate: [AuthClassGuard] },
     { path: 'users/:id/edit', component: AdminEditComponent, title:'Edit Admin', canActivate: [AuthClassGuard] }, 
+    { path: 'quest/:id/addLocation', component: AddQuestLocationComponent, title:'Add Location', canActivate: [AuthClassGuard] }, 
     
     { path: 'add-vehicle', component: VehicleAddComponent, canActivate: [AuthClassGuard]},
     { path: 'vehicleUpdate/:id/edit', component: VehicleEditComponent, canActivate: [AuthClassGuard]},

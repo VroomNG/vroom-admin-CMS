@@ -33,9 +33,17 @@ export class SidebarComponent implements OnInit {
       path: '/view-admin', title: 'Admin', icon: 'fa-solid fa-user-tie', class: '', 
       children: [
         { path: 'add-admin', title: 'Add Admin', icon: 'fa fa-user-plus', class: '' },
-        { path: 'add-quest', title: 'Add Quest', icon: 'fa solid fa-gamepad', class: '' },
+        // { path: 'add-quest', title: 'Add Quest', icon: 'fa solid fa-gamepad', class: '' },
         { path: 'view-admin', title: 'View Admin', icon: 'fa fa-eye', class: '' },
         { path: 'view-access-trail', title: 'View Access trail', icon: 'fa fa-eye', class: '' }
+      ]
+    },
+    {
+      id:22,
+      path: '/view-quest', title: 'Quests', icon: 'fa-solid fa-chess', class: '', 
+      children: [
+        { path: 'add-quest', title: 'Add Quest', icon: 'fa solid fa-gamepad', class: '' },
+        { path: 'view-quest', title: 'View Quest', icon: 'fa fa-eye', class: '' },
       ]
     },
     {

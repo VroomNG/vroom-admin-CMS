@@ -1,26 +1,27 @@
 // Dependecies
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { IAdmin } from 'src/app/model/admins';
+import { IAdmin, IQuest } from 'src/app/model/admins';
 import { AdminService } from 'src/app/service/admin.service';
 import { UsersService } from 'src/app/service/users.service';
 import * as FileSaver from 'file-saver';
 
+
 // Decorator and file connector
 @Component({
-  selector: 'app-admin-view',
-  templateUrl: './admin-view.component.html',
-  styleUrls: ['./admin-view.component.scss'],
+  selector: 'app-admin-view-quest',
+  templateUrl: './admin-view-quest.component.html',
+  styleUrls: ['./admin-view-quest.component.scss'],
   providers: [DatePipe],
 })
 
-export class AdminViewComponent implements OnInit {
+export class AdminViewQuestComponent implements OnInit {
 // variables
-  admins: IAdmin[] = [];
+  quest: IQuest[] = [];
   editedAdmin1: IAdmin | any;
   displayDialog: boolean = false;
   showLoader = true;
-  originalData = this.admins;
+  originalData = this.quest;
   
   editedRowId: number | null = null;
   // date!: DatePipe;
@@ -35,13 +36,14 @@ export class AdminViewComponent implements OnInit {
     // private messageService: MessageService
   ){}
   ngOnInit(): void {
-    this.Admins.getAdmins().subscribe(
+    this.Admins.getQuest().subscribe(
     (res:any)=> {
       console.log(res)
-      this.admins = res.data
+      this.quest = res.data.currentQuests
       this.showLoader = false;
     }
     )
+
   const userDetails = this.users.getStoredUserDetails();
     this.userDetails = userDetails
     // console.log('view admin', email)
@@ -71,36 +73,36 @@ export class AdminViewComponent implements OnInit {
       }
     )
   }
-  applyFilter() {
-    const filteredAdmins = this.admins.filter((admin) => {
-      // Adjust the conditions based on your filtering requirements
-      return (
-        admin.firstname.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        (admin.lastname && admin.lastname.toLowerCase().includes(this.searchText.toLowerCase())) ||
-        admin.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        (admin.phone_no && admin.phone_no.toLowerCase().includes(this.searchText.toLowerCase())) ||
-        admin.user_type.toString().includes(this.searchText)
-      );
-    });
-    // Update the table data with the filtered results
-    // If you are using server-side filtering, you may need to call an API here
-    this.admins = filteredAdmins;
-  }
+  // applyFilter() {
+  //   const filteredAdmins = this.admins.filter((admin) => {
+  //     // Adjust the conditions based on your filtering requirements
+  //     return (
+  //       admin.firstname.toLowerCase().includes(this.searchText.toLowerCase()) ||
+  //       (admin.lastname && admin.lastname.toLowerCase().includes(this.searchText.toLowerCase())) ||
+  //       admin.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
+  //       (admin.phone_no && admin.phone_no.toLowerCase().includes(this.searchText.toLowerCase())) ||
+  //       admin.user_type.toString().includes(this.searchText)
+  //     );
+  //   });
+  //   // Update the table data with the filtered results
+  //   // If you are using server-side filtering, you may need to call an API here
+  //   this.admins = filteredAdmins;
+  // }
 
   clear() {
     this.searchText = '';
-    this.Admins.getAdmins().subscribe(
+    this.Admins.getQuest().subscribe(
       (res:any)=> {
-        this.admins = res.data
+        this.quest = res.data
         this.showLoader = false;
       }
       )
-      this.admins = this.originalData
+      this.quest = this.originalData
   }
 
     exportExcel() {
         import('xlsx').then((xlsx) => {
-            const worksheet = xlsx.utils.json_to_sheet(this.admins);
+            const worksheet = xlsx.utils.json_to_sheet(this.quest);
             const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
             const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
             this.saveAsExcelFile(excelBuffer, 'admins');
