@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+// import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 // import { IAdmin, IQuest } from 'src/app/model/admins';
@@ -20,7 +20,10 @@ interface Users {
   templateUrl: 'add-quest-location.component.html',
   styleUrls: ['add-quest-location.component.scss']
 })
+
 export class AddQuestLocationComponent implements OnInit {
+
+  @ViewChild('searchInput', { static: false }) searchInput!: ElementRef<HTMLInputElement>;
 
   credentials = {
     point: '',
@@ -47,7 +50,7 @@ export class AddQuestLocationComponent implements OnInit {
   markerPosition: google.maps.LatLngLiteral = { lat: 51.678418, lng: 7.809007 };
 
   map!: google.maps.Map;
-  searchBox!: google.maps.places.SearchBox;
+  // searchBox!: google.maps.places.SearchBox;
 
 
   constructor(
@@ -126,17 +129,17 @@ export class AddQuestLocationComponent implements OnInit {
       }
     })
   }
-  mapClicked(event: any) {
-    // console.log('Latitude: ' + event.latLng.lat());
-    // console.log('Longitude: ' + event.latLng.lng());
-    const lat = event.latLng.lat()
-    const long = event.latLng.lng();
-    this.credentials.latitude = lat
-    this.credentials.longitude = long 
-    console.log('latitude from cr', this.credentials.latitude)
-    console.log('longtitude from cr', this.credentials.longitude)
-    console.log('credentials',this.credentials)
-  }
+  // mapClicked(event: any) {
+  //   // console.log('Latitude: ' + event.latLng.lat());
+  //   // console.log('Longitude: ' + event.latLng.lng());
+  //   const lat = event.latLng.lat()
+  //   const long = event.latLng.lng();
+  //   this.credentials.latitude = lat
+  //   this.credentials.longitude = long 
+  //   console.log('latitude from cr', this.credentials.latitude)
+  //   console.log('longtitude from cr', this.credentials.longitude)
+  //   console.log('credentials',this.credentials)
+  // }
   // initializeMap() {
   //   this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
   //     center: this.center,
@@ -195,6 +198,44 @@ export class AddQuestLocationComponent implements OnInit {
   //     this.map.fitBounds(bounds);
   //   });
   // }  
-    
+  mapClicked(event: any) {
+    this.credentials.latitude = event.latLng.lat().toString();
+    this.credentials.longitude = event.latLng.lng().toString();
+    console.log('Latitude:', this.credentials.latitude);
+    console.log('Longitude:', this.credentials.longitude);
+  }
 
+  onPlaceSelected(place: google.maps.places.PlaceResult) {
+    if (!place.geometry || !place.geometry.location) {
+      console.log('Place not found');
+      return;
+    }
+
+    this.credentials.location = place.formatted_address || '';
+    this.credentials.latitude = place.geometry.location.lat().toString();
+    this.credentials.longitude = place.geometry.location.lng().toString();
+    this.center = {
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    };
+    this.markerPosition = {
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    };
+    console.log('Location:', this.credentials.location);
+  }
+
+  onSearchInput() {
+    const input = this.searchInput.nativeElement.value;
+    if (input) {
+      const autocomplete = new google.maps.places.AutocompleteService();
+      autocomplete.getPlacePredictions({ input }, (predictions, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
+          // Handle the predictions here
+          console.log(predictions);
+        }
+      });
+    }
+  }
+  
 }

@@ -10,7 +10,7 @@
             </div>
         <app-loader *ngIf="!quest"></app-loader>
         <div class="card-body"*ngIf="quest" >       
-            <form> 
+            <!-- <form> 
                 <div style="display: flex; justify-content: center; margin-bottom: 40px;">
                     <img src={{quest.icon}} width="150px" style="border-radius: 20px;"/>
                 </div>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="container">
+                <div>     
                     <div class="card-input">
                         <div class="form-group">
                             <div>
@@ -105,11 +105,11 @@
                         </div>
                     </div>
                    
-                </div> -->
-              </form>
+                </div> 
+            </form> -->
                 <form role="form" #locationForm="ngForm" (ngSubmit)="addLocation()">
                     <div class="container"> 
-                        <div class="card-input">
+                        <!-- <div class="card-input">
                             <div class="form-group">
                                 <div>
                                     <label htmlFor="point">Point*</label>
@@ -119,8 +119,8 @@
                                     class="form-control form-control-alternative" placeholder="Point" value="">
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-input">
+                        </div> -->
+                        <!-- <div class="card-input">
                             <div class="form-group">
                                 <div>
                                     <label htmlFor="location">location*</label>
@@ -130,19 +130,18 @@
                                     class="form-control form-control-alternative" placeholder="Location" value="">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                    
                     </div>
-                        <div class="card shadow border-3">
-
-                            <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+                    <input id="searchInput" #searchInput class="controls" type="text" placeholder="Search for location" (input)="onSearchInput()">
+                        <div class="card shadow border-3 mapp">
                             <google-map (mapClick)="mapClicked($event)" [center]="center" [zoom]="zoom" apiKey="AIzaSyDLKdWYm-EI_563Q6Aj-LAIjl7F6BzdAkQ" width="100%">
                                 <map-marker [position]="markerPosition"></map-marker>
-                            </google-map>
-                              
+                            </google-map>    
                         </div>
                         <button type="submit" label="submit"  class="button btn-primary ">
                             Add Location 
-                        </button>
+                        </button> 
                 </form>
             </div>
            </div>
