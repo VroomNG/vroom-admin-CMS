@@ -9,7 +9,7 @@
                 <h5>Add Quest Location</h5>
             </div>
         <app-loader *ngIf="!quest"></app-loader>
-        <div class="card-body"*ngIf="quest" >       
+          <div class="card-body"*ngIf="quest" >       
             <!-- <form> 
                 <div style="display: flex; justify-content: center; margin-bottom: 40px;">
                     <img src={{quest.icon}} width="150px" style="border-radius: 20px;"/>
@@ -133,9 +133,12 @@
                         </div> -->
                     
                     </div>
-                    <input id="searchInput" #searchInput class="controls" type="text" placeholder="Search for location" (input)="onSearchInput()">
-                        <div class="card shadow border-3 mapp">
-                            <google-map (mapClick)="mapClicked($event)" [center]="center" [zoom]="zoom" apiKey="AIzaSyDLKdWYm-EI_563Q6Aj-LAIjl7F6BzdAkQ" width="100%">
+                    <input id="searchInput" #searchInput class="controls" type="text" placeholder="Search for location" value={{credentials.location}}
+                     (input)="onSearchInput()">
+                    <div id="predictionsContainer"></div>    
+                    <div class="card shadow border-3 mapp">
+                           <p>long and lat loaded</p>
+                            <google-map (mapClick)="mapClicked($event)" [center]="center" [zoom]="zoom" width="100%">
                                 <map-marker [position]="markerPosition"></map-marker>
                             </google-map>    
                         </div>

@@ -121,5 +121,27 @@ select.selected {
   }
 
   .mapp {
-    margin-top: 100px;
+    margin-top: 50px;
+  }
+
+  #predictionsContainer {
+    margin-top: 10px;
+    color: #414a4f;
+    cursor: pointer;
+  }
+
+  /* CSS for prediction items */
+  .prediction {
+    color: blue;
+    margin-bottom: 5px;
+  }
+
+  /* CSS for map icon */
+  .map-icon {
+    margin-right: 5px;
+  }
+
+  .searchContainer {
+    position: absolute;
+    z-index: 99999;
   }

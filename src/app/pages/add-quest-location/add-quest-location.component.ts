@@ -30,6 +30,7 @@ export class AddQuestLocationComponent implements OnInit {
     location:'',
     latitude: '',
     longitude: '',
+    radius: '',
   }
   
   inSubmission = false; 
@@ -44,15 +45,14 @@ export class AddQuestLocationComponent implements OnInit {
   showAlert:boolean = false;
   alertMsg = 'please wait your account is being created';
   alertColor = 'primary';
-  center: google.maps.LatLngLiteral = { lat: 4.8472, lng: 6.9746 };
+  center: google.maps.LatLngLiteral = { lat: 0, lng: 0 }
+  markerPosition: google.maps.LatLngLiteral = { lat: 0, lng: 0 }
   place:any;
   zoom = 8;
-  markerPosition: google.maps.LatLngLiteral = { lat: 51.678418, lng: 7.809007 };
+ 
 
   map!: google.maps.Map;
   // searchBox!: google.maps.places.SearchBox;
-
-
   constructor(
     private route: ActivatedRoute,
     private admin: AdminService,
@@ -61,10 +61,29 @@ export class AddQuestLocationComponent implements OnInit {
     ){
   }
   ngOnInit() { 
-   
-  // this.initializeMap();
-  // const places = this.searchBox.getPlaces();
-  // this.place = places
+
+    if (!navigator.geolocation) {
+      console.log('location is not supported');
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      const coords = position.coords;
+      const latLong = [coords.latitude, coords.longitude];
+      console.log('my location',
+        `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+      )
+      
+      this.center = {
+        lat: coords.latitude,
+        lng: coords.longitude
+      };
+       
+       this.markerPosition = {
+        lat: coords.latitude,
+        lng: coords.longitude
+      };
+     
+    
+    })
   
 
   this.questId = this.route.snapshot.paramMap.get('id')
@@ -77,13 +96,10 @@ export class AddQuestLocationComponent implements OnInit {
       console.log(res.data.quest)
     }
   )
-  const userDetails = this.users.getStoredUserDetails();
-  this.userDetails = userDetails
+  // const userDetails = this.users.getStoredUserDetails();
+  // this.userDetails = userDetails
   // this.addAccessTrail()
   }
-
-  // latitude = new FormControl('111',[Validators.required, Validators.minLength(3)])
-  // longitude = new FormControl('11',[Validators.required, Validators.minLength(3)])
 
   // addAccessTrail(){
   //   const {email} = this.userDetails
@@ -116,113 +132,25 @@ export class AddQuestLocationComponent implements OnInit {
       point: this.credentials.point
     }
     console.log(locationForm)
-    this.admin.addQuestLocation(locationForm).subscribe({
-      next: (res:any) => {
-        console.log(res)
-     if(res.code === 200){
-      this.alertMsg = 'Quest Location Added',
-      this.alertColor = 'success'
-     } else {
-      this.alertMsg = 'Failed to Add Location, ERROR from Server ',
-      this.alertColor = 'danger'
-     }
-      }
-    })
+    // this.admin.addQuestLocation(locationForm).subscribe({
+    //   next: (res:any) => {
+    //     console.log(res)
+    //  if(res.code === 200){
+    //   this.alertMsg = 'Quest Location Added',
+    //   this.alertColor = 'success'
+    //  } else {
+    //   this.alertMsg = 'Failed to Add Location, ERROR from Server ',
+    //   this.alertColor = 'danger'
+    //  }
+    //   }
+    // })
   }
-  // mapClicked(event: any) {
-  //   // console.log('Latitude: ' + event.latLng.lat());
-  //   // console.log('Longitude: ' + event.latLng.lng());
-  //   const lat = event.latLng.lat()
-  //   const long = event.latLng.lng();
-  //   this.credentials.latitude = lat
-  //   this.credentials.longitude = long 
-  //   console.log('latitude from cr', this.credentials.latitude)
-  //   console.log('longtitude from cr', this.credentials.longitude)
-  //   console.log('credentials',this.credentials)
-  // }
-  // initializeMap() {
-  //   this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-  //     center: this.center,
-  //     zoom: 8,
-  //   });
 
-  //   // Create the search box and link it to the UI element.
-  //   const input = document.getElementById('pac-input') as HTMLInputElement;
-  //   this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  //   this.searchBox = new google.maps.places.SearchBox(input);
-
-  //   // Bias the SearchBox results towards current map's viewport.
-  //   this.map.addListener('bounds_changed', () => {
-  //     this.searchBox.setBounds(this.map.getBounds() as google.maps.LatLngBounds);
-  //   });
-
-  //   // Listen for the event fired when the user selects a prediction and retrieve
-  //   // more details for that place.
-  //   this.searchBox.addListener('places_changed', () => {
-  //     const places = this.place;
-
-  //     if (places.length == 0) {
-  //       return;
-  //     }
-
-  //     // For each place, get the icon, name and location.
-  //     const bounds = new google.maps.LatLngBounds();
-  //     places.forEach((place:any) => {
-  //       if (!place.geometry) {
-  //         console.log("Returned place contains no geometry");
-  //         return;
-  //       }
-  //       const icon = {
-  //         url: place.icon as string,
-  //         size: new google.maps.Size(71, 71),
-  //         origin: new google.maps.Point(0, 0),
-  //         anchor: new google.maps.Point(17, 34),
-  //         scaledSize: new google.maps.Size(25, 25),
-  //       };
-
-  //       // Create a marker for each place.
-  //       new google.maps.Marker({
-  //         map: this.map,
-  //         icon,
-  //         title: place.name,
-  //         position: place.geometry.location,
-  //       });
-
-  //       if (place.geometry.viewport) {
-  //         // Only geocodes have viewport.
-  //         bounds.union(place.geometry.viewport);
-  //       } else {
-  //         bounds.extend(place.geometry.location);
-  //       }
-  //     });
-  //     this.map.fitBounds(bounds);
-  //   });
-  // }  
   mapClicked(event: any) {
     this.credentials.latitude = event.latLng.lat().toString();
     this.credentials.longitude = event.latLng.lng().toString();
     console.log('Latitude:', this.credentials.latitude);
     console.log('Longitude:', this.credentials.longitude);
-  }
-
-  onPlaceSelected(place: google.maps.places.PlaceResult) {
-    if (!place.geometry || !place.geometry.location) {
-      console.log('Place not found');
-      return;
-    }
-
-    this.credentials.location = place.formatted_address || '';
-    this.credentials.latitude = place.geometry.location.lat().toString();
-    this.credentials.longitude = place.geometry.location.lng().toString();
-    this.center = {
-      lat: place.geometry.location.lat(),
-      lng: place.geometry.location.lng()
-    };
-    this.markerPosition = {
-      lat: place.geometry.location.lat(),
-      lng: place.geometry.location.lng()
-    };
-    console.log('Location:', this.credentials.location);
   }
 
   onSearchInput() {
@@ -231,11 +159,120 @@ export class AddQuestLocationComponent implements OnInit {
       const autocomplete = new google.maps.places.AutocompleteService();
       autocomplete.getPlacePredictions({ input }, (predictions, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
-          // Handle the predictions here
-          console.log(predictions);
+          // Display predictions on the UI
+          this.displayPredictions(predictions);
+          // console.log(predictions);
+  
+          // Update center and marker position based on the first prediction
+          if (predictions.length > 0) {
+            const firstPrediction = predictions[0];
+            const placeId = firstPrediction.place_id;
+            const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+            placesService.getDetails({ placeId }, (placeResult, placeStatus) => {
+              if (placeStatus === google.maps.places.PlacesServiceStatus.OK && placeResult?.geometry) {
+                // console.log('lat',placeResult.geometry.location?.lat(),'long', placeResult.geometry.location?.lng())
+                // console.log(placeResult,)
+                this.center = {
+                  lat: placeResult.geometry.location?.lat() || 0,
+                  lng: placeResult.geometry.location?.lng() || 0
+                };
+                this.markerPosition = {
+                  lat: placeResult.geometry.location?.lat() || 0,
+                  lng: placeResult.geometry.location?.lng() || 0
+                };
+              }
+            });
+          }
         }
       });
     }
   }
+  
+displayPredictions(predictions: google.maps.places.AutocompletePrediction[]) {
+  // Clear any previous predictions displayed on the UI
+  const predictionsContainer = document.getElementById('predictionsContainer');
+  if (predictionsContainer) {
+    predictionsContainer.innerHTML = '';
+
+    // Loop through predictions and display them
+    predictions.forEach(prediction => {
+      const predictionElement = document.createElement('div');
+      predictionElement.classList.add('prediction');
+
+      // Create a map icon using Font Awesome
+      const mapIcon = document.createElement('i');
+      mapIcon.classList.add('fas', 'fa-map-marker', 'map-icon');
+
+      // Create a span for the prediction text
+      const predictionText = document.createElement('span');
+      predictionText.textContent = prediction.description;
+
+      // Append the map icon and prediction text to the prediction element
+      predictionElement.appendChild(mapIcon);
+      predictionElement.appendChild(predictionText);
+
+      // Add event listeners for prediction hover and selection
+      predictionElement.addEventListener('mouseenter', () => {
+        predictionElement.style.backgroundColor = '#ffff00'; // Highlight hovered item
+      });
+      predictionElement.addEventListener('mouseleave', () => {
+        predictionElement.style.backgroundColor = ''; // Remove highlight on mouse leave
+      });
+      predictionElement.addEventListener('click', () => {
+        predictionElement.style.backgroundColor = 'green'; // Highlight hovered item
+        this.onPredictionSelected(prediction);
+      });
+
+      // Add event listener for prediction selection
+      predictionElement.addEventListener('click', () => {
+        // Call method to handle prediction selection
+        this.onPredictionSelected(prediction);
+      });
+
+      // Append the prediction element to the predictions container
+      predictionsContainer.appendChild(predictionElement);
+    });
+  }
+}
+
+onPredictionSelected(prediction: google.maps.places.AutocompletePrediction) {
+  // Retrieve details of the selected place using its place_id
+  const placeId = prediction.place_id;
+  const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+  placesService.getDetails({ placeId }, (placeResult, placeStatus) => {
+    if (placeStatus === google.maps.places.PlacesServiceStatus.OK && placeResult?.geometry) {
+      // Update center and marker position based on the selected place
+      this.center = {
+        lat: placeResult.geometry.location?.lat() || 0,
+        lng: placeResult.geometry.location?.lng() || 0
+      };
+      this.markerPosition = {
+        lat: placeResult.geometry.location?.lat() || 0,
+        lng: placeResult.geometry.location?.lng() || 0
+      };
+
+      // Stamp the selected location on the form input
+      this.credentials.location = prediction.description || '';
+      this.credentials.latitude = placeResult.geometry.location?.lat().toString() || '';
+      this.credentials.longitude = placeResult.geometry.location?.lng().toString() || '';
+
+      // Log the selected location's latitude and longitude to the console
+      console.log('Location:', this.credentials.location);
+      console.log('Latitude:', this.credentials.latitude);
+      console.log('Longitude:', this.credentials.longitude);
+    }
+  });
+
+  // Optionally, you can close the predictions container or perform any other action
+  // For example, you can clear the predictions displayed on the UI
+  const predictionsContainer = document.getElementById('predictionsContainer');
+  if (predictionsContainer) {
+    predictionsContainer.innerHTML = '';
+  }
+}
+
+
+
+  
   
 }
