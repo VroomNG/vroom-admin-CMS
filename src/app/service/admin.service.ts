@@ -39,8 +39,10 @@ export class AdminService {
     // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
     return this.http.delete(`${this.baseUrl}/users/${adminId}`);
   }
+  deleteQuest(questId:any) {
+    return this.http.delete(`${this.baseUrl}/api/v1/quest/${questId}`);
+  }
 
- 
   getAdmins(): Observable<IAdmin[]>{
     return this.http.get<IAdmin[]>(`${this.baseUrl}/api/v1/adminView`);
   }

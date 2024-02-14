@@ -26,7 +26,7 @@ import { AdminViewQuestComponent } from 'src/app/pages/admin-view-quest/admin-vi
 import { AddQuestLocationComponent } from 'src/app/pages/add-quest-location/add-quest-location.component';
 import { AdminViewAccessComponent } from 'src/app/pages/admin-view-access/admin-view-access.component';
 import { AdminEditComponent } from '../../pages/admin-edit/admin-edit.component';
-
+import { AdminQuestDetailsComponent } from 'src/app/pages/admin-quest-dtls/admin-quest-dtls.component';
 import { VehicleTypeComponent } from '../../pages/vehicle-type/vehicle-type.component';
 import { VehicleAddComponent } from '../../pages/vehicle-add/vehicle-add.component';
 import { VehicleEditComponent } from '../../pages/vehicle-edit/vehicle-edit.component';
@@ -86,6 +86,8 @@ import { DialogModule } from 'primeng/dialog';
 import { SurgeEditComponent } from 'src/app/pages/surge-edit/surge-edit.component';
 
 
+
+
 import { GoogleMapsModule } from '@angular/google-maps';
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -119,6 +121,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MapsComponent,
     AdminAddComponent,
     AdminAddQuestComponent,
+    AdminQuestDetailsComponent,
     AdminViewComponent,
     AdminViewAccessComponent,
     AdminEditComponent,

@@ -85,7 +85,6 @@ export class AddQuestLocationComponent implements OnInit {
     
     })
   
-
   this.questId = this.route.snapshot.paramMap.get('id')
   console.log(this.questId)
   this.admin.getSingleQuest(this.questId).subscribe(
@@ -96,32 +95,33 @@ export class AddQuestLocationComponent implements OnInit {
       console.log(res.data.quest)
     }
   )
-  // const userDetails = this.users.getStoredUserDetails();
-  // this.userDetails = userDetails
-  // this.addAccessTrail()
+  const userDetails = this.users.getStoredUserDetails();
+  this.userDetails = userDetails
+  this.addAccessTrail()
+
   }
 
-  // addAccessTrail(){
-  //   const {email} = this.userDetails
-  //   console.log(email)
+  addAccessTrail(){
+    const {email} = this.userDetails
+    console.log(email)
 
-  //   const userCredetials = {
-  //     login: email,
-  //     action: 'Viewed Edit Admin'
-  //   }
+    const userCredetials = {
+      login: email,
+      action: 'Viewed Add Location'
+    }
 
-  //   this.users.addAccesstrail(userCredetials).subscribe(
-  //     (res:any)=>{
-  //       // console.log(res)
-  //       const {message} = res
-  //       if(message === "Success insering access"){
-  //       //  console.log('access trail added')
-  //        } else {
-  //       // console.log('not added')
-  //        }
-  //     }
-  //   )
-  // }
+    this.users.addAccesstrail(userCredetials).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        const {message} = res
+        if(message === "Success insering access"){
+        //  console.log('access trail added')
+         } else {
+        // console.log('not added')
+         }
+      }
+    )
+  }
 
   addLocation(){
     var locationForm = {
@@ -141,6 +141,9 @@ export class AddQuestLocationComponent implements OnInit {
      if(res.code === 200){
       this.alertMsg = 'Quest Location Added',
       this.alertColor = 'success'
+      setTimeout(() => {
+        this.showAlert = false
+        }, 1600)
      } else {
       this.alertMsg = 'Failed to Add Location, ERROR from Server ',
       this.alertColor = 'danger'

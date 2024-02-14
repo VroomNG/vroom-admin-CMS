@@ -1,0 +1,112 @@
+<app-vr-alert *ngIf="showAlert" [color]="alertColor">
+    {{ alertMsg }}
+</app-vr-alert>
+<div class="main-container">
+    <div class="header">
+        <div class="add-admin-form">
+           <div class="card">
+            <div class="card-title">
+                <h5>Edit Admin</h5>
+            </div>
+        <app-loader *ngIf="!quest"></app-loader>
+        <div class="card-body"*ngIf="quest" >       
+            <form> 
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label>Quest Title*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="title" [(ngModel)]="quest.title" name="title" 
+                                class="form-control form-control-alternative" placeholder="Quest Title" value="{{quest.title}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label>Subtitle*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="subtitle" [(ngModel)]="quest.subTitle" name="subtitle" class="form-control form-control-alternative" placeholder="Subtitle" value="{{quest.subtitle}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label>Point*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="point" name="point" class="form-control form-control-alternative" placeholder="Point" value="{{quest.point}}" readonly="true">
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label>Target*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="target" [(ngModel)]="quest.target" name="target" class="form-control form-control-alternative" placeholder="Target" value="{{quest.target}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label>Start Date*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="start date" name="start-date" class="form-control form-control-alternative" placeholder="Start Date" value="{{quest.starts}}" readonly>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="city">End Date*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="expires"  [(ngModel)]="quest.expires" name="city" class="form-control form-control-alternative" placeholder="End Date" value="{{quest.expires}}">
+                            </div>
+                            <!-- <p-dropdown formControlName="city" [options]="cities" optionLabel="name" class="dropdown"></p-dropdown> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-input">
+                        <div class="form-group">
+                            <div>
+                                <label htmlFor="city">Quest Type*</label>
+                            </div>
+                            <div>
+                                <input type="text" label="quest type" class="form-control form-control-alternative" placeholder="Quest Type" [value]="quest.type === '1' ? 'Badge' : (quest.type === '2' ? 'Coin' : null)" readonly="true">
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!-- <div class="btn"> -->
+                    <button type="submit" label="submit"  class="button btn-primary " (click)="updateAdmin()">
+                     Update 
+                    </button>
+                    <button type="submit" label="submit" class="button  btn-danger" (click)="deleteAdmin()">
+                       delete
+                    </button>
+                <!-- </div> -->
+              </form>
+            </div>
+           </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+
+</div>
