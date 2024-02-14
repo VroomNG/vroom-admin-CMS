@@ -37,7 +37,11 @@
 }
 .card-input {
     width: 50%;
-    height: 16vh;
+    height: 12vh;
+}
+.card-location {
+    width: 50%;
+    height: 12vh;
 }
 
 label {
@@ -66,10 +70,9 @@ button {
 }
 .button {
     padding: 10px;
-    width: 12%;
+    width: 30%;
     border-radius: 10px;
-    margin: 10px;
-    background-color: #db2424;
+    background-color: rgb(20, 20, 20);
     color: white;
     font-weight: 600;
     border-color: transparent;
@@ -120,9 +123,14 @@ select.selected {
     left: 320px;
   }
 
-  .mapp {
-    margin-top: 50px;
+  .map-container {
+    width: 50%;
+    height: 16vh;
   }
+  .google-map {
+    height: auto;
+  }
+  
 
   #predictionsContainer {
     margin-top: 10px;

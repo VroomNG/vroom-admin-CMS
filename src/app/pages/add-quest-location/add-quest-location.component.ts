@@ -129,21 +129,24 @@ export class AddQuestLocationComponent implements OnInit {
       location: this.credentials.location,
       latitude: this.credentials.latitude,
       longitude: this.credentials.longitude,
-      point: this.credentials.point
+      point: this.credentials.point,
+      radius: this.credentials.radius
     }
     console.log(locationForm)
-    // this.admin.addQuestLocation(locationForm).subscribe({
-    //   next: (res:any) => {
-    //     console.log(res)
-    //  if(res.code === 200){
-    //   this.alertMsg = 'Quest Location Added',
-    //   this.alertColor = 'success'
-    //  } else {
-    //   this.alertMsg = 'Failed to Add Location, ERROR from Server ',
-    //   this.alertColor = 'danger'
-    //  }
-    //   }
-    // })
+    this.showAlert = true
+    this.alertMsg =   `Adding Location to ${this.quest?.title} ...`
+    this.admin.addQuestLocation(locationForm).subscribe({
+      next: (res:any) => {
+        console.log(res)
+     if(res.code === 200){
+      this.alertMsg = 'Quest Location Added',
+      this.alertColor = 'success'
+     } else {
+      this.alertMsg = 'Failed to Add Location, ERROR from Server ',
+      this.alertColor = 'danger'
+     }
+      }
+    })
   }
 
   mapClicked(event: any) {

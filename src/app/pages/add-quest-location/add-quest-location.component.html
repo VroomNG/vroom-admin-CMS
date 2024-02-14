@@ -6,145 +6,72 @@
         <div class="add-admin-form">
            <div class="card">
             <div class="card-title">
-                <h5>Add Quest Location</h5>
+              
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <div style="width: 10%;">
+                      <img src={{quest.icon}} width="80px" style="border-radius: 20px;"/>
+                    </div>
+                    <div style="width: 50%; display: flex; justify-content: center; flex-direction: column;">
+                       <h6>Add Location to </h6>
+                       <h5>{{quest.title}}</h5>
+                    </div>
+                    <div style="width: 40%; display:flex; justify-content: end;">
+                       <button (click)="addLocation()" class="button">
+                            Add Location
+                       </button>
+                    </div>
+                </div>
             </div>
         <app-loader *ngIf="!quest"></app-loader>
           <div class="card-body"*ngIf="quest" >       
-            <!-- <form> 
-                <div style="display: flex; justify-content: center; margin-bottom: 40px;">
-                    <img src={{quest.icon}} width="150px" style="border-radius: 20px;"/>
-                </div>
-                <div class="container"> 
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="title">Quest Title*</label>
-                            </div>
-                            <div>
-                                <input type="text" label="title" [(ngModel)]="quest.title" name="Quest title" 
-                                class="form-control form-control-alternative" placeholder="Quest Title" value="{{quest.title}}" readonly="true">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="subTitle">Subtitle*</label>
-                            </div>
-                            <div>
-                                <input type="text" label="subtitle" [(ngModel)]="quest.subTitle"  name="Subtitle" class="form-control form-control-alternative" placeholder="Subtitle" value="{{quest.subTitle}}" readonly="true">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>     
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="email">Quest Description*</label>
-                            </div>
-                            <div>
-                                <input type="text"  name="description" class="form-control form-control-alternative" placeholder="description" value="{{quest.description}} " readonly="true">
-                            </div>
-                        
-                        </div>
-                    </div>
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="points">Points*</label>
-                            </div>
-                            <div>
-                                <input type="text"  [(ngModel)]="quest.points" name="points" class="form-control form-control-alternative" placeholder="Points" value="{{quest.points}}" readonly="true">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="target">Target*</label>
-                            </div>
-                            <div>
-                                <input type="text" name="target" class="form-control form-control-alternative" placeholder="target" value="{{quest.target}}" readonly>
-                            </div>  
-                        </div>
-                    </div>
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="city">Start Date*</label>
-                            </div>
-                            <div>
-                                <input type="text" id="input-city"  [(ngModel)]="quest.created_at" name="city" class="form-control form-control-alternative" placeholder="City" value="{{quest.created_at}}" readonly>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="city">Quest Type*</label>
-                            </div>
-                            <div>
-                                <input type="text"  class="form-control form-control-alternative" placeholder="Quest Type" [value]="quest.type === '1' ? 'Icon' : (quest.type === '2' ? 'Badge' : null)" readonly="true">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-input">
-                        <div class="form-group">
-                            <div>
-                                <label htmlFor="city">End date*</label>
-                            </div>
-                            <div>
-                                <input type="text"  class="form-control form-control-alternative" placeholder="End Date" value="{{quest.expires}}" readonly="true">
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div> 
-            </form> -->
+           
                 <form role="form" #locationForm="ngForm" (ngSubmit)="addLocation()">
-                    <div class="container"> 
-                        <!-- <div class="card-input">
+                    <div class="container">
+                        <div class="card-input">
                             <div class="form-group">
                                 <div>
-                                    <label htmlFor="point">Point*</label>
+                                    <label htmlFor="points">Points*</label>
                                 </div>
                                 <div>
-                                    <input label="point" type="text" [(ngModel)]="credentials.point" name="Point" 
-                                    class="form-control form-control-alternative" placeholder="Point" value="">
+                                    <input type="text"  [(ngModel)]="quest.points" name="points" class="form-control form-control-alternative" placeholder="Points" value="{{quest.points}}">
                                 </div>
                             </div>
-                        </div> -->
-                        <!-- <div class="card-input">
-                            <div class="form-group">
-                                <div>
-                                    <label htmlFor="location">location*</label>
-                                </div>
-                                <div>
-                                    <input type="text" label="location"  [(ngModel)]="credentials.location"  name="Location" 
-                                    class="form-control form-control-alternative" placeholder="Location" value="">
-                                </div>
-                            </div>
-                        </div> -->
-                    
-                    </div>
-                    <input id="searchInput" #searchInput class="controls" type="text" placeholder="Search for location" value={{credentials.location}}
-                     (input)="onSearchInput()">
-                    <div id="predictionsContainer"></div>    
-                    <div class="card shadow border-3 mapp">
-                           <p>long and lat loaded</p>
-                            <google-map (mapClick)="mapClicked($event)" [center]="center" [zoom]="zoom" width="100%">
-                                <map-marker [position]="markerPosition"></map-marker>
-                            </google-map>    
                         </div>
-                        <button type="submit" label="submit"  class="button btn-primary ">
-                            Add Location 
-                        </button> 
+                        <div class="card-input">
+                            <div class="form-group">
+                                <div>
+                                    <label htmlFor="radius">Radius*</label>
+                                </div>
+                                <div>
+                                    <input type="text" label="radius" [(ngModel)]="credentials.radius" name="radius" class="form-control form-control-alternative" placeholder="Radius" value="{{credentials.radius}}" >
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container"> 
+                        <div class="card-location ">
+                            <div class="form-group">
+                                <div>
+                                    <label>Add Location*</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="searchInput" #searchInput class="controls"  label="location" 
+                                     [(ngModel)]="credentials.location" name="location" placeholder="Search for location" 
+                                     class="form-control form-control-alternative" value="{{credentials.location}}" (input)="onSearchInput()"/>
+                                     <div id="predictionsContainer"></div>   
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            <div class="card shadow border-1 google-map">
+                                <google-map (mapClick)="mapClicked($event)" [center]="center" [zoom]="zoom" width="100%">
+                                    <map-marker [position]="markerPosition"></map-marker>
+                                </google-map>  
+                            </div>
+                        </div>
+                    </div>    
+                       
                 </form>
             </div>
            </div>
