@@ -21,11 +21,13 @@ export class AdminQuestDetailsComponent implements OnInit {
 
 
   inSubmission = false; 
+  isReadOnly = true
 
   cities!: City[] |  undefined;
   userType!: Users[] |  undefined;
 
   quest!: any;
+  questLocation!:any
   questId!: any;
   userDetails:any
 
@@ -43,21 +45,21 @@ export class AdminQuestDetailsComponent implements OnInit {
 
   }
   ngOnInit() { 
-    this.cities = [
-      { name: 'Abia' },
-      { name: 'Enugu' },
-      { name: 'Bauchi' },
-      { name: 'Calabar' },
-      { name: 'Uyo' },
-      { name: 'Port Harcourt' },
-      { name: 'Abuja' },
-      { name: 'Lagos'},
-  ];
-  this.userType = [
-    { type: 'Super Admin', code: '4' },
-    { type: 'Sub Admin', code: '3' },
-    { type: 'Partner', code: '5' },
-  ];
+  //   this.cities = [
+  //     { name: 'Abia' },
+  //     { name: 'Enugu' },
+  //     { name: 'Bauchi' },
+  //     { name: 'Calabar' },
+  //     { name: 'Uyo' },
+  //     { name: 'Port Harcourt' },
+  //     { name: 'Abuja' },
+  //     { name: 'Lagos'},
+  // ];
+  // this.userType = [
+  //   { type: 'Super Admin', code: '4' },
+  //   { type: 'Sub Admin', code: '3' },
+  //   { type: 'Partner', code: '5' },
+  // ];
   
 this.questId = this.route.snapshot.paramMap.get('id')
   console.log(this.questId)
@@ -65,14 +67,14 @@ this.questId = this.route.snapshot.paramMap.get('id')
     (res:any)=>{
       console.log(res)
       this.quest = res.data.quest
-      console.log(this.quest.location)
-      console.log(res.data.quest)
+      const loc = this.questLocation = res.data.location
+      console.log('locations',loc )
+      console.log('data', res.data.quest)
     }
   )
   const userDetails = this.users.getStoredUserDetails();
   this.userDetails = userDetails
   this.addAccessTrail()
-
   }
 
   addAccessTrail(){
@@ -96,7 +98,6 @@ this.questId = this.route.snapshot.paramMap.get('id')
       }
     )
   }
-
 
   updateAdmin() {
 
@@ -127,7 +128,7 @@ this.questId = this.route.snapshot.paramMap.get('id')
    
   }
 
-  deleteAdmin() {
+  deleteQuest() {
       window.alert('are you sure?');
       const questId = this.questId;
       console.log(questId)
@@ -146,5 +147,9 @@ this.questId = this.route.snapshot.paramMap.get('id')
         })
     
     }
+
+  enableEdit(){
+    this.isReadOnly = !this.isReadOnly;
+  }
 
 }

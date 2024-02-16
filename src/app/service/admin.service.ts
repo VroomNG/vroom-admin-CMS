@@ -34,6 +34,10 @@ export class AdminService {
     // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
     return this.http.put(`${this.baseUrl}/updateUser/${adminId}`, editAdminForm);
   }
+  updateQuest(editQuestForm: object, questId:any) {
+
+    return this.http.put(`${this.baseUrl}/api/v1/quest/${questId}`, editQuestForm);
+  }
 
   deleteAdmin(adminId:any) {
     // const userId = admin.id; // Assuming 'id' is the property that represents the user ID
