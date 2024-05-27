@@ -9,7 +9,41 @@
                 <h5>Add Quest</h5>
             </div>
         <div class="card-body">
-            <form [formGroup]="questForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="questForm" [ngSwitch]="submit()">
+               <div>
+                    <div >
+                        <div>
+                         <ng-container formArrayName="description">
+                            <ng-container *ngFor="let descriptionsForm of description.controls; let i = index ">
+                                    <div >
+                                        <label>Description</label>
+                                    </div>
+                                     <!-- <app-vr-input pInputText [control]="title" type="text" placeholder="Quest Title" ></app-vr-input>  -->
+                                    <div>
+                                        <input placeholder="title" formControlName="{{i}}">
+                                    </div>
+                                    <div>
+                                        <input placeholder="content" formControlName="content">
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <label>Icon</label>
+                                        </div>
+                                        <select name="type" formControlName="type">
+                                            <option *ngFor="let option of iconType" [value]="option.code">{{ option.icon }}</option>
+                                        </select>
+                                    </div>
+
+                                    <button (click)="delete(i)"><i class="fa-solid fa-trash"></i></button>
+                            </ng-container>
+                         </ng-container>
+∫∫
+                         <button (click)="addDesc()" class="button btn-primary my-4"><i class="fa-solid fa-circle-plus"></i></button>
+                         <button type="submit" class="button btn-primary my-4">sub</button>
+                        </div>
+                    </div>
+                </div>
+               
                 <div class="container">
                     <div class="card-input">
                         <div class="form-group">
@@ -29,7 +63,7 @@
                     </div>
                 </div>
                 <div class="container">
-                    <div class="card-input">
+                    <!-- <div class="card-input">
                         <div class="form-group">
                             <div>
                                 <label htmlFor="email">Description*</label>
@@ -37,7 +71,7 @@
                             <app-vr-input pInputText [control]="description" type="text" placeholder="Quest Description" ></app-vr-input> 
                         
                         </div>
-                    </div>
+                    </div> -->
                     <div class="card-input">
                         <div class="form-group">
                             <div>
@@ -48,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
+               <div class="container">
                     <div class="card-input">
                         <div class="form-group">
                             <div>
@@ -95,15 +129,15 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <!-- <div class="btn"> -->
-                    <button type="submit" label="submit"  class="button btn-primary my-4"
+                    <!-- <button type="submit" label="submit"  class="button btn-primary my-4"
                     (click)="submit()">
                        Add 
                     </button>
                     <button type="submit" label="submit" class="button" (click)="reset()">
                        Cancel
-                    </button>
+                    </button> -->
                 <!-- </div> -->
               </form>
             </div>
